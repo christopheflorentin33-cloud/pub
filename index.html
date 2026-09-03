@@ -109,13 +109,11 @@
   .detail-copy{display:grid;gap:16px;max-width:760px;}
   .detail-copy p{margin:0;font-size:1rem;line-height:1.65;}
 
-  /* ---------- Visual Grid Adaptable (NOUVEAU) ---------- */
+  /* ---------- Visual Grid 100% (SANS BORD PERDU) ---------- */
   .visual-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:2px;
-    background:var(--line);
-    border:1px solid var(--line);
+    gap:0;
     max-width:var(--maxw);
     margin:32px auto 0;
     grid-auto-flow:dense;
@@ -126,31 +124,26 @@
     .visual-grid > *:first-child{grid-column:span 2;grid-row:span 2;}
   }
 
-  /* Gestion flexible des visuels */
+  /* Visuels qui remplissent 100% */
   .visual-item{
     position:relative;
     overflow:hidden;
-    background:var(--paper-deep);
     width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
   }
   
-  /* Aspect-ratio adaptables */
-  .visual-item.portrait{aspect-ratio:3/4;min-height:300px;}
-  .visual-item.paysage{aspect-ratio:4/3;min-height:240px;}
-  .visual-item.carre{aspect-ratio:1/1;min-height:280px;}
-  .visual-item.vedette{aspect-ratio:2/1;min-height:300px;}
+  /* Aspect-ratio adaptables — remplissage complet */
+  .visual-item.portrait{aspect-ratio:3/4;}
+  .visual-item.paysage{aspect-ratio:4/3;}
+  .visual-item.carre{aspect-ratio:1/1;}
+  .visual-item.vedette{aspect-ratio:2/1;}
 
-  /* Images NON-TRONQUÉES */
+  /* Images qui remplissent complètement la cellule */
   .visual-item img{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
     object-position:center;
     display:block;
-    background:var(--paper-deep);
   }
 
   .rail-section{max-width:var(--maxw);margin:56px auto 0;padding:0 24px 56px;}
