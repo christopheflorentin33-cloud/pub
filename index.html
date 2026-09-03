@@ -109,7 +109,7 @@
   .detail-copy{display:grid;gap:16px;max-width:760px;}
   .detail-copy p{margin:0;font-size:1rem;line-height:1.65;}
 
-  /* ---------- Visual Grid 100% (SANS BORD PERDU) ---------- */
+  /* ---------- Visual Grid 100% (REMPLISSAGE COMPLET) ---------- */
   .visual-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -117,11 +117,28 @@
     max-width:var(--maxw);
     margin:32px auto 0;
     grid-auto-flow:dense;
+    grid-auto-rows:minmax(200px,auto);
   }
   
   @media(min-width:768px){
-    .visual-grid{grid-template-columns:repeat(4,1fr);}
+    /* Grille 3 colonnes — remplissage optimal pour 6 visuels */
+    .visual-grid{grid-template-columns:repeat(3,1fr);}
+    
+    /* Vedette: 2 cols × 2 rows (gauche) */
     .visual-grid > *:first-child{grid-column:span 2;grid-row:span 2;}
+    
+    /* V2 & V3: 1 col, côté droit (avec vedette) */
+    .visual-grid > *:nth-child(2){grid-column:span 1;grid-row:span 1;}
+    .visual-grid > *:nth-child(3){grid-column:span 1;grid-row:span 1;}
+    
+    /* V4: 1 col (coin bas-gauche) */
+    .visual-grid > *:nth-child(4){grid-column:span 1;grid-row:span 1;}
+    
+    /* V5: 2 cols (remplit le reste de la row) */
+    .visual-grid > *:nth-child(5){grid-column:span 2;grid-row:span 1;}
+    
+    /* V6: 3 colonnes (ligne complète en bas) */
+    .visual-grid > *:nth-child(6){grid-column:span 3;grid-row:span 1;}
   }
 
   /* Visuels qui remplissent 100% */
