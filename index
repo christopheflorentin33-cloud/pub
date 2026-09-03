@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christophe Florentin — Portfolio créatif</title>
+<meta name="description" content="Portfolio de Christophe Florentin, concepteur-créatif publicitaire : campagnes d'affichage, films, digital et identités de marque.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15161b;
+    --ink-soft:#3a3b42;
+    --paper:#eff1ee;
+    --paper-deep:#e2e5df;
+    --line:#c9cdc3;
+    --cobalt:#263aff;
+    --yellow:#f3cc00;
+    --font-display:'Bricolage Grotesque','Arial Black',sans-serif;
+    --font-body:'Work Sans','Helvetica Neue',Arial,sans-serif;
+    --maxw:1240px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);font-size:16px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  button{font:inherit;}
+  img,svg{display:block;max-width:100%;}
+  *:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px;}
+
+  /* ---------- Header / Nav ---------- */
+  .site-header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);}
+  .nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;position:relative;}
+  .nav-logo{font-family:var(--font-display);font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;letter-spacing:-0.01em;}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{font-family:var(--font-body);font-weight:500;font-size:.95rem;color:var(--ink-soft);text-decoration:none;padding:6px 2px;border-bottom:2px solid transparent;}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink);border-bottom-color:var(--cobalt);}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);padding:6px 10px;font-size:1.1rem;cursor:pointer;}
+  @media(max-width:720px){
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);flex-direction:column;gap:14px;padding:16px 24px;border-bottom:1px solid var(--line);}
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- Generative art tiles ---------- */
+  .art-tile{position:relative;overflow:hidden;width:100%;aspect-ratio:4/3;background:var(--paper-deep);}
+  .art-tile .art-letter{font-family:var(--font-display);font-weight:900;line-height:1;font-size:clamp(2.5rem,10vw,6rem);}
+  .tpl-split{background:linear-gradient(135deg,var(--c1) 50%,var(--c2) 50%);}
+  .tpl-circle{background:var(--c2);}
+  .tpl-circle::before{content:"";position:absolute;width:140%;aspect-ratio:1;border-radius:50%;background:var(--c1);top:-35%;right:-35%;}
+  .tpl-quad{background:conic-gradient(from 0deg,var(--c1) 0 25%,var(--c2) 0 50%,var(--c1) 0 75%,var(--c2) 0);}
+  .tpl-stripe{background:repeating-linear-gradient(45deg,var(--c1) 0 18px,var(--c2) 18px 36px);}
+  .tpl-frame{background:var(--c1);}
+  .tpl-frame::before{content:"";position:absolute;inset:14%;border:6px solid var(--c2);}
+  .tpl-type{background:var(--c1);display:flex;align-items:center;justify-content:center;}
+  .tpl-type .art-letter{color:var(--c2);}
+  .tpl-grid{background:var(--c2);background-image:radial-gradient(var(--c1) 2px,transparent 2px);background-size:16px 16px;}
+  .tpl-grid::after{content:"";position:absolute;width:45%;height:45%;background:var(--c1);bottom:0;right:0;}
+  .tpl-arc{background:var(--c2);}
+  .tpl-arc::before{content:"";position:absolute;width:90%;aspect-ratio:1;border-radius:50%;background:var(--c1);bottom:-45%;left:-20%;}
+  .tpl-arc::after{content:"";position:absolute;width:60%;aspect-ratio:1;border-radius:50%;background:var(--c2);border:6px solid var(--c1);top:10%;right:-10%;}
+
+  /* ---------- Hero slideshow ---------- */
+  .hero{position:relative;width:100%;aspect-ratio:21/9;min-height:320px;overflow:hidden;background:var(--ink);}
+  @media(max-width:720px){.hero{aspect-ratio:4/5;}}
+  .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;}
+  .hero-slide.active{opacity:1;}
+  .hero-slide .art-tile{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;}
+  .hero-caption{position:absolute;left:24px;bottom:24px;color:#fff;z-index:2;text-shadow:0 2px 14px rgba(0,0,0,.4);}
+  .hero-caption p{margin:0 0 4px;font-size:.9rem;}
+  .hero-caption h2{margin:0;font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);}
+  .hero-dots{position:absolute;right:24px;bottom:24px;display:flex;gap:8px;z-index:2;}
+  .hero-dots button{width:9px;height:9px;border-radius:50%;border:1.5px solid #fff;background:transparent;padding:0;cursor:pointer;}
+  .hero-dots button.active{background:#fff;}
+
+  /* ---------- Sections ---------- */
+  .section{max-width:var(--maxw);margin:0 auto;padding:56px 24px;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap;}
+  .section-head h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0;}
+  .section-head p{margin:0;color:var(--ink-soft);font-size:.95rem;}
+
+  /* ---------- Campaign grid ---------- */
+  .campaign-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(min-width:640px){.campaign-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1024px){.campaign-grid{grid-template-columns:repeat(4,1fr);}}
+  .campaign-card{background:var(--paper);text-decoration:none;color:inherit;display:block;}
+  .campaign-card .art-tile{transition:transform .35s ease;}
+  .campaign-card:hover .art-tile{transform:scale(1.03);}
+  .campaign-card .card-meta{padding:12px 14px 16px;}
+  .campaign-card .card-meta .num{font-size:.75rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+  .campaign-card .card-meta h3{margin:4px 0 2px;font-family:var(--font-display);font-weight:700;font-size:1.05rem;}
+  .campaign-card .card-meta p{margin:0;font-size:.85rem;color:var(--ink-soft);}
+  @media(min-width:1024px){.campaign-card.large{grid-column:span 2;}}
+
+  /* ---------- Detail page ---------- */
+  .detail-head{padding:40px 24px 24px;max-width:var(--maxw);margin:0 auto;}
+  .back-link{display:inline-block;margin-bottom:20px;font-size:.9rem;color:var(--ink-soft);text-decoration:none;}
+  .back-link:hover{color:var(--ink);}
+  .detail-head .idx{font-size:.85rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+  .detail-head h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2.2rem,6vw,4rem);margin:6px 0 4px;letter-spacing:-0.01em;}
+  .detail-head .sector{font-size:1rem;color:var(--ink-soft);margin:0 0 20px;}
+  .detail-copy{display:grid;gap:16px;max-width:760px;}
+  .detail-copy p{margin:0;font-size:1rem;line-height:1.65;}
+  .visual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line);border:1px solid var(--line);max-width:var(--maxw);margin:32px auto 0;}
+  @media(min-width:768px){
+    .visual-grid{grid-template-columns:repeat(4,1fr);}
+    .visual-grid > *:first-child{grid-column:span 2;aspect-ratio:2/1;}
+  }
+  .visual-grid .art-tile{aspect-ratio:1/1;}
+
+  .rail-section{max-width:var(--maxw);margin:56px auto 0;padding:0 24px 56px;}
+  .rail-section h2{font-family:var(--font-display);font-weight:800;font-size:1.3rem;margin:0 0 16px;}
+  .rail{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;}
+  .rail-item{flex:0 0 160px;text-decoration:none;color:inherit;scroll-snap-align:start;}
+  .rail-item .art-tile{aspect-ratio:4/3;}
+  .rail-item p{margin:8px 0 0;font-size:.85rem;font-weight:600;}
+  .rail-item span{display:block;font-size:.75rem;color:var(--ink-soft);}
+
+  /* ---------- Profil ---------- */
+  .profile-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
+  @media(min-width:900px){.profile-wrap{grid-template-columns:320px 1fr;}}
+  .profile-portrait .art-tile{aspect-ratio:3/4;}
+  .profile-body h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,5vw,3rem);margin:0 0 4px;}
+  .profile-body .role{color:var(--ink-soft);margin:0 0 20px;font-size:1.05rem;}
+  .profile-body p.bio{max-width:640px;margin:0 0 32px;line-height:1.7;}
+  .profile-columns{display:grid;gap:32px;grid-template-columns:1fr;}
+  @media(min-width:640px){.profile-columns{grid-template-columns:1fr 1fr;}}
+  .profile-columns h3{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin:0 0 12px;}
+  .profile-columns ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+  .profile-columns li{border-bottom:1px solid var(--line);padding-bottom:10px;font-size:.95rem;}
+  .profile-columns li .year{color:var(--ink-soft);font-size:.85rem;display:block;margin-bottom:2px;}
+
+  /* ---------- Contact ---------- */
+  .contact-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
+  @media(min-width:900px){.contact-wrap{grid-template-columns:1.1fr .9fr;}}
+  .contact-wrap h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,5vw,3.2rem);margin:0 0 16px;}
+  .contact-wrap p.lead{max-width:520px;line-height:1.6;margin:0 0 28px;color:var(--ink-soft);}
+  .form-field{display:grid;gap:6px;margin-bottom:18px;}
+  .form-field label{font-size:.85rem;font-weight:600;}
+  .form-field input,.form-field textarea{font-family:var(--font-body);font-size:1rem;padding:10px 12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:0;}
+  .form-field textarea{min-height:120px;resize:vertical;}
+  .form-field input:focus,.form-field textarea:focus{outline:2px solid var(--cobalt);outline-offset:1px;border-color:var(--cobalt);}
+  .btn{font-family:var(--font-body);font-weight:600;font-size:.95rem;padding:12px 22px;background:var(--ink);color:var(--paper);border:none;cursor:pointer;}
+  .btn:hover{background:var(--cobalt);}
+  .form-note{font-size:.85rem;color:var(--ink-soft);margin-top:14px;min-height:1.2em;}
+  .contact-direct{border-left:1px solid var(--line);padding-left:32px;}
+  @media(max-width:899px){.contact-direct{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:24px;}}
+  .contact-direct h2{font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin:0 0 16px;}
+  .contact-direct dl{margin:0;}
+  .contact-direct dt{font-size:.8rem;color:var(--ink-soft);margin-top:16px;}
+  .contact-direct dt:first-child{margin-top:0;}
+  .contact-direct dd{margin:2px 0 0;font-size:1rem;}
+  .contact-direct a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
+  .contact-direct a:hover{border-color:var(--ink);}
+
+  /* ---------- Footer ---------- */
+  .site-footer{border-top:1px solid var(--line);padding:28px 24px;max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .site-footer p{margin:0;font-size:.85rem;color:var(--ink-soft);}
+  .site-footer a{color:var(--ink-soft);font-size:.85rem;text-decoration:none;}
+  .site-footer a:hover{color:var(--ink);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="#/" class="nav-logo">Christophe Florentin</a>
+      <div class="nav-links">
+        <a href="#/" data-route="home">Mes campagnes</a>
+        <a href="#/profil" data-route="profil">Mon profil</a>
+        <a href="#/contact" data-route="contact">Me contacter</a>
+      </div>
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    </nav>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="site-footer">
+    <p>Christophe Florentin — conception publicitaire &amp; direction créative.</p>
+    <a href="#/contact">Me contacter</a>
+  </footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var INK = "#15161b";
+  var YELLOW = "#f3cc00";
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- Données des campagnes (contenu de démonstration à remplacer) ----------
+  var CAMPAIGNS = [
+    { id:1, slug:"aurele", title:"Aurèle", sector:"Joaillerie",
+      contexte:`Aurèle relance sa ligne de bijoux fins avec une campagne d'affichage 4x3 déployée à Paris et Lyon à l'automne 2023.`,
+      approche:`Un système graphique construit autour de la lumière réfléchie, pensé pour capter l'œil en quelques secondes depuis la rue.`,
+      resultat:`La notoriété assistée de la marque progresse de 24 % sur la période de campagne.`,
+      palette:["#263aff","#f3cc00"] },
+    { id:2, slug:"nordr", title:"Nordr", sector:"Outdoor",
+      contexte:`Pour le lancement de sa veste Nordr Pro, la marque nous confie un film de 30 secondes tourné dans les fjords norvégiens.`,
+      approche:`Le montage suit un seul mouvement continu, du sommet jusqu'au fjord, pour restituer la promesse d'une protection sans coupure.`,
+      resultat:`Le film dépasse deux millions de vues organiques dans les six semaines suivant sa diffusion.`,
+      palette:["#0e7c4a","#eaf2e4"] },
+    { id:3, slug:"cavallo", title:"Cavallo", sector:"Automobile",
+      contexte:`Cavallo souhaite repositionner son modèle citadin auprès d'un public plus jeune à travers une campagne 360°.`,
+      approche:`La voiture disparaît des visuels au profit des trajets qu'elle rend possibles, racontés à hauteur de passager.`,
+      resultat:`Les essais en concession augmentent de 18 % sur le trimestre du lancement.`,
+      palette:["#e8492b","#14151a"] },
+    { id:4, slug:"belline", title:"Belline", sector:"Beauté",
+      contexte:`La marque de cosmétiques Belline lance une gamme de soins solides et nous confie son identité de marque complète.`,
+      approche:`Un système typographique arrondi et une palette poudrée accompagnent chaque produit, du packaging au site.`,
+      resultat:`Le taux de reconnaissance de la nouvelle identité atteint 61 % six mois après le lancement.`,
+      palette:["#b23a6d","#f6e9ef"] },
+    { id:5, slug:"fjord-sel", title:"Fjord &amp; Sel", sector:"Agroalimentaire",
+      contexte:`Fjord &amp; Sel, conserverie artisanale, nous confie sa première campagne de packaging pour sa gamme de poissons fumés.`,
+      approche:`Chaque boîte raconte le lieu de pêche à travers une illustration gravée, dans un esprit d'atlas maritime.`,
+      resultat:`Les ventes en épicerie fine progressent de 31 % l'année du lancement.`,
+      palette:["#0a9396","#fdebd3"] },
+    { id:6, slug:"kairos", title:"Kaïros", sector:"Culture",
+      contexte:`Le musée Kaïros nous confie la campagne d'affichage de son exposition consacrée au temps et à la mémoire.`,
+      approche:`La typographie se déforme et se répare d'une affiche à l'autre, comme une pellicule qui rejoue le temps de l'exposition.`,
+      resultat:`La fréquentation de l'exposition dépasse de 40 % les objectifs fixés par le musée.`,
+      palette:["#7a3ff2","#ede7fb"] },
+    { id:7, slug:"mercato", title:"Mercato", sector:"Finance",
+      contexte:`La néobanque Mercato nous demande une campagne digitale pour accompagner le lancement de son compte professionnel.`,
+      approche:`Le ton se veut direct et sans jargon, porté par des formats courts pensés pour les réseaux professionnels.`,
+      resultat:`Les ouvertures de compte progressent de 45 % le mois suivant le lancement.`,
+      palette:["#c08a2e","#17161b"] },
+    { id:8, slug:"voltec", title:"Voltec", sector:"Énergie",
+      contexte:`Voltec, fournisseur d'électricité verte, nous confie sa campagne d'affichage pour accompagner son changement de nom.`,
+      approche:`Une signalétique inspirée des schémas électriques traduit la promesse d'un réseau plus lisible et plus sobre.`,
+      resultat:`La marque atteint 52 % de notoriété spontanée un an après le lancement.`,
+      palette:["#1f6feb","#ffffff"] },
+    { id:9, slug:"piste-noire", title:"Piste Noire", sector:"Sport",
+      contexte:`La marque de matériel de ski Piste Noire nous confie sa campagne de rentrée pour la saison hivernale.`,
+      approche:`Des visuels tournés à l'aube, avant l'ouverture des pistes, pour capter un silence rare associé à la marque.`,
+      resultat:`Les précommandes dépassent de 22 % celles de la saison précédente.`,
+      palette:["#d6284a","#ffe8d6"] },
+    { id:10, slug:"rive", title:"Rive", sector:"Voyage",
+      contexte:`L'agence de voyage Rive nous confie sa campagne d'affichage pour promouvoir ses itinéraires hors-saison.`,
+      approche:`Chaque affiche associe une carte dessinée à la main et un fragment de récit de voyageur.`,
+      resultat:`Les réservations hors-saison progressent de 28 % par rapport à l'année précédente.`,
+      palette:["#2b2e4a","#e4b363"] },
+    { id:11, slug:"andaine", title:"Andaine", sector:"Immobilier",
+      contexte:`Le promoteur Andaine nous confie l'identité de marque de son nouveau programme résidentiel en périphérie de Lyon.`,
+      approche:`Un système modulaire, inspiré du plan des bâtiments, structure l'ensemble des supports de commercialisation.`,
+      resultat:`80 % des lots sont réservés avant la fin du chantier.`,
+      palette:["#3e8e7e","#f1efe8"] },
+    { id:12, slug:"solace", title:"Solace", sector:"Mode",
+      contexte:`La marque de prêt-à-porter Solace nous confie sa campagne digitale pour le lancement de sa collection printemps.`,
+      approche:`Une série de portraits sans retouche, diffusée en priorité sur les formats verticaux.`,
+      resultat:`L'engagement sur les publications de la campagne double par rapport à la moyenne du compte.`,
+      palette:["#e0218a","#14151a"] },
+    { id:13, slug:"trame", title:"Trame", sector:"Mobilier",
+      contexte:`L'éditeur de mobilier Trame nous confie sa campagne de lancement pour une collection de pièces modulables.`,
+      approche:`Les objets sont photographiés en cours de montage, pièce par pièce, pour révéler leur logique de construction.`,
+      resultat:`La collection s'écoule en showroom en moins de trois mois.`,
+      palette:["#f4a300","#1b1b1f"] },
+    { id:14, slug:"ondee", title:"Ondée", sector:"Boisson",
+      contexte:`La marque de limonades artisanales Ondée nous confie sa campagne d'affichage pour son lancement en grande distribution.`,
+      approche:`Une gamme de couleurs vives, une par parfum, construit un système d'affichage reconnaissable de loin en rayon.`,
+      resultat:`La marque décroche un référencement dans 600 points de vente supplémentaires.`,
+      palette:["#4c6ef5","#ffe45e"] },
+    { id:15, slug:"selene", title:"Selene", sector:"Éducation",
+      contexte:`La plateforme d'apprentissage en ligne Selene nous confie sa campagne digitale pour la rentrée universitaire.`,
+      approche:`Des formats courts et pédagogiques, pensés pour être compris sans le son sur les réseaux sociaux.`,
+      resultat:`Les inscriptions progressent de 37 % par rapport à la rentrée précédente.`,
+      palette:["#2e9e52","#efefea"] },
+    { id:16, slug:"lumen", title:"Lumen", sector:"Associatif",
+      contexte:`L'association Lumen nous confie sa campagne de sensibilisation annuelle sur l'accès à l'électricité dans les zones rurales.`,
+      approche:`Une série d'affiches construite à partir de témoignages recueillis sur le terrain, sans mise en scène.`,
+      resultat:`Les dons collectés pendant la campagne augmentent de 33 % par rapport à l'année précédente.`,
+      palette:["#9a031e","#f1d6c2"] }
+  ];
+
+  var TEMPLATES = ["split","circle","quad","stripe","frame","type","grid","arc"];
+
+  function templateFor(campaign, i){
+    var offset = (campaign.id * 3) % TEMPLATES.length;
+    return TEMPLATES[(i + offset) % TEMPLATES.length];
+  }
+
+  function plainTitle(t){ return t.replace(/&amp;/g,"&"); }
+
+  function artTile(campaign, i, ratio){
+    var tpl = templateFor(campaign, i);
+    var swap = i % 2 === 1;
+    var c1 = swap ? campaign.palette[1] : campaign.palette[0];
+    var c2 = swap ? campaign.palette[0] : campaign.palette[1];
+    var style = "--c1:" + c1 + ";--c2:" + c2 + ";" + (ratio ? "aspect-ratio:" + ratio + ";" : "");
+    var letter = tpl === "type" ? '<span class="art-letter">' + plainTitle(campaign.title).charAt(0) + '</span>' : '';
+    return '<div class="art-tile tpl-' + tpl + '" style="' + style + '">' + letter + '</div>';
+  }
+
+  var app = document.getElementById("app");
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+
+  function setActiveNav(route){
+    navLinks.forEach(function(a){ a.classList.toggle("active", a.dataset.route === route); });
+  }
+
+  // ---------- Accueil ----------
+  function renderHome(){
+    var featured = CAMPAIGNS.slice(0, 6);
+
+    var slides = featured.map(function(c, i){
+      return '<div class="hero-slide' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '">' +
+        artTile(c, 0, "21/9") +
+        '<div class="hero-caption"><p>' + c.sector + '</p><h2>' + c.title + '</h2></div>' +
+      '</div>';
+    }).join("");
+
+    var dots = featured.map(function(c, i){
+      return '<button class="' + (i === 0 ? 'active' : '') + '" data-dot="' + i + '" aria-label="Voir ' + plainTitle(c.title) + '"></button>';
+    }).join("");
+
+    var largeSet = [0, 7, 10];
+    var cards = CAMPAIGNS.map(function(c, i){
+      var large = largeSet.indexOf(i) !== -1 ? " large" : "";
+      var num = String(i + 1).padStart(2, "0");
+      return '<a class="campaign-card' + large + '" href="#/campagne/' + c.slug + '">' +
+        artTile(c, 0) +
+        '<div class="card-meta"><span class="num">' + num + ' / 16</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
+      '</a>';
+    }).join("");
+
+    app.innerHTML =
+      '<section class="hero" aria-roledescription="carrousel" aria-label="Campagnes à la une">' +
+        slides +
+        '<div class="hero-dots">' + dots + '</div>' +
+      '</section>' +
+      '<section class="section">' +
+        '<div class="section-head">' +
+          '<h1>Mes campagnes</h1>' +
+          '<p>16 projets menés ces dernières années, de l\u2019affiche au film publicitaire.</p>' +
+        '</div>' +
+        '<div class="campaign-grid">' + cards + '</div>' +
+      '</section>';
+
+    initHero(featured.length);
+  }
+
+  function initHero(count){
+    var idx = 0, timer = null;
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
+    var dots = Array.prototype.slice.call(document.querySelectorAll(".hero-dots button"));
+    var heroEl = document.querySelector(".hero");
+    if(!heroEl) return;
+
+    function show(n){
+      idx = (n + count) % count;
+      slides.forEach(function(s, i){ s.classList.toggle("active", i === idx); });
+      dots.forEach(function(d, i){ d.classList.toggle("active", i === idx); });
+    }
+    dots.forEach(function(d){
+      d.addEventListener("click", function(){ show(parseInt(d.dataset.dot, 10)); restart(); });
+    });
+    function tick(){ show(idx + 1); }
+    function start(){ if(reducedMotion || count < 2) return; timer = setInterval(tick, 5000); }
+    function stop(){ if(timer) clearInterval(timer); }
+    function restart(){ stop(); start(); }
+    heroEl.addEventListener("mouseenter", stop);
+    heroEl.addEventListener("mouseleave", start);
+    heroEl.addEventListener("focusin", stop);
+    heroEl.addEventListener("focusout", start);
+    start();
+  }
+
+  // ---------- Détail d'une campagne ----------
+  function renderCampaign(slug){
+    var idx = CAMPAIGNS.findIndex(function(c){ return c.slug === slug; });
+    if(idx === -1){
+      app.innerHTML = '<section class="section"><p>Campagne introuvable. <a href="#/">Retour à l\u2019accueil</a>.</p></section>';
+      return;
+    }
+    var c = CAMPAIGNS[idx];
+    var visualsHtml = "";
+    for(var i = 0; i < 8; i++){ visualsHtml += artTile(c, i); }
+
+    var others = CAMPAIGNS.filter(function(x){ return x.slug !== c.slug; });
+    var railHtml = others.map(function(o){
+      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + artTile(o, 0) +
+        '<p>' + o.title + '</p><span>' + o.sector + '</span></a>';
+    }).join("");
+
+    app.innerHTML =
+      '<div class="detail-head">' +
+        '<a class="back-link" href="#/">‹ Toutes les campagnes</a>' +
+        '<div class="idx">' + String(idx + 1).padStart(2, "0") + ' / 16</div>' +
+        '<h1>' + c.title + '</h1>' +
+        '<p class="sector">' + c.sector + '</p>' +
+        '<div class="detail-copy">' +
+          '<p>' + c.contexte + '</p>' +
+          '<p>' + c.approche + '</p>' +
+          '<p>' + c.resultat + '</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="visual-grid">' + visualsHtml + '</div>' +
+      '<div class="rail-section">' +
+        '<h2>Les autres campagnes du portfolio</h2>' +
+        '<div class="rail">' + railHtml + '</div>' +
+      '</div>';
+  }
+
+  // ---------- Profil ----------
+  function renderProfil(){
+    app.innerHTML =
+      '<div class="profile-wrap">' +
+        '<div class="profile-portrait">' +
+          '<div class="art-tile tpl-type" style="--c1:' + INK + ';--c2:' + YELLOW + ';aspect-ratio:3/4;">' +
+            '<span class="art-letter">CF</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="profile-body">' +
+          '<h1>Christophe Florentin</h1>' +
+          '<p class="role">Concepteur-créatif publicitaire</p>' +
+          '<p class="bio">Je conçois des campagnes qui partent du produit, pas du brief. Depuis une dizaine d\u2019années, j\u2019accompagne des marques de toutes tailles sur l\u2019affichage, le film, le digital et l\u2019identité de marque, en agence comme en indépendant.</p>' +
+          '<div class="profile-columns">' +
+            '<div><h3>Expertises</h3><ul>' +
+              '<li>Direction créative</li>' +
+              '<li>Conception-rédaction</li>' +
+              '<li>Identité de marque</li>' +
+              '<li>Campagnes 360°</li>' +
+            '</ul></div>' +
+            '<div><h3>Parcours</h3><ul>' +
+              '<li><span class="year">2024 — aujourd\u2019hui</span>Créatif indépendant</li>' +
+              '<li><span class="year">2019 — 2024</span>Directeur créatif, agence Belle Ouvrage</li>' +
+              '<li><span class="year">2015 — 2019</span>Concepteur-rédacteur, agence Nord-Sud</li>' +
+            '</ul></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  // ---------- Contact ----------
+  function renderContact(){
+    app.innerHTML =
+      '<div class="contact-wrap">' +
+        '<div>' +
+          '<h1>Me contacter</h1>' +
+          '<p class="lead">Un projet de campagne, une identité à construire, une simple question : écrivez-moi, je réponds sous 48h.</p>' +
+          '<form id="contact-form" novalidate>' +
+            '<div class="form-field"><label for="cf-name">Nom</label><input id="cf-name" name="name" type="text" required></div>' +
+            '<div class="form-field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" required></div>' +
+            '<div class="form-field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" required></textarea></div>' +
+            '<button type="submit" class="btn">Envoyer le message</button>' +
+            '<p class="form-note" id="cf-note"></p>' +
+          '</form>' +
+        '</div>' +
+        '<div class="contact-direct">' +
+          '<h2>Coordonnées</h2>' +
+          '<dl>' +
+            '<dt>Email</dt><dd><a href="mailto:bonjour@christophe-florentin.fr">bonjour@christophe-florentin.fr</a></dd>' +
+            '<dt>Téléphone</dt><dd><a href="tel:+33600000000">06 00 00 00 00</a></dd>' +
+            '<dt>LinkedIn</dt><dd><a href="#">linkedin.com/in/christophe-florentin</a></dd>' +
+            '<dt>Instagram</dt><dd><a href="#">@christophe.florentin</a></dd>' +
+          '</dl>' +
+        '</div>' +
+      '</div>';
+
+    var form = document.getElementById("contact-form");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var message = form.message.value.trim();
+      var note = document.getElementById("cf-note");
+      if(!name || !email || !message){
+        note.textContent = "Merci de compléter les trois champs avant l\u2019envoi.";
+        return;
+      }
+      var subject = encodeURIComponent("Contact portfolio — " + name);
+      var body = encodeURIComponent(message + "\n\n— " + name + " (" + email + ")");
+      window.location.href = "mailto:bonjour@christophe-florentin.fr?subject=" + subject + "&body=" + body;
+      note.textContent = "Votre messagerie va s\u2019ouvrir pour finaliser l\u2019envoi.";
+    });
+  }
+
+  // ---------- Routeur ----------
+  function route(){
+    var hash = window.location.hash || "#/";
+    var parts = hash.replace(/^#\//, "").split("/").filter(Boolean);
+
+    if(parts[0] === "campagne" && parts[1]){
+      renderCampaign(parts[1]);
+      setActiveNav("home");
+    } else if(parts[0] === "profil"){
+      renderProfil();
+      setActiveNav("profil");
+    } else if(parts[0] === "contact"){
+      renderContact();
+      setActiveNav("contact");
+    } else {
+      renderHome();
+      setActiveNav("home");
+    }
+    window.scrollTo(0, 0);
+    var links = document.querySelector(".nav-links");
+    if(links) links.classList.remove("open");
+  }
+
+  var toggle = document.querySelector(".nav-toggle");
+  if(toggle){
+    toggle.addEventListener("click", function(){
+      var links = document.querySelector(".nav-links");
+      var open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open);
+    });
+  }
+
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>
