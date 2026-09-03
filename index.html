@@ -468,7 +468,6 @@
     var slides = featured.map(function(c, i){
       return '<div class="hero-slide' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '">' +
         slideShowImageTile(i + 1) +
-        '<div class="hero-caption"><p>' + c.sector + '</p><h2>' + c.title + '</h2></div>' +
       '</div>';
     }).join("");
 
