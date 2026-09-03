@@ -109,23 +109,49 @@
   .detail-copy{display:grid;gap:16px;max-width:760px;}
   .detail-copy p{margin:0;font-size:1rem;line-height:1.65;}
 
-  /* ---------- Visual Grid Adaptable ---------- */
-  .visual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line);border:1px solid var(--line);max-width:var(--maxw);margin:32px auto 0;auto-flow:dense;grid-auto-flow:dense;}
+  /* ---------- Visual Grid Adaptable (NOUVEAU) ---------- */
+  .visual-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+    max-width:var(--maxw);
+    margin:32px auto 0;
+    grid-auto-flow:dense;
+  }
   
   @media(min-width:768px){
     .visual-grid{grid-template-columns:repeat(4,1fr);}
     .visual-grid > *:first-child{grid-column:span 2;grid-row:span 2;}
   }
 
-  /* Gestion des aspect-ratios flexibles */
-  .visual-item{position:relative;overflow:hidden;background:var(--paper-deep);width:100%;}
-  .visual-item.portrait{aspect-ratio:3/4;}
-  .visual-item.paysage{aspect-ratio:4/3;}
-  .visual-item.carre{aspect-ratio:1/1;}
-  .visual-item.vedette{aspect-ratio:2/1;}
-  .visual-item.vedette-full{aspect-ratio:auto;}
+  /* Gestion flexible des visuels */
+  .visual-item{
+    position:relative;
+    overflow:hidden;
+    background:var(--paper-deep);
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  /* Aspect-ratio adaptables */
+  .visual-item.portrait{aspect-ratio:3/4;min-height:300px;}
+  .visual-item.paysage{aspect-ratio:4/3;min-height:240px;}
+  .visual-item.carre{aspect-ratio:1/1;min-height:280px;}
+  .visual-item.vedette{aspect-ratio:2/1;min-height:300px;}
 
-  .visual-item img{width:100%;height:100%;object-fit:cover;display:block;}
+  /* Images NON-TRONQUÉES */
+  .visual-item img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    display:block;
+    background:var(--paper-deep);
+  }
 
   .rail-section{max-width:var(--maxw);margin:56px auto 0;padding:0 24px 56px;}
   .rail-section h2{font-family:var(--font-display);font-weight:800;font-size:1.3rem;margin:0 0 16px;}
@@ -220,10 +246,10 @@
       palette:["#263aff","#f3cc00"],
       visuels:[
         {num:1,ratio:"vedette"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"paysage"},
-        {num:4,ratio:"carre"},
-        {num:5,ratio:"portrait"},
+        {num:2,ratio:"paysage"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"paysage"},
+        {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
       ]},
     { id:2, slug:"nordr", title:"Nordr", sector:"Outdoor",
@@ -511,7 +537,7 @@
     var campNum = idx + 1;
     var visualsHtml = "";
     
-    // Rendu visuels avec leurs ratios respectifs
+    // Rendu visuels avec leurs ratios respectifs (ADAPTÉ - NON-TRONQUÉ)
     c.visuels.forEach(function(v){
       visualsHtml += campaignImageTile(campNum, v.num, v.ratio);
     });
