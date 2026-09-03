@@ -127,6 +127,7 @@
     position:relative;
     overflow:hidden;
     width:100%;
+    display:block;
     opacity:0;
     transform:translateY(24px);
     transition:opacity .6s ease, transform .6s ease;
@@ -139,10 +140,10 @@
   }
   
   /* Aspect-ratio adaptables — remplissage complet */
-  .visual-item.portrait{aspect-ratio:3/4;}
-  .visual-item.paysage{aspect-ratio:4/3;}
-  .visual-item.carre{aspect-ratio:1/1;}
-  .visual-item.vedette{aspect-ratio:2/1;}
+  .visual-item.portrait{aspect-ratio:3/4;min-height:360px;}
+  .visual-item.paysage{aspect-ratio:4/3;min-height:300px;}
+  .visual-item.carre{aspect-ratio:1/1;min-height:340px;}
+  .visual-item.vedette{aspect-ratio:2/1;min-height:380px;}
 
   /* Images qui remplissent complètement la cellule */
   .visual-item img{
