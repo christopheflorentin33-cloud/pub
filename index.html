@@ -114,12 +114,23 @@
     display:grid;
     grid-template-columns:1fr;
     gap:0;
-    max-width:var(--maxw);
+    width:100%;
+    max-width:none;
+    padding:0 20px;
     margin:32px auto 0;
   }
   
   @media(min-width:768px){
-    .visual-grid{grid-template-columns:1fr;}
+    .visual-grid{
+      grid-template-columns:1fr;
+      padding:0 40px;
+    }
+  }
+  
+  @media(min-width:1200px){
+    .visual-grid{
+      padding:0 60px;
+    }
   }
 
   /* Visuels qui remplissent 100% */
@@ -128,11 +139,23 @@
     overflow:hidden;
     width:100%;
     display:block;
-    padding:100px;
+    padding:40px;
     background:var(--paper);
     opacity:0;
     transform:translateY(24px);
     transition:opacity .6s ease, transform .6s ease;
+  }
+  
+  @media(min-width:768px){
+    .visual-item{
+      padding:80px;
+    }
+  }
+  
+  @media(min-width:1200px){
+    .visual-item{
+      padding:100px;
+    }
   }
   
   /* Animation au scroll (ajoutée par JS) */
