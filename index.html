@@ -348,7 +348,7 @@
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // ---------- Données des campagnes avec ratios visuels ----------
   var CAMPAIGNS = [
-    { id:1, slug:"aurele", title:"Aurèle", sector:"Joaillerie",
+    { id:1, slug:"aurele", title:"Sécurité Routière", sector:"Chaque inconscience laisse des traces. Restons vivants.",
       contexte:`Aurèle relance sa ligne de bijoux fins avec une campagne d'affichage 4x3 déployée à Paris et Lyon à l'automne 2023.`,
       approche:`Un système graphique construit autour de la lumière réfléchie, pensé pour capter l'œil en quelques secondes depuis la rue.`,
       resultat:`La notoriété assistée de la marque progresse de 24 % sur la période de campagne.`,
@@ -361,7 +361,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:2, slug:"nordr", title:"Nordr", sector:"Outdoor",
+    { id:2, slug:"nordr", title:"Aquarelle", sector:"C'est tout un art d'aimer.",
       contexte:`Pour le lancement de sa veste Nordr Pro, la marque nous confie un film de 30 secondes tourné dans les fjords norvégiens.`,
       approche:`Le montage suit un seul mouvement continu, du sommet jusqu'au fjord, pour restituer la promesse d'une protection sans coupure.`,
       resultat:`Le film dépasse deux millions de vues organiques dans les six semaines suivant sa diffusion.`,
@@ -374,7 +374,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:3, slug:"cavallo", title:"Cavallo", sector:"Automobile",
+    { id:3, slug:"cavallo", title:"Pommery", sector:"L'art discret de sublimer chaque moment d'exception.",
       contexte:`Cavallo souhaite repositionner son modèle citadin auprès d'un public plus jeune à travers une campagne 360°.`,
       approche:`La voiture disparaît des visuels au profit des trajets qu'elle rend possibles, racontés à hauteur de passager.`,
       resultat:`Les essais en concession augmentent de 18 % sur le trimestre du lancement.`,
@@ -387,7 +387,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:4, slug:"belline", title:"Belline", sector:"Beauté",
+    { id:4, slug:"belline", title:"LU", sector:"Le biscuit indispensable de la récré !",
       contexte:`La marque de cosmétiques Belline lance une gamme de soins solides et nous confie son identité de marque complète.`,
       approche:`Un système typographique arrondi et une palette poudrée accompagnent chaque produit, du packaging au site.`,
       resultat:`Le taux de reconnaissance de la nouvelle identité atteint 61 % six mois après le lancement.`,
@@ -400,7 +400,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:5, slug:"fjord-sel", title:"Fjord &amp; Sel", sector:"Agroalimentaire",
+    { id:5, slug:"fjord-sel", title:"Gironde Tourisme", sector:"Ici, chaque retour a du sens.",
       contexte:`Fjord &amp; Sel, conserverie artisanale, nous confie sa première campagne de packaging pour sa gamme de poissons fumés.`,
       approche:`Chaque boîte raconte le lieu de pêche à travers une illustration gravée, dans un esprit d'atlas maritime.`,
       resultat:`Les ventes en épicerie fine progressent de 31 % l'année du lancement.`,
@@ -413,7 +413,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:6, slug:"kairos", title:"Kaïros", sector:"Culture",
+    { id:6, slug:"kairos", title:"Vans", sector:"Le reflet de votre personnalité.",
       contexte:`Le musée Kaïros nous confie la campagne d'affichage de son exposition consacrée au temps et à la mémoire.`,
       approche:`La typographie se déforme et se répare d'une affiche à l'autre, comme une pellicule qui rejoue le temps de l'exposition.`,
       resultat:`La fréquentation de l'exposition dépasse de 40 % les objectifs fixés par le musée.`,
@@ -426,7 +426,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:7, slug:"mercato", title:"Mercato", sector:"Finance",
+    { id:7, slug:"mercato", title:"Club Med", sector:"Des vacances sur mesure.",
       contexte:`La néobanque Mercato nous demande une campagne digitale pour accompagner le lancement de son compte professionnel.`,
       approche:`Le ton se veut direct et sans jargon, porté par des formats courts pensés pour les réseaux professionnels.`,
       resultat:`Les ouvertures de compte progressent de 45 % le mois suivant le lancement.`,
@@ -439,7 +439,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:8, slug:"voltec", title:"Voltec", sector:"Énergie",
+    { id:8, slug:"voltec", title:"Champion", sector:"Intemporel. It takes a little more to make a Champion.",
       contexte:`Voltec, fournisseur d'électricité verte, nous confie sa campagne d'affichage pour accompagner son changement de nom.`,
       approche:`Une signalétique inspirée des schémas électriques traduit la promesse d'un réseau plus lisible et plus sobre.`,
       resultat:`La marque atteint 52 % de notoriété spontanée un an après le lancement.`,
@@ -452,7 +452,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:9, slug:"piste-noire", title:"Piste Noire", sector:"Sport",
+    { id:9, slug:"piste-noire", title:"Trenitalia", sector:"Ici commence l'Italie, andiamo.",
       contexte:`La marque de matériel de ski Piste Noire nous confie sa campagne de rentrée pour la saison hivernale.`,
       approche:`Des visuels tournés à l'aube, avant l'ouverture des pistes, pour capter un silence rare associé à la marque.`,
       resultat:`Les précommandes dépassent de 22 % celles de la saison précédente.`,
@@ -465,7 +465,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:10, slug:"rive", title:"Rive", sector:"Voyage",
+    { id:10, slug:"rive", title:"Sony Xperia", sector:"De vraies photos, sans artifices.",
       contexte:`L'agence de voyage Rive nous confie sa campagne d'affichage pour promouvoir ses itinéraires hors-saison.`,
       approche:`Chaque affiche associe une carte dessinée à la main et un fragment de récit de voyageur.`,
       resultat:`Les réservations hors-saison progressent de 28 % par rapport à l'année précédente.`,
@@ -478,7 +478,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:11, slug:"andaine", title:"Andaine", sector:"Immobilier",
+    { id:11, slug:"andaine", title:"Roland-Garros", sector:"Ici, chaque match écrit l'histoire.",
       contexte:`Le promoteur Andaine nous confie l'identité de marque de son nouveau programme résidentiel en périphérie de Lyon.`,
       approche:`Un système modulaire, inspiré du plan des bâtiments, structure l'ensemble des supports de commercialisation.`,
       resultat:`80 % des lots sont réservés avant la fin du chantier.`,
@@ -491,7 +491,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:12, slug:"solace", title:"Solace", sector:"Mode",
+    { id:12, slug:"solace", title:"SDIS Aisne", sector:"Ils s'engagent pour protéger, protégeons leur engagement.",
       contexte:`La marque de prêt-à-porter Solace nous confie sa campagne digitale pour le lancement de sa collection printemps.`,
       approche:`Une série de portraits sans retouche, diffusée en priorité sur les formats verticaux.`,
       resultat:`L'engagement sur les publications de la campagne double par rapport à la moyenne du compte.`,
@@ -504,7 +504,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:13, slug:"trame", title:"Trame", sector:"Mobilier",
+    { id:13, slug:"trame", title:"DJI Osmo", sector:"Votre smartphone mérite le meilleur stabilisateur.",
       contexte:`L'éditeur de mobilier Trame nous confie sa campagne de lancement pour une collection de pièces modulables.`,
       approche:`Les objets sont photographiés en cours de montage, pièce par pièce, pour révéler leur logique de construction.`,
       resultat:`La collection s'écoule en showroom en moins de trois mois.`,
@@ -517,7 +517,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:14, slug:"ondee", title:"Ondée", sector:"Boisson",
+    { id:14, slug:"ondee", title:"Volkswagen", sector:"La plus belle caravane du Tour.",
       contexte:`La marque de limonades artisanales Ondée nous confie sa campagne d'affichage pour son lancement en grande distribution.`,
       approche:`Une gamme de couleurs vives, une par parfum, construit un système d'affichage reconnaissable de loin en rayon.`,
       resultat:`La marque décroche un référencement dans 600 points de vente supplémentaires.`,
@@ -530,7 +530,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:15, slug:"selene", title:"Selene", sector:"Éducation",
+    { id:15, slug:"selene", title:"Unicef", sector:"Chaque action compte. Chaque enfant compte.",
       contexte:`La plateforme d'apprentissage en ligne Selene nous confie sa campagne digitale pour la rentrée universitaire.`,
       approche:`Des formats courts et pédagogiques, pensés pour être compris sans le son sur les réseaux sociaux.`,
       resultat:`Les inscriptions progressent de 37 % par rapport à la rentrée précédente.`,
@@ -544,7 +544,7 @@
         {num:6,ratio:"portrait"}
       ]}
   ];
-  function plainTitle(t){ return t.replace(/&amp;/g,"&"); }
+  function plainTitle(t){ return t.replace(/&amp;/g,"&").replace(/&times;/g,"×"); }
   // Rendu des images campagnes avec ratio adapté
   function campaignImageTile(campaignNum, visualNum, ratio){
     var imagePath = "images/campagne_" + campaignNum + "/campagne_" + campaignNum + "_visuel_" + visualNum + ".jpg";
