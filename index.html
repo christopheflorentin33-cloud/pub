@@ -306,8 +306,24 @@
   .contact-direct dd{margin:2px 0 0;font-size:1rem;}
   .contact-direct a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
   .contact-direct a:hover{border-color:var(--ink);}
-  /* ---------- Contact — fond coloré ---------- */
-  .contact-page{background:var(--cobalt);}
+  /* ---------- Contact — fond visuel avec transparence (verre dépoli) ---------- */
+  .contact-page{
+    background-color:var(--cobalt);
+    background-image:linear-gradient(rgba(21,22,27,.15),rgba(21,22,27,.15)), url('images/contact_fond.jpg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+  }
+  .contact-page .contact-wrap{padding-top:64px;padding-bottom:80px;}
+  .contact-page .contact-panel,
+  .contact-page .contact-direct{
+    background:rgba(21,22,27,.4);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:20px;
+    padding:36px;
+  }
   .contact-page .contact-wrap h1,
   .contact-page .contact-wrap p.lead,
   .contact-page .form-field label,
@@ -315,9 +331,12 @@
   .contact-page .contact-direct h2,
   .contact-page .contact-direct dd{color:#fff;}
   .contact-page .contact-direct dt{color:rgba(255,255,255,.65);}
-  .contact-page .contact-direct{border-color:rgba(255,255,255,.25);}
   .contact-page .contact-direct a{color:#fff;border-bottom-color:rgba(255,255,255,.4);}
   .contact-page .contact-direct a:hover{border-color:#fff;}
+  .contact-page .form-field input,
+  .contact-page .form-field textarea{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff;}
+  .contact-page .form-field input::placeholder,
+  .contact-page .form-field textarea::placeholder{color:rgba(255,255,255,.5);}
   .contact-page .btn{background:#fff;color:var(--cobalt);}
   .contact-page .btn:hover{background:var(--yellow);color:var(--ink);}
   /* ---------- Footer ---------- */
@@ -794,7 +813,7 @@
     app.innerHTML =
       '<div class="contact-page">' +
       '<div class="contact-wrap">' +
-        '<div>' +
+        '<div class="contact-panel">' +
           '<h1>Me contacter</h1>' +
           '<p class="lead">Un projet de campagne, une identité à construire, une simple question : écrivez-moi, je réponds sous 48h.</p>' +
           '<form id="contact-form" novalidate>' +
