@@ -32,6 +32,7 @@
   button{font:inherit;}
   img,svg{display:block;max-width:100%;}
   *:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px;}
+
   /* ---------- Header / Nav ---------- */
   .site-header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);}
   .nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;position:relative;}
@@ -45,6 +46,7 @@
     .nav-links.open{display:flex;}
     .nav-toggle{display:block;}
   }
+
   /* ---------- Generative art tiles (fallback) ---------- */
   .art-tile{position:relative;overflow:hidden;width:100%;background:var(--paper-deep);}
   .art-tile img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -63,6 +65,7 @@
   .tpl-arc{background:var(--c2);}
   .tpl-arc::before{content:"";position:absolute;width:90%;aspect-ratio:1;border-radius:50%;background:var(--c1);bottom:-45%;left:-20%;}
   .tpl-arc::after{content:"";position:absolute;width:60%;aspect-ratio:1;border-radius:50%;background:var(--c2);border:6px solid var(--c1);top:10%;right:-10%;}
+
   /* ---------- Hero slideshow ---------- */
   .hero{position:relative;width:100%;aspect-ratio:21/9;min-height:320px;overflow:hidden;background:var(--ink);}
   @media(max-width:720px){.hero{aspect-ratio:4/5;}}
@@ -76,16 +79,17 @@
   .hero-dots{position:absolute;right:24px;bottom:24px;display:flex;gap:8px;z-index:2;}
   .hero-dots button{width:9px;height:9px;border-radius:50%;border:1.5px solid #fff;background:transparent;padding:0;cursor:pointer;}
   .hero-dots button.active{background:#fff;}
+
   /* ---------- Sections ---------- */
   .section{max-width:var(--maxw);margin:0 auto;padding:56px 24px;}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap;}
   .section-head h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0;}
   .section-head p{margin:0;color:var(--ink-soft);font-size:.95rem;}
+
   /* ---------- Campaign grid ---------- */
   .campaign-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
   @media(min-width:640px){.campaign-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(min-width:900px){.campaign-grid{grid-template-columns:repeat(3,1fr);}}
-  @media(min-width:1200px){.campaign-grid{grid-template-columns:repeat(5,1fr);}}
+  @media(min-width:1024px){.campaign-grid{grid-template-columns:repeat(4,1fr);}}
   .campaign-card{background:var(--paper);text-decoration:none;color:inherit;display:block;}
   .campaign-card .art-tile{transition:transform .35s ease;aspect-ratio:4/3;}
   .campaign-card:hover .art-tile{transform:scale(1.03);}
@@ -93,6 +97,8 @@
   .campaign-card .card-meta .num{font-size:.75rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
   .campaign-card .card-meta h3{margin:4px 0 2px;font-family:var(--font-display);font-weight:700;font-size:1.05rem;}
   .campaign-card .card-meta p{margin:0;font-size:.85rem;color:var(--ink-soft);}
+  @media(min-width:1024px){.campaign-card.large{grid-column:span 2;}}
+
   /* ---------- Detail page ---------- */
   .detail-head{padding:40px 24px 24px;max-width:var(--maxw);margin:0 auto;}
   .back-link{display:inline-block;margin-bottom:20px;font-size:.9rem;color:var(--ink-soft);text-decoration:none;}
@@ -102,6 +108,7 @@
   .detail-head .sector{font-size:1rem;color:var(--ink-soft);margin:0 0 20px;}
   .detail-copy{display:grid;gap:16px;max-width:760px;}
   .detail-copy p{margin:0;font-size:1rem;line-height:1.65;}
+
   /* ---------- Visual Grid — Grille harmonieuse 2-3 colonnes ---------- */
   .visual-grid{
     display:grid;
@@ -113,7 +120,7 @@
     justify-items:center;
     align-items:center;
   }
-
+  
   @media(min-width:768px){
     .visual-grid{
       grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
@@ -121,7 +128,7 @@
       padding:0 32px;
     }
   }
-
+  
   @media(min-width:1200px){
     .visual-grid{
       grid-template-columns:repeat(3, 1fr);
@@ -129,6 +136,7 @@
       padding:0 24px;
     }
   }
+
   /* Visuels qui remplissent leurs cellules */
   .visual-item{
     position:relative;
@@ -141,18 +149,19 @@
     transform:translateY(24px);
     transition:opacity .6s ease, transform .6s ease;
   }
-
+  
   /* Animation au scroll (ajoutée par JS) */
   .visual-item.visible{
     opacity:1;
     transform:translateY(0);
   }
-
+  
   /* Aspect-ratio adaptables — sans padding */
-  .visual-item.portrait{aspect-ratio:2/3;min-height:420px;}
+  .visual-item.portrait{aspect-ratio:3/4;min-height:360px;}
   .visual-item.paysage{aspect-ratio:4/3;min-height:300px;}
   .visual-item.carre{aspect-ratio:1/1;min-height:320px;}
   .visual-item.vedette{aspect-ratio:2/1;min-height:360px;}
+
   /* Images qui remplissent complètement la cellule intérieure */
   .visual-item img{
     width:100%;
@@ -161,6 +170,7 @@
     object-position:center;
     display:block;
   }
+
   .rail-section{max-width:var(--maxw);margin:56px auto 0;padding:0 24px 56px;}
   .rail-section h2{font-family:var(--font-display);font-weight:800;font-size:1.3rem;margin:0 0 16px;}
   .rail{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;}
@@ -177,7 +187,7 @@
     opacity:0;
     transition:opacity .3s ease;
   }
-
+  
   .lightbox-overlay.active{
     display:flex;
     opacity:1;
@@ -185,7 +195,7 @@
     justify-content:center;
     z-index:1000;
   }
-
+  
   .lightbox-content{
     position:relative;
     width:90vw;
@@ -196,13 +206,13 @@
     align-items:center;
     justify-content:center;
   }
-
+  
   .lightbox-image{
     max-width:100%;
     max-height:100%;
     object-fit:contain;
   }
-
+  
   .lightbox-close{
     position:absolute;
     top:20px;
@@ -220,11 +230,11 @@
     align-items:center;
     justify-content:center;
   }
-
+  
   .lightbox-close:hover{
     color:var(--yellow);
   }
-
+  
   .lightbox-nav{
     position:absolute;
     top:50%;
@@ -241,19 +251,19 @@
     justify-content:center;
     transition:background .3s ease;
   }
-
+  
   .lightbox-nav:hover{
     background:rgba(255,255,255,.2);
   }
-
+  
   .lightbox-prev{
     left:20px;
   }
-
+  
   .lightbox-next{
     right:20px;
   }
-
+  
   .lightbox-counter{
     position:absolute;
     bottom:20px;
@@ -265,9 +275,11 @@
     padding:8px 16px;
     border-radius:4px;
   }
+
   .visual-item{
     cursor:pointer;
   }
+
   /* ---------- Profil ---------- */
   .profile-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
   @media(min-width:900px){.profile-wrap{grid-template-columns:320px 1fr;}}
@@ -281,6 +293,7 @@
   .profile-columns ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
   .profile-columns li{border-bottom:1px solid var(--line);padding-bottom:10px;font-size:.95rem;}
   .profile-columns li .year{color:var(--ink-soft);font-size:.85rem;display:block;margin-bottom:2px;}
+
   /* ---------- Contact ---------- */
   .contact-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
   @media(min-width:900px){.contact-wrap{grid-template-columns:1.1fr .9fr;}}
@@ -303,11 +316,13 @@
   .contact-direct dd{margin:2px 0 0;font-size:1rem;}
   .contact-direct a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
   .contact-direct a:hover{border-color:var(--ink);}
+
   /* ---------- Footer ---------- */
   .site-footer{border-top:1px solid var(--line);padding:28px 24px;max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
   .site-footer p{margin:0;font-size:.85rem;color:var(--ink-soft);}
   .site-footer a{color:var(--ink-soft);font-size:.85rem;text-decoration:none;}
   .site-footer a:hover{color:var(--ink);}
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
   }
@@ -325,11 +340,14 @@
       <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     </nav>
   </header>
+
   <main id="app"></main>
+
   <footer class="site-footer">
     <p>Christophe Florentin — conception publicitaire &amp; direction créative.</p>
     <a href="#/contact">Me contacter</a>
   </footer>
+
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox-overlay">
     <div class="lightbox-content">
@@ -340,232 +358,242 @@
       <div id="lightbox-counter" class="lightbox-counter"></div>
     </div>
   </div>
+
 <script>
 (function(){
   "use strict";
+
   var INK = "#15161b";
   var YELLOW = "#f3cc00";
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // ---------- Données des campagnes avec ratios visuels ----------
   var CAMPAIGNS = [
-    { id:1, slug:"aurele", title:"Sécurité Routière", sector:"Chaque inconscience laisse des traces. Restons vivants.",
+    { id:1, slug:"aurele", title:"Aurèle", sector:"Joaillerie",
       contexte:`Aurèle relance sa ligne de bijoux fins avec une campagne d'affichage 4x3 déployée à Paris et Lyon à l'automne 2023.`,
       approche:`Un système graphique construit autour de la lumière réfléchie, pensé pour capter l'œil en quelques secondes depuis la rue.`,
       resultat:`La notoriété assistée de la marque progresse de 24 % sur la période de campagne.`,
       palette:["#263aff","#f3cc00"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"paysage"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:4,ratio:"paysage"},
+        {num:5,ratio:"paysage"},
+        {num:6,ratio:"paysage"}
       ]},
-    { id:2, slug:"nordr", title:"Aquarelle", sector:"C'est tout un art d'aimer.",
+    { id:2, slug:"nordr", title:"Nordr", sector:"Outdoor",
       contexte:`Pour le lancement de sa veste Nordr Pro, la marque nous confie un film de 30 secondes tourné dans les fjords norvégiens.`,
       approche:`Le montage suit un seul mouvement continu, du sommet jusqu'au fjord, pour restituer la promesse d'une protection sans coupure.`,
       resultat:`Le film dépasse deux millions de vues organiques dans les six semaines suivant sa diffusion.`,
       palette:["#0e7c4a","#eaf2e4"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"paysage"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
+        {num:4,ratio:"paysage"},
+        {num:5,ratio:"carre"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:3, slug:"cavallo", title:"Pommery", sector:"L'art discret de sublimer chaque moment d'exception.",
+    { id:3, slug:"cavallo", title:"Cavallo", sector:"Automobile",
       contexte:`Cavallo souhaite repositionner son modèle citadin auprès d'un public plus jeune à travers une campagne 360°.`,
       approche:`La voiture disparaît des visuels au profit des trajets qu'elle rend possibles, racontés à hauteur de passager.`,
       resultat:`Les essais en concession augmentent de 18 % sur le trimestre du lancement.`,
       palette:["#e8492b","#14151a"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"carre"},
+        {num:3,ratio:"paysage"},
         {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:5,ratio:"paysage"},
+        {num:6,ratio:"carre"}
       ]},
-    { id:4, slug:"belline", title:"LU", sector:"Le biscuit indispensable de la récré !",
+    { id:4, slug:"belline", title:"Belline", sector:"Beauté",
       contexte:`La marque de cosmétiques Belline lance une gamme de soins solides et nous confie son identité de marque complète.`,
       approche:`Un système typographique arrondi et une palette poudrée accompagnent chaque produit, du packaging au site.`,
       resultat:`Le taux de reconnaissance de la nouvelle identité atteint 61 % six mois après le lancement.`,
       palette:["#b23a6d","#f6e9ef"],
       visuels:[
-        {num:1,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
         {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
+        {num:3,ratio:"carre"},
+        {num:4,ratio:"paysage"},
         {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:6,ratio:"paysage"}
       ]},
-    { id:5, slug:"fjord-sel", title:"Gironde Tourisme", sector:"REnouveau en Gironde.",
+    { id:5, slug:"fjord-sel", title:"Fjord &amp; Sel", sector:"Agroalimentaire",
       contexte:`Fjord &amp; Sel, conserverie artisanale, nous confie sa première campagne de packaging pour sa gamme de poissons fumés.`,
       approche:`Chaque boîte raconte le lieu de pêche à travers une illustration gravée, dans un esprit d'atlas maritime.`,
       resultat:`Les ventes en épicerie fine progressent de 31 % l'année du lancement.`,
       palette:["#0a9396","#fdebd3"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"paysage"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
+        {num:4,ratio:"carre"},
+        {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:6, slug:"kairos", title:"Vans", sector:"Le reflet de votre personnalité.",
+    { id:6, slug:"kairos", title:"Kaïros", sector:"Culture",
       contexte:`Le musée Kaïros nous confie la campagne d'affichage de son exposition consacrée au temps et à la mémoire.`,
       approche:`La typographie se déforme et se répare d'une affiche à l'autre, comme une pellicule qui rejoue le temps de l'exposition.`,
       resultat:`La fréquentation de l'exposition dépasse de 40 % les objectifs fixés par le musée.`,
       palette:["#7a3ff2","#ede7fb"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"carre"},
+        {num:3,ratio:"paysage"},
         {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:5,ratio:"carre"},
+        {num:6,ratio:"paysage"}
       ]},
-    { id:7, slug:"mercato", title:"Club Med", sector:"Des vacances sur mesure.",
+    { id:7, slug:"mercato", title:"Mercato", sector:"Finance",
       contexte:`La néobanque Mercato nous demande une campagne digitale pour accompagner le lancement de son compte professionnel.`,
       approche:`Le ton se veut direct et sans jargon, porté par des formats courts pensés pour les réseaux professionnels.`,
       resultat:`Les ouvertures de compte progressent de 45 % le mois suivant le lancement.`,
       palette:["#c08a2e","#17161b"],
       visuels:[
-        {num:1,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
         {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
+        {num:3,ratio:"paysage"},
+        {num:4,ratio:"carre"},
         {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:6,ratio:"paysage"}
       ]},
-    { id:8, slug:"voltec", title:"Champion", sector:"Intemporel.",
+    { id:8, slug:"voltec", title:"Voltec", sector:"Énergie",
       contexte:`Voltec, fournisseur d'électricité verte, nous confie sa campagne d'affichage pour accompagner son changement de nom.`,
       approche:`Une signalétique inspirée des schémas électriques traduit la promesse d'un réseau plus lisible et plus sobre.`,
       resultat:`La marque atteint 52 % de notoriété spontanée un an après le lancement.`,
       palette:["#1f6feb","#ffffff"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"paysage"},
+        {num:3,ratio:"carre"},
         {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:5,ratio:"paysage"},
+        {num:6,ratio:"carre"}
       ]},
-    { id:9, slug:"piste-noire", title:"Trenitalia", sector:"Ici commence l'Italie, andiamo.",
+    { id:9, slug:"piste-noire", title:"Piste Noire", sector:"Sport",
       contexte:`La marque de matériel de ski Piste Noire nous confie sa campagne de rentrée pour la saison hivernale.`,
       approche:`Des visuels tournés à l'aube, avant l'ouverture des pistes, pour capter un silence rare associé à la marque.`,
       resultat:`Les précommandes dépassent de 22 % celles de la saison précédente.`,
       palette:["#d6284a","#ffe8d6"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"carre"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
+        {num:4,ratio:"paysage"},
+        {num:5,ratio:"carre"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:10, slug:"rive", title:"Sony Xperia", sector:"De vraies photos, sans artifices.",
+    { id:10, slug:"rive", title:"Rive", sector:"Voyage",
       contexte:`L'agence de voyage Rive nous confie sa campagne d'affichage pour promouvoir ses itinéraires hors-saison.`,
       approche:`Chaque affiche associe une carte dessinée à la main et un fragment de récit de voyageur.`,
       resultat:`Les réservations hors-saison progressent de 28 % par rapport à l'année précédente.`,
       palette:["#2b2e4a","#e4b363"],
       visuels:[
-        {num:1,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
         {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
+        {num:3,ratio:"carre"},
+        {num:4,ratio:"paysage"},
         {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:6,ratio:"carre"}
       ]},
-    { id:11, slug:"andaine", title:"Roland-Garros", sector:"Terre de légendes.",
+    { id:11, slug:"andaine", title:"Andaine", sector:"Immobilier",
       contexte:`Le promoteur Andaine nous confie l'identité de marque de son nouveau programme résidentiel en périphérie de Lyon.`,
       approche:`Un système modulaire, inspiré du plan des bâtiments, structure l'ensemble des supports de commercialisation.`,
       resultat:`80 % des lots sont réservés avant la fin du chantier.`,
       palette:["#3e8e7e","#f1efe8"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"paysage"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:4,ratio:"carre"},
+        {num:5,ratio:"paysage"},
+        {num:6,ratio:"carre"}
       ]},
-    { id:12, slug:"solace", title:"SDIS Aisne", sector:"Ils s'engagent pour protéger, protégeons leur engagement.",
+    { id:12, slug:"solace", title:"Solace", sector:"Mode",
       contexte:`La marque de prêt-à-porter Solace nous confie sa campagne digitale pour le lancement de sa collection printemps.`,
       approche:`Une série de portraits sans retouche, diffusée en priorité sur les formats verticaux.`,
       resultat:`L'engagement sur les publications de la campagne double par rapport à la moyenne du compte.`,
       palette:["#e0218a","#14151a"],
       visuels:[
-        {num:1,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
         {num:2,ratio:"portrait"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
+        {num:4,ratio:"carre"},
+        {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:13, slug:"trame", title:"DJI Osmo", sector:"Votre smartphone mérite le meilleur stabilisateur.",
+    { id:13, slug:"trame", title:"Trame", sector:"Mobilier",
       contexte:`L'éditeur de mobilier Trame nous confie sa campagne de lancement pour une collection de pièces modulables.`,
       approche:`Les objets sont photographiés en cours de montage, pièce par pièce, pour révéler leur logique de construction.`,
       resultat:`La collection s'écoule en showroom en moins de trois mois.`,
       palette:["#f4a300","#1b1b1f"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"carre"},
+        {num:3,ratio:"paysage"},
         {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:5,ratio:"carre"},
+        {num:6,ratio:"paysage"}
       ]},
-    { id:14, slug:"ondee", title:"Volkswagen", sector:"La plus belle caravane du Tour.",
+    { id:14, slug:"ondee", title:"Ondée", sector:"Boisson",
       contexte:`La marque de limonades artisanales Ondée nous confie sa campagne d'affichage pour son lancement en grande distribution.`,
       approche:`Une gamme de couleurs vives, une par parfum, construit un système d'affichage reconnaissable de loin en rayon.`,
       resultat:`La marque décroche un référencement dans 600 points de vente supplémentaires.`,
       palette:["#4c6ef5","#ffe45e"],
       visuels:[
-        {num:1,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
         {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
+        {num:3,ratio:"carre"},
+        {num:4,ratio:"paysage"},
         {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:6,ratio:"carre"}
       ]},
-    { id:15, slug:"selene", title:"Unicef", sector:"Agir pour laisser une trace et un avenir durable.",
+    { id:15, slug:"selene", title:"Selene", sector:"Éducation",
       contexte:`La plateforme d'apprentissage en ligne Selene nous confie sa campagne digitale pour la rentrée universitaire.`,
       approche:`Des formats courts et pédagogiques, pensés pour être compris sans le son sur les réseaux sociaux.`,
       resultat:`Les inscriptions progressent de 37 % par rapport à la rentrée précédente.`,
       palette:["#2e9e52","#efefea"],
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
+        {num:1,ratio:"vedette"},
+        {num:2,ratio:"paysage"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
+        {num:4,ratio:"carre"},
+        {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
       ]}
   ];
-  function plainTitle(t){ return t.replace(/&amp;/g,"&").replace(/&times;/g,"×"); }
+
+  function plainTitle(t){ return t.replace(/&amp;/g,"&"); }
+
   // Rendu des images campagnes avec ratio adapté
   function campaignImageTile(campaignNum, visualNum, ratio){
     var imagePath = "images/campagne_" + campaignNum + "/campagne_" + campaignNum + "_visuel_" + visualNum + ".jpg";
     var ratioClass = ratio || "carre";
     return '<div class="visual-item ' + ratioClass + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"></div>';
   }
+
   // Rendu des vignettes campagnes pour la page d'accueil et le rail
   function campaignVignetteTile(campaignNum){
     var imagePath = "images/vignettes/campagne_" + campaignNum + "_vignette.jpg";
     return '<div class="art-tile"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' vignette"></div>';
   }
+
   // Rendu slideshow
   function slideShowImageTile(slideNum){
     var imagePath = "images/slideshow/slideshow_" + slideNum + ".jpg";
     return '<div class="art-tile"><img src="' + imagePath + '" alt="Slideshow ' + slideNum + '"></div>';
   }
+
   var app = document.getElementById("app");
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+
   function setActiveNav(route){
     navLinks.forEach(function(a){ a.classList.toggle("active", a.dataset.route === route); });
   }
+
   // ---------- Lightbox variables & functions ----------
   var lightbox = document.getElementById("lightbox");
   var lightboxImage = document.getElementById("lightbox-image");
@@ -575,15 +603,18 @@
   var lightboxCounter = document.getElementById("lightbox-counter");
   var currentVisualIndex = 0;
   var allVisuals = [];
+
   function openLightbox(index, visuals){
     allVisuals = visuals;
     currentVisualIndex = index;
     showLightboxImage();
     lightbox.classList.add("active");
   }
+
   function closeLightbox(){
     lightbox.classList.remove("active");
   }
+
   function showLightboxImage(){
     if(allVisuals.length === 0) return;
     var visual = allVisuals[currentVisualIndex];
@@ -591,60 +622,73 @@
     lightboxImage.alt = visual.alt;
     lightboxCounter.textContent = (currentVisualIndex + 1) + " / " + allVisuals.length;
   }
+
   function nextVisual(){
     currentVisualIndex = (currentVisualIndex + 1) % allVisuals.length;
     showLightboxImage();
   }
+
   function prevVisual(){
     currentVisualIndex = (currentVisualIndex - 1 + allVisuals.length) % allVisuals.length;
     showLightboxImage();
   }
+
   lightboxClose.addEventListener("click", closeLightbox);
   lightboxNext.addEventListener("click", nextVisual);
   lightboxPrev.addEventListener("click", prevVisual);
   lightbox.addEventListener("click", function(e){
     if(e.target === lightbox) closeLightbox();
   });
+
   document.addEventListener("keydown", function(e){
     if(!lightbox.classList.contains("active")) return;
     if(e.key === "Escape") closeLightbox();
     if(e.key === "ArrowRight") nextVisual();
     if(e.key === "ArrowLeft") prevVisual();
   });
+
   // Fonction pour attacher les listeners lightbox
   function attachLightboxListeners(){
     var visualItems = document.querySelectorAll(".visual-grid .visual-item");
     if(visualItems.length === 0) return;
-
+    
     var visuals = Array.prototype.map.call(visualItems, function(item, idx){
       var img = item.querySelector("img");
       return {src: img.src, alt: img.alt, index: idx};
     });
+
     visualItems.forEach(function(item, idx){
       item.addEventListener("click", function(){
         openLightbox(idx, visuals);
       });
     });
   }
+
   // ---------- Accueil ----------
   function renderHome(){
     var featured = CAMPAIGNS.slice(0, 6);
+
     var slides = featured.map(function(c, i){
       return '<div class="hero-slide' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '">' +
         slideShowImageTile(i + 1) +
       '</div>';
     }).join("");
+
     var dots = featured.map(function(c, i){
       return '<button class="' + (i === 0 ? 'active' : '') + '" data-dot="' + i + '" aria-label="Voir ' + plainTitle(c.title) + '"></button>';
     }).join("");
+
+    var largeSet = [0, 7, 10];
     var cards = CAMPAIGNS.map(function(c, i){
+      var large = largeSet.indexOf(i) !== -1 ? " large" : "";
       var num = String(i + 1).padStart(2, "0");
       var campNum = i + 1;
-      return '<a class="campaign-card" href="#/campagne/' + c.slug + '">' +
+      return '<a class="campaign-card' + large + '" href="#/campagne/' + c.slug + '">' +
         campaignVignetteTile(campNum) +
         '<div class="card-meta"><span class="num">' + num + ' / 15</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
       '</a>';
     }).join("");
+
     app.innerHTML =
       '<section class="hero" aria-roledescription="carrousel" aria-label="Campagnes à la une">' +
         slides +
@@ -652,19 +696,22 @@
       '</section>' +
       '<section class="section">' +
         '<div class="section-head">' +
-          '<h1>Mes campagnes</h1>' +
-          '<p>15 projets menés ces dernières années, de l’affiche au film publicitaire.</p>' +
+          '<h1>Explorations créatives — imaginaires publicitaires inventés</h1>' +
+          '<p>15 projets menés ces dernières années, de l\u2019affiche au film publicitaire.</p>' +
         '</div>' +
         '<div class="campaign-grid">' + cards + '</div>' +
       '</section>';
+
     initHero(featured.length);
   }
+
   function initHero(count){
     var idx = 0, timer = null;
     var slides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
     var dots = Array.prototype.slice.call(document.querySelectorAll(".hero-dots button"));
     var heroEl = document.querySelector(".hero");
     if(!heroEl) return;
+
     function show(n){
       idx = (n + count) % count;
       slides.forEach(function(s, i){ s.classList.toggle("active", i === idx); });
@@ -683,27 +730,30 @@
     heroEl.addEventListener("focusout", start);
     start();
   }
+
   // ---------- Détail d'une campagne ----------
   function renderCampaign(slug){
     var idx = CAMPAIGNS.findIndex(function(c){ return c.slug === slug; });
     if(idx === -1){
-      app.innerHTML = '<section class="section"><p>Campagne introuvable. <a href="#/">Retour à l’accueil</a>.</p></section>';
+      app.innerHTML = '<section class="section"><p>Campagne introuvable. <a href="#/">Retour à l\u2019accueil</a>.</p></section>';
       return;
     }
     var c = CAMPAIGNS[idx];
     var campNum = idx + 1;
     var visualsHtml = "";
-
+    
     // Rendu visuels avec leurs ratios respectifs (ADAPTÉ - NON-TRONQUÉ)
     c.visuels.forEach(function(v){
       visualsHtml += campaignImageTile(campNum, v.num, v.ratio);
     });
+
     var others = CAMPAIGNS.filter(function(x){ return x.slug !== c.slug; });
     var railHtml = others.map(function(o, oIdx){
       var oCampNum = CAMPAIGNS.findIndex(function(c2){ return c2.slug === o.slug; }) + 1;
       return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignVignetteTile(oCampNum) +
         '<p>' + o.title + '</p><span>' + o.sector + '</span></a>';
     }).join("");
+
     app.innerHTML =
       '<div class="detail-head">' +
         '<a class="back-link" href="#/">‹ Toutes les campagnes</a>' +
@@ -721,12 +771,12 @@
         '<h2>Les autres campagnes du portfolio</h2>' +
         '<div class="rail">' + railHtml + '</div>' +
       '</div>';
-
+    
     // INTERSECTION OBSERVER — Animations au scroll
     setTimeout(function(){
       var items = Array.prototype.slice.call(document.querySelectorAll(".visual-grid .visual-item"));
       if(!items.length) return;
-
+      
       var observer = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if(entry.isIntersecting){
@@ -735,13 +785,14 @@
           }
         });
       }, {threshold:0.1, rootMargin:"0px 0px -50px 0px"});
-
+      
       items.forEach(function(item){ observer.observe(item); });
-
+      
       // Attacher les listeners lightbox
       attachLightboxListeners();
     }, 0);
   }
+
   // ---------- Profil ----------
   function renderProfil(){
     app.innerHTML =
@@ -754,7 +805,7 @@
         '<div class="profile-body">' +
           '<h1>Christophe Florentin</h1>' +
           '<p class="role">Concepteur-créatif publicitaire</p>' +
-          '<p class="bio">Je conçois des campagnes qui partent du produit, pas du brief. Depuis une dizaine d’années, j’accompagne des marques de toutes tailles sur l’affichage, le film, le digital et l’identité de marque, en agence comme en indépendant.</p>' +
+          '<p class="bio">Je conçois des campagnes qui partent du produit, pas du brief. Depuis une dizaine d\u2019années, j\u2019accompagne des marques de toutes tailles sur l\u2019affichage, le film, le digital et l\u2019identité de marque, en agence comme en indépendant.</p>' +
           '<div class="profile-columns">' +
             '<div><h3>Expertises</h3><ul>' +
               '<li>Direction créative</li>' +
@@ -763,7 +814,7 @@
               '<li>Campagnes 360°</li>' +
             '</ul></div>' +
             '<div><h3>Parcours</h3><ul>' +
-              '<li><span class="year">2024 — aujourd’hui</span>Créatif indépendant</li>' +
+              '<li><span class="year">2024 — aujourd\u2019hui</span>Créatif indépendant</li>' +
               '<li><span class="year">2019 — 2024</span>Directeur créatif, agence Belle Ouvrage</li>' +
               '<li><span class="year">2015 — 2019</span>Concepteur-rédacteur, agence Nord-Sud</li>' +
             '</ul></div>' +
@@ -771,6 +822,7 @@
         '</div>' +
       '</div>';
   }
+
   // ---------- Contact ----------
   function renderContact(){
     app.innerHTML =
@@ -796,6 +848,7 @@
           '</dl>' +
         '</div>' +
       '</div>';
+
     var form = document.getElementById("contact-form");
     form.addEventListener("submit", function(e){
       e.preventDefault();
@@ -804,19 +857,21 @@
       var message = form.message.value.trim();
       var note = document.getElementById("cf-note");
       if(!name || !email || !message){
-        note.textContent = "Merci de compléter les trois champs avant l’envoi.";
+        note.textContent = "Merci de compléter les trois champs avant l\u2019envoi.";
         return;
       }
       var subject = encodeURIComponent("Contact portfolio — " + name);
       var body = encodeURIComponent(message + "\n\n— " + name + " (" + email + ")");
       window.location.href = "mailto:bonjour@christophe-florentin.fr?subject=" + subject + "&body=" + body;
-      note.textContent = "Votre messagerie va s’ouvrir pour finaliser l’envoi.";
+      note.textContent = "Votre messagerie va s\u2019ouvrir pour finaliser l\u2019envoi.";
     });
   }
+
   // ---------- Routeur ----------
   function route(){
     var hash = window.location.hash || "#/";
     var parts = hash.replace(/^#\//, "").split("/").filter(Boolean);
+
     if(parts[0] === "campagne" && parts[1]){
       renderCampaign(parts[1]);
       setActiveNav("home");
@@ -834,6 +889,7 @@
     var links = document.querySelector(".nav-links");
     if(links) links.classList.remove("open");
   }
+
   var toggle = document.querySelector(".nav-toggle");
   if(toggle){
     toggle.addEventListener("click", function(){
@@ -842,8 +898,10 @@
       toggle.setAttribute("aria-expanded", open);
     });
   }
+
   window.addEventListener("hashchange", route);
   route();
+
   // Attacher lightbox après le premier rendu
   setTimeout(attachLightboxListeners, 100);
 })();
