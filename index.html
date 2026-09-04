@@ -165,8 +165,8 @@
      quelle que soit sa classe (portrait/paysage/carré/vedette) : plus de
      vide dû à un cadre qui ne correspond pas au format réel du fichier */
   @media(max-width:767px){
-    .visual-item{aspect-ratio:auto;min-height:0;}
-    .visual-item img{height:auto;object-fit:cover;}
+    .visual-grid .visual-item{aspect-ratio:auto !important;min-height:0 !important;}
+    .visual-grid .visual-item img{height:auto !important;object-fit:cover;}
   }
   .rail-section{max-width:var(--maxw);margin:56px auto 0;padding:0 24px 56px;}
   .rail-section h2{font-family:var(--font-display);font-weight:800;font-size:1.3rem;margin:0 0 16px;}
