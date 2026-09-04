@@ -109,53 +109,43 @@
   .detail-copy{display:grid;gap:16px;max-width:760px;}
   .detail-copy p{margin:0;font-size:1rem;line-height:1.65;}
 
-  /* ---------- Visual Grid SIMPLE — Empilés verticalement ---------- */
+  /* ---------- Visual Grid — Grille harmonieuse 2-3 colonnes ---------- */
   .visual-grid{
     display:grid;
-    grid-template-columns:1fr;
-    gap:0;
-    width:100%;
-    max-width:none;
-    padding:0 20px;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:20px;
+    max-width:var(--maxw);
     margin:32px auto 0;
+    padding:0 24px;
   }
   
   @media(min-width:768px){
     .visual-grid{
-      grid-template-columns:1fr;
-      padding:0 40px;
+      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:24px;
+      padding:0 32px;
     }
   }
   
   @media(min-width:1200px){
     .visual-grid{
-      padding:0 60px;
+      grid-template-columns:repeat(3, 1fr);
+      gap:28px;
+      padding:0 24px;
     }
   }
 
-  /* Visuels qui remplissent 100% */
+  /* Visuels qui remplissent leurs cellules */
   .visual-item{
     position:relative;
     overflow:hidden;
     width:100%;
     display:block;
-    padding:40px;
+    padding:0;
     background:var(--paper);
     opacity:0;
     transform:translateY(24px);
     transition:opacity .6s ease, transform .6s ease;
-  }
-  
-  @media(min-width:768px){
-    .visual-item{
-      padding:80px;
-    }
-  }
-  
-  @media(min-width:1200px){
-    .visual-item{
-      padding:100px;
-    }
   }
   
   /* Animation au scroll (ajoutée par JS) */
@@ -164,17 +154,17 @@
     transform:translateY(0);
   }
   
-  /* Aspect-ratio adaptables — remplissage complet */
+  /* Aspect-ratio adaptables — sans padding */
   .visual-item.portrait{aspect-ratio:3/4;min-height:360px;}
   .visual-item.paysage{aspect-ratio:4/3;min-height:300px;}
-  .visual-item.carre{aspect-ratio:1/1;min-height:340px;}
-  .visual-item.vedette{aspect-ratio:2/1;min-height:380px;}
+  .visual-item.carre{aspect-ratio:1/1;min-height:320px;}
+  .visual-item.vedette{aspect-ratio:2/1;min-height:360px;}
 
   /* Images qui remplissent complètement la cellule intérieure */
   .visual-item img{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
     object-position:center;
     display:block;
   }
