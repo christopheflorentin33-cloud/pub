@@ -128,7 +128,7 @@
     overflow:hidden;
     width:100%;
     display:block;
-    padding:20px;
+    padding:100px;
     background:var(--paper);
     opacity:0;
     transform:translateY(24px);
@@ -448,6 +448,12 @@
     return '<div class="visual-item ' + ratioClass + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"></div>';
   }
 
+  // Rendu des vignettes campagnes pour la page d'accueil et le rail
+  function campaignVignetteTile(campaignNum){
+    var imagePath = "images/vignettes/campagne_" + campaignNum + "_vignette.jpg";
+    return '<div class="art-tile"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' vignette"></div>';
+  }
+
   // Rendu slideshow
   function slideShowImageTile(slideNum){
     var imagePath = "images/slideshow/slideshow_" + slideNum + ".jpg";
@@ -481,7 +487,7 @@
       var num = String(i + 1).padStart(2, "0");
       var campNum = i + 1;
       return '<a class="campaign-card' + large + '" href="#/campagne/' + c.slug + '">' +
-        campaignImageTile(campNum, 1, "paysage") +
+        campaignVignetteTile(campNum) +
         '<div class="card-meta"><span class="num">' + num + ' / 15</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
       '</a>';
     }).join("");
@@ -547,7 +553,7 @@
     var others = CAMPAIGNS.filter(function(x){ return x.slug !== c.slug; });
     var railHtml = others.map(function(o, oIdx){
       var oCampNum = CAMPAIGNS.findIndex(function(c2){ return c2.slug === o.slug; }) + 1;
-      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignImageTile(oCampNum, 1, "paysage") +
+      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignVignetteTile(oCampNum) +
         '<p>' + o.title + '</p><span>' + o.sector + '</span></a>';
     }).join("");
 
