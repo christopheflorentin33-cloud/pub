@@ -306,6 +306,20 @@
   .contact-direct dd{margin:2px 0 0;font-size:1rem;}
   .contact-direct a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
   .contact-direct a:hover{border-color:var(--ink);}
+  /* ---------- Contact — fond coloré ---------- */
+  .contact-page{background:var(--cobalt);}
+  .contact-page .contact-wrap h1,
+  .contact-page .contact-wrap p.lead,
+  .contact-page .form-field label,
+  .contact-page .form-note,
+  .contact-page .contact-direct h2,
+  .contact-page .contact-direct dd{color:#fff;}
+  .contact-page .contact-direct dt{color:rgba(255,255,255,.65);}
+  .contact-page .contact-direct{border-color:rgba(255,255,255,.25);}
+  .contact-page .contact-direct a{color:#fff;border-bottom-color:rgba(255,255,255,.4);}
+  .contact-page .contact-direct a:hover{border-color:#fff;}
+  .contact-page .btn{background:#fff;color:var(--cobalt);}
+  .contact-page .btn:hover{background:var(--yellow);color:var(--ink);}
   /* ---------- Footer ---------- */
   .site-footer{border-top:1px solid var(--line);padding:28px 24px;max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
   .site-footer p{margin:0;font-size:.85rem;color:var(--ink-soft);}
@@ -778,6 +792,7 @@
   // ---------- Contact ----------
   function renderContact(){
     app.innerHTML =
+      '<div class="contact-page">' +
       '<div class="contact-wrap">' +
         '<div>' +
           '<h1>Me contacter</h1>' +
@@ -798,6 +813,7 @@
             '<dt>Email</dt><dd><a href="mailto:christopheflorentin33@gmail.com">christopheflorentin33@gmail.com</a></dd>' +
           '</dl>' +
         '</div>' +
+      '</div>' +
       '</div>';
     var form = document.getElementById("contact-form");
     form.addEventListener("submit", function(e){
