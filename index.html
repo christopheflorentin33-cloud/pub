@@ -161,6 +161,11 @@
     object-position:center;
     display:block;
   }
+  /* Mobile — les visuels paysage épousent leur image réelle, sans marge blanche dessus/dessous */
+  @media(max-width:767px){
+    .visual-item.paysage{aspect-ratio:auto;min-height:0;}
+    .visual-item.paysage img{height:auto;object-fit:cover;}
+  }
   .rail-section{max-width:var(--maxw);margin:56px auto 0;padding:0 24px 56px;}
   .rail-section h2{font-family:var(--font-display);font-weight:800;font-size:1.3rem;margin:0 0 16px;}
   .rail{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;}
