@@ -84,7 +84,8 @@
   /* ---------- Campaign grid ---------- */
   .campaign-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
   @media(min-width:640px){.campaign-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(min-width:1024px){.campaign-grid{grid-template-columns:repeat(4,1fr);}}
+  @media(min-width:900px){.campaign-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(min-width:1200px){.campaign-grid{grid-template-columns:repeat(5,1fr);}}
   .campaign-card{background:var(--paper);text-decoration:none;color:inherit;display:block;}
   .campaign-card .art-tile{transition:transform .35s ease;aspect-ratio:4/3;}
   .campaign-card:hover .art-tile{transform:scale(1.03);}
@@ -92,7 +93,6 @@
   .campaign-card .card-meta .num{font-size:.75rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
   .campaign-card .card-meta h3{margin:4px 0 2px;font-family:var(--font-display);font-weight:700;font-size:1.05rem;}
   .campaign-card .card-meta p{margin:0;font-size:.85rem;color:var(--ink-soft);}
-  @media(min-width:1024px){.campaign-card.large{grid-column:span 2;}}
   /* ---------- Detail page ---------- */
   .detail-head{padding:40px 24px 24px;max-width:var(--maxw);margin:0 auto;}
   .back-link{display:inline-block;margin-bottom:20px;font-size:.9rem;color:var(--ink-soft);text-decoration:none;}
@@ -637,12 +637,10 @@
     var dots = featured.map(function(c, i){
       return '<button class="' + (i === 0 ? 'active' : '') + '" data-dot="' + i + '" aria-label="Voir ' + plainTitle(c.title) + '"></button>';
     }).join("");
-    var largeSet = [0, 7, 10];
     var cards = CAMPAIGNS.map(function(c, i){
-      var large = largeSet.indexOf(i) !== -1 ? " large" : "";
       var num = String(i + 1).padStart(2, "0");
       var campNum = i + 1;
-      return '<a class="campaign-card' + large + '" href="#/campagne/' + c.slug + '">' +
+      return '<a class="campaign-card" href="#/campagne/' + c.slug + '">' +
         campaignVignetteTile(campNum) +
         '<div class="card-meta"><span class="num">' + num + ' / 15</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
       '</a>';
