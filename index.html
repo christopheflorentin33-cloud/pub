@@ -594,6 +594,76 @@
     navLinks.forEach(function(a){ a.classList.toggle("active", a.dataset.route === route); });
   }
 
+  // ---------- Lightbox variables & functions ----------
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImage = document.getElementById("lightbox-image");
+  var lightboxClose = document.getElementById("lightbox-close");
+  var lightboxPrev = document.getElementById("lightbox-prev");
+  var lightboxNext = document.getElementById("lightbox-next");
+  var lightboxCounter = document.getElementById("lightbox-counter");
+  var currentVisualIndex = 0;
+  var allVisuals = [];
+
+  function openLightbox(index, visuals){
+    allVisuals = visuals;
+    currentVisualIndex = index;
+    showLightboxImage();
+    lightbox.classList.add("active");
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove("active");
+  }
+
+  function showLightboxImage(){
+    if(allVisuals.length === 0) return;
+    var visual = allVisuals[currentVisualIndex];
+    lightboxImage.src = visual.src;
+    lightboxImage.alt = visual.alt;
+    lightboxCounter.textContent = (currentVisualIndex + 1) + " / " + allVisuals.length;
+  }
+
+  function nextVisual(){
+    currentVisualIndex = (currentVisualIndex + 1) % allVisuals.length;
+    showLightboxImage();
+  }
+
+  function prevVisual(){
+    currentVisualIndex = (currentVisualIndex - 1 + allVisuals.length) % allVisuals.length;
+    showLightboxImage();
+  }
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightboxNext.addEventListener("click", nextVisual);
+  lightboxPrev.addEventListener("click", prevVisual);
+  lightbox.addEventListener("click", function(e){
+    if(e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(!lightbox.classList.contains("active")) return;
+    if(e.key === "Escape") closeLightbox();
+    if(e.key === "ArrowRight") nextVisual();
+    if(e.key === "ArrowLeft") prevVisual();
+  });
+
+  // Fonction pour attacher les listeners lightbox
+  function attachLightboxListeners(){
+    var visualItems = document.querySelectorAll(".visual-grid .visual-item");
+    if(visualItems.length === 0) return;
+    
+    var visuals = Array.prototype.map.call(visualItems, function(item, idx){
+      var img = item.querySelector("img");
+      return {src: img.src, alt: img.alt, index: idx};
+    });
+
+    visualItems.forEach(function(item, idx){
+      item.addEventListener("click", function(){
+        openLightbox(idx, visuals);
+      });
+    });
+  }
+
   // ---------- Accueil ----------
   function renderHome(){
     var featured = CAMPAIGNS.slice(0, 6);
@@ -717,6 +787,9 @@
       }, {threshold:0.1, rootMargin:"0px 0px -50px 0px"});
       
       items.forEach(function(item){ observer.observe(item); });
+      
+      // Attacher les listeners lightbox
+      attachLightboxListeners();
     }, 0);
   }
 
@@ -829,75 +902,8 @@
   window.addEventListener("hashchange", route);
   route();
 
-  // ---------- Lightbox ----------
-  var lightbox = document.getElementById("lightbox");
-  var lightboxImage = document.getElementById("lightbox-image");
-  var lightboxClose = document.getElementById("lightbox-close");
-  var lightboxPrev = document.getElementById("lightbox-prev");
-  var lightboxNext = document.getElementById("lightbox-next");
-  var lightboxCounter = document.getElementById("lightbox-counter");
-  var currentVisualIndex = 0;
-  var allVisuals = [];
-
-  function openLightbox(index, visuals){
-    allVisuals = visuals;
-    currentVisualIndex = index;
-    showLightboxImage();
-    lightbox.classList.add("active");
-  }
-
-  function closeLightbox(){
-    lightbox.classList.remove("active");
-  }
-
-  function showLightboxImage(){
-    if(allVisuals.length === 0) return;
-    var visual = allVisuals[currentVisualIndex];
-    lightboxImage.src = visual.src;
-    lightboxImage.alt = visual.alt;
-    lightboxCounter.textContent = (currentVisualIndex + 1) + " / " + allVisuals.length;
-  }
-
-  function nextVisual(){
-    currentVisualIndex = (currentVisualIndex + 1) % allVisuals.length;
-    showLightboxImage();
-  }
-
-  function prevVisual(){
-    currentVisualIndex = (currentVisualIndex - 1 + allVisuals.length) % allVisuals.length;
-    showLightboxImage();
-  }
-
-  lightboxClose.addEventListener("click", closeLightbox);
-  lightboxNext.addEventListener("click", nextVisual);
-  lightboxPrev.addEventListener("click", prevVisual);
-  lightbox.addEventListener("click", function(e){
-    if(e.target === lightbox) closeLightbox();
-  });
-
-  document.addEventListener("keydown", function(e){
-    if(!lightbox.classList.contains("active")) return;
-    if(e.key === "Escape") closeLightbox();
-    if(e.key === "ArrowRight") nextVisual();
-    if(e.key === "ArrowLeft") prevVisual();
-  });
-
-  // Ajouter listeners aux visuels après rendu
-  setTimeout(function(){
-    var visualItems = document.querySelectorAll(".visual-grid .visual-item");
-    if(visualItems.length > 0){
-      var visuals = Array.prototype.map.call(visualItems, function(item, idx){
-        var img = item.querySelector("img");
-        return {src: img.src, alt: img.alt, index: idx};
-      });
-
-      visualItems.forEach(function(item, idx){
-        item.addEventListener("click", function(){
-          openLightbox(idx, visuals);
-        });
-      });
-    }
-  }, 100);
+  // Attacher lightbox après le premier rendu
+  setTimeout(attachLightboxListeners, 100);
 })();
 </script>
 </body>
