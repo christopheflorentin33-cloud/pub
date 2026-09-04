@@ -117,6 +117,8 @@
     max-width:var(--maxw);
     margin:32px auto 0;
     padding:0 24px;
+    justify-items:center;
+    align-items:center;
   }
   
   @media(min-width:768px){
@@ -175,7 +177,108 @@
   .rail-item{flex:0 0 160px;text-decoration:none;color:inherit;scroll-snap-align:start;}
   .rail-item .art-tile{aspect-ratio:4/3;}
   .rail-item p{margin:8px 0 0;font-size:.85rem;font-weight:600;}
-  .rail-item span{display:block;font-size:.75rem;color:var(--ink-soft);}
+  /* ---------- Lightbox ---------- */
+  .lightbox-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.95);
+    z-index:100;
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  
+  .lightbox-overlay.active{
+    display:flex;
+    opacity:1;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+  }
+  
+  .lightbox-content{
+    position:relative;
+    width:90vw;
+    height:90vh;
+    max-width:1400px;
+    max-height:900px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  .lightbox-image{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+  }
+  
+  .lightbox-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:40px;
+    height:40px;
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
+    z-index:10;
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  .lightbox-close:hover{
+    color:var(--yellow);
+  }
+  
+  .lightbox-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px;
+    height:50px;
+    background:rgba(255,255,255,.1);
+    border:none;
+    color:#fff;
+    font-size:24px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background .3s ease;
+  }
+  
+  .lightbox-nav:hover{
+    background:rgba(255,255,255,.2);
+  }
+  
+  .lightbox-prev{
+    left:20px;
+  }
+  
+  .lightbox-next{
+    right:20px;
+  }
+  
+  .lightbox-counter{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#fff;
+    font-size:.9rem;
+    background:rgba(0,0,0,.5);
+    padding:8px 16px;
+    border-radius:4px;
+  }
+
+  .visual-item{
+    cursor:pointer;
+  }
 
   /* ---------- Profil ---------- */
   .profile-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
@@ -244,6 +347,17 @@
     <p>Christophe Florentin — conception publicitaire &amp; direction créative.</p>
     <a href="#/contact">Me contacter</a>
   </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox-overlay">
+    <div class="lightbox-content">
+      <img id="lightbox-image" class="lightbox-image" src="" alt="">
+      <button id="lightbox-close" class="lightbox-close">&times;</button>
+      <button id="lightbox-prev" class="lightbox-nav lightbox-prev">‹</button>
+      <button id="lightbox-next" class="lightbox-nav lightbox-next">›</button>
+      <div id="lightbox-counter" class="lightbox-counter"></div>
+    </div>
+  </div>
 
 <script>
 (function(){
@@ -714,6 +828,76 @@
 
   window.addEventListener("hashchange", route);
   route();
+
+  // ---------- Lightbox ----------
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImage = document.getElementById("lightbox-image");
+  var lightboxClose = document.getElementById("lightbox-close");
+  var lightboxPrev = document.getElementById("lightbox-prev");
+  var lightboxNext = document.getElementById("lightbox-next");
+  var lightboxCounter = document.getElementById("lightbox-counter");
+  var currentVisualIndex = 0;
+  var allVisuals = [];
+
+  function openLightbox(index, visuals){
+    allVisuals = visuals;
+    currentVisualIndex = index;
+    showLightboxImage();
+    lightbox.classList.add("active");
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove("active");
+  }
+
+  function showLightboxImage(){
+    if(allVisuals.length === 0) return;
+    var visual = allVisuals[currentVisualIndex];
+    lightboxImage.src = visual.src;
+    lightboxImage.alt = visual.alt;
+    lightboxCounter.textContent = (currentVisualIndex + 1) + " / " + allVisuals.length;
+  }
+
+  function nextVisual(){
+    currentVisualIndex = (currentVisualIndex + 1) % allVisuals.length;
+    showLightboxImage();
+  }
+
+  function prevVisual(){
+    currentVisualIndex = (currentVisualIndex - 1 + allVisuals.length) % allVisuals.length;
+    showLightboxImage();
+  }
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightboxNext.addEventListener("click", nextVisual);
+  lightboxPrev.addEventListener("click", prevVisual);
+  lightbox.addEventListener("click", function(e){
+    if(e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(!lightbox.classList.contains("active")) return;
+    if(e.key === "Escape") closeLightbox();
+    if(e.key === "ArrowRight") nextVisual();
+    if(e.key === "ArrowLeft") prevVisual();
+  });
+
+  // Ajouter listeners aux visuels après rendu
+  setTimeout(function(){
+    var visualItems = document.querySelectorAll(".visual-grid .visual-item");
+    if(visualItems.length > 0){
+      var visuals = Array.prototype.map.call(visualItems, function(item, idx){
+        var img = item.querySelector("img");
+        return {src: img.src, alt: img.alt, index: idx};
+      });
+
+      visualItems.forEach(function(item, idx){
+        item.addEventListener("click", function(){
+          openLightbox(idx, visuals);
+        });
+      });
+    }
+  }, 100);
 })();
 </script>
 </body>
