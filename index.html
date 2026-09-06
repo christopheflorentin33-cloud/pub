@@ -113,6 +113,7 @@
     justify-items:center;
     align-items:center;
   }
+
   @media(min-width:768px){
     .visual-grid{
       grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
@@ -120,6 +121,7 @@
       padding:0 32px;
     }
   }
+
   @media(min-width:1200px){
     .visual-grid{
       grid-template-columns:repeat(3, 1fr);
@@ -139,11 +141,13 @@
     transform:translateY(24px);
     transition:opacity .6s ease, transform .6s ease;
   }
+
   /* Animation au scroll (ajoutée par JS) */
   .visual-item.visible{
     opacity:1;
     transform:translateY(0);
   }
+
   /* Aspect-ratio adaptables — sans padding */
   .visual-item.portrait{aspect-ratio:2/3;min-height:420px;}
   .visual-item.paysage{aspect-ratio:4/3;min-height:300px;}
@@ -180,6 +184,7 @@
     opacity:0;
     transition:opacity .3s ease;
   }
+
   .lightbox-overlay.active{
     display:flex;
     opacity:1;
@@ -187,6 +192,7 @@
     justify-content:center;
     z-index:1000;
   }
+
   .lightbox-content{
     position:relative;
     width:90vw;
@@ -197,11 +203,13 @@
     align-items:center;
     justify-content:center;
   }
+
   .lightbox-image{
     max-width:100%;
     max-height:100%;
     object-fit:contain;
   }
+
   .lightbox-close{
     position:absolute;
     top:20px;
@@ -219,9 +227,11 @@
     align-items:center;
     justify-content:center;
   }
+
   .lightbox-close:hover{
     color:var(--yellow);
   }
+
   .lightbox-nav{
     position:absolute;
     top:50%;
@@ -238,15 +248,19 @@
     justify-content:center;
     transition:background .3s ease;
   }
+
   .lightbox-nav:hover{
     background:rgba(255,255,255,.2);
   }
+
   .lightbox-prev{
     left:20px;
   }
+
   .lightbox-next{
     right:20px;
   }
+
   .lightbox-counter{
     position:absolute;
     bottom:20px;
@@ -410,9 +424,9 @@
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
+        {num:4,ratio:"paysage"},
+        {num:5,ratio:"paysage"},
+        {num:6,ratio:"paysage"}
       ]},
     { id:4, slug:"lu", title:"LU", sector:"Le biscuit indispensable de la récré !",
       contexte:`La marque de cosmétiques Belline lance une gamme de soins solides et nous confie son identité de marque complète.`,
@@ -505,7 +519,11 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:11, slug:"pnr-grand-est", title:"PNR Grand Est", sector:"Des émotions grandeur nature.",
+    { id:11, slug:"roland-garros", title:"Roland-Garros", sector:"Terre de légendes.",
+      contexte:`Le promoteur Andaine nous confie l'identité de marque de son nouveau programme résidentiel en périphérie de Lyon.`,
+      approche:`Un système modulaire, inspiré du plan des bâtiments, structure l'ensemble des supports de commercialisation.`,
+      resultat:`80 % des lots sont réservés avant la fin du chantier.`,
+      palette:["#3e8e7e","#f1efe8"],
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -665,6 +683,7 @@
   function attachLightboxListeners(){
     var visualItems = document.querySelectorAll(".visual-grid .visual-item");
     if(visualItems.length === 0) return;
+
     var visuals = Array.prototype.map.call(visualItems, function(item, idx){
       var img = item.querySelector("img");
       return {src: img.src, alt: img.alt, index: idx};
@@ -722,7 +741,7 @@
       d.addEventListener("click", function(){ show(parseInt(d.dataset.dot, 10)); restart(); });
     });
     function tick(){ show(idx + 1); }
-    function start(){ if(reducedMotion || count < 2) return; timer = setInterval(tick, 3000); }
+    function start(){ if(reducedMotion || count < 2) return; timer = setInterval(tick, 5000); }
     function stop(){ if(timer) clearInterval(timer); }
     function restart(){ stop(); start(); }
     heroEl.addEventListener("mouseenter", stop);
@@ -741,14 +760,27 @@
     var c = CAMPAIGNS[idx];
     var campNum = idx + 1;
     var visualsHtml = "";
+
     // Rendu visuels avec leurs ratios respectifs (ADAPTÉ - NON-TRONQUÉ)
     c.visuels.forEach(function(v){
       visualsHtml += campaignImageTile(campNum, v.num, v.ratio);
     });
-    var others = CAMPAIGNS.filter(function(x){ return x.slug !== c.slug; });
-    var railHtml = others.map(function(o, oIdx){
-      var oCampNum = CAMPAIGNS.findIndex(function(c2){ return c2.slug === o.slug; }) + 1;
-      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignVignetteTile(oCampNum) +
+    // Fenêtre glissante : jusqu'à 4 campagnes précédentes + 4 suivantes,
+    // recentrée sur la campagne consultée (bornée en début/fin de liste).
+    var n = CAMPAIGNS.length;
+    var windowSize = Math.min(n, 9);
+    var start = idx - 4;
+    if(start < 0) start = 0;
+    if(start + windowSize > n) start = n - windowSize;
+    var neighborIdx = [];
+    for(var k = 0; k < windowSize; k++){
+      var ni = start + k;
+      if(ni === idx) continue;
+      neighborIdx.push(ni);
+    }
+    var railHtml = neighborIdx.map(function(ni){
+      var o = CAMPAIGNS[ni];
+      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignVignetteTile(ni + 1) +
         '<p>' + o.title + '</p><span>' + o.sector + '</span></a>';
     }).join("");
     app.innerHTML =
@@ -763,10 +795,12 @@
         '<h2>Les autres campagnes du portfolio</h2>' +
         '<div class="rail">' + railHtml + '</div>' +
       '</div>';
+
     // INTERSECTION OBSERVER — Animations au scroll
     setTimeout(function(){
       var items = Array.prototype.slice.call(document.querySelectorAll(".visual-grid .visual-item"));
       if(!items.length) return;
+
       var observer = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if(entry.isIntersecting){
@@ -775,7 +809,9 @@
           }
         });
       }, {threshold:0.1, rootMargin:"0px 0px -50px 0px"});
+
       items.forEach(function(item){ observer.observe(item); });
+
       // Attacher les listeners lightbox
       attachLightboxListeners();
     }, 0);
