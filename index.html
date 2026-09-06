@@ -519,7 +519,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:11, slug:"roland-garros", title:"Roland-Garros", sector:"Terre de légendes.",
+    { id:11, slug:"pnr-grand-est", title:"PNR", sector:"Des émotions grandeur nature.",
       contexte:`Le promoteur Andaine nous confie l'identité de marque de son nouveau programme résidentiel en périphérie de Lyon.`,
       approche:`Un système modulaire, inspiré du plan des bâtiments, structure l'ensemble des supports de commercialisation.`,
       resultat:`80 % des lots sont réservés avant la fin du chantier.`,
@@ -765,22 +765,10 @@
     c.visuels.forEach(function(v){
       visualsHtml += campaignImageTile(campNum, v.num, v.ratio);
     });
-    // Fenêtre glissante : jusqu'à 4 campagnes précédentes + 4 suivantes,
-    // recentrée sur la campagne consultée (bornée en début/fin de liste).
-    var n = CAMPAIGNS.length;
-    var windowSize = Math.min(n, 9);
-    var start = idx - 4;
-    if(start < 0) start = 0;
-    if(start + windowSize > n) start = n - windowSize;
-    var neighborIdx = [];
-    for(var k = 0; k < windowSize; k++){
-      var ni = start + k;
-      if(ni === idx) continue;
-      neighborIdx.push(ni);
-    }
-    var railHtml = neighborIdx.map(function(ni){
-      var o = CAMPAIGNS[ni];
-      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignVignetteTile(ni + 1) +
+    var others = CAMPAIGNS.filter(function(x){ return x.slug !== c.slug; });
+    var railHtml = others.map(function(o){
+      var oCampNum = CAMPAIGNS.findIndex(function(c2){ return c2.slug === o.slug; }) + 1;
+      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignVignetteTile(oCampNum) +
         '<p>' + o.title + '</p><span>' + o.sector + '</span></a>';
     }).join("");
     app.innerHTML =
