@@ -173,6 +173,8 @@
   .rail{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;}
   .rail-item{flex:0 0 160px;text-decoration:none;color:inherit;scroll-snap-align:start;}
   .rail-item .art-tile{aspect-ratio:4/3;}
+  .rail-item .art-tile img{transition:transform .35s ease;}
+  .rail-item:hover .art-tile img{transform:scale(1.12);}
   .rail-item p{margin:8px 0 0;font-size:.85rem;font-weight:600;}
   /* ---------- Lightbox ---------- */
   .lightbox-overlay{
