@@ -722,7 +722,7 @@
       d.addEventListener("click", function(){ show(parseInt(d.dataset.dot, 10)); restart(); });
     });
     function tick(){ show(idx + 1); }
-    function start(){ if(reducedMotion || count < 2) return; timer = setInterval(tick, 5000); }
+    function start(){ if(reducedMotion || count < 2) return; timer = setInterval(tick, 3000); }
     function stop(){ if(timer) clearInterval(timer); }
     function restart(){ stop(); start(); }
     heroEl.addEventListener("mouseenter", stop);
