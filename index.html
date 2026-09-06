@@ -402,7 +402,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:2, slug:"aquarelle", title:"Aquarelle", sector:"C'est tout un art d'aimer.",
+    { id:2, slug:"aquarelle", title:"Aquarelle", sector:"L'art d'offrir des fleurs.",
       contexte:`Pour le lancement de sa veste Nordr Pro, la marque nous confie un film de 30 secondes tourné dans les fjords norvégiens.`,
       approche:`Le montage suit un seul mouvement continu, du sommet jusqu'au fjord, pour restituer la promesse d'une protection sans coupure.`,
       resultat:`Le film dépasse deux millions de vues organiques dans les six semaines suivant sa diffusion.`,
@@ -583,6 +583,33 @@
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
+      ]},
+    { id:16, slug:"canal-plus", title:"Canal+", sector:"Toujours plus tôt.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
+      ]},
+    { id:17, slug:"horace", title:"Horace", sector:"Vivez la vie en bleu.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
+      ]},
+    { id:18, slug:"maif", title:"MAIF", sector:"Le contrat qui anticipe l'imprévisible.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
       ]}
   ];
   function plainTitle(t){ return t.replace(/&amp;/g,"&").replace(/&times;/g,"×"); }
@@ -683,7 +710,7 @@
       var campNum = i + 1;
       return '<a class="campaign-card" href="#/campagne/' + c.slug + '">' +
         campaignVignetteTile(campNum) +
-        '<div class="card-meta"><span class="num">' + num + ' / 15</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
+        '<div class="card-meta"><span class="num">' + num + ' / ' + CAMPAIGNS.length + '</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
       '</a>';
     }).join("");
     app.innerHTML =
@@ -747,7 +774,7 @@
     app.innerHTML =
       '<div class="detail-head">' +
         '<a class="back-link" href="#/">‹ Toutes les campagnes</a>' +
-        '<div class="idx">' + String(idx + 1).padStart(2, "0") + ' / 15</div>' +
+        '<div class="idx">' + String(idx + 1).padStart(2, "0") + ' / ' + CAMPAIGNS.length + '</div>' +
         '<h1>' + c.title + '</h1>' +
         '<p class="sector">' + c.sector + '</p>' +
       '</div>' +
