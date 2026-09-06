@@ -113,7 +113,6 @@
     justify-items:center;
     align-items:center;
   }
-
   @media(min-width:768px){
     .visual-grid{
       grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
@@ -121,7 +120,6 @@
       padding:0 32px;
     }
   }
-
   @media(min-width:1200px){
     .visual-grid{
       grid-template-columns:repeat(3, 1fr);
@@ -141,13 +139,11 @@
     transform:translateY(24px);
     transition:opacity .6s ease, transform .6s ease;
   }
-
   /* Animation au scroll (ajoutée par JS) */
   .visual-item.visible{
     opacity:1;
     transform:translateY(0);
   }
-
   /* Aspect-ratio adaptables — sans padding */
   .visual-item.portrait{aspect-ratio:2/3;min-height:420px;}
   .visual-item.paysage{aspect-ratio:4/3;min-height:300px;}
@@ -184,7 +180,6 @@
     opacity:0;
     transition:opacity .3s ease;
   }
-
   .lightbox-overlay.active{
     display:flex;
     opacity:1;
@@ -192,7 +187,6 @@
     justify-content:center;
     z-index:1000;
   }
-
   .lightbox-content{
     position:relative;
     width:90vw;
@@ -203,13 +197,11 @@
     align-items:center;
     justify-content:center;
   }
-
   .lightbox-image{
     max-width:100%;
     max-height:100%;
     object-fit:contain;
   }
-
   .lightbox-close{
     position:absolute;
     top:20px;
@@ -227,11 +219,9 @@
     align-items:center;
     justify-content:center;
   }
-
   .lightbox-close:hover{
     color:var(--yellow);
   }
-
   .lightbox-nav{
     position:absolute;
     top:50%;
@@ -248,19 +238,15 @@
     justify-content:center;
     transition:background .3s ease;
   }
-
   .lightbox-nav:hover{
     background:rgba(255,255,255,.2);
   }
-
   .lightbox-prev{
     left:20px;
   }
-
   .lightbox-next{
     right:20px;
   }
-
   .lightbox-counter{
     position:absolute;
     bottom:20px;
@@ -519,11 +505,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:11, slug:"roland-garros", title:"Roland-Garros", sector:"Terre de légendes.",
-      contexte:`Le promoteur Andaine nous confie l'identité de marque de son nouveau programme résidentiel en périphérie de Lyon.`,
-      approche:`Un système modulaire, inspiré du plan des bâtiments, structure l'ensemble des supports de commercialisation.`,
-      resultat:`80 % des lots sont réservés avant la fin du chantier.`,
-      palette:["#3e8e7e","#f1efe8"],
+    { id:11, slug:"pnr-grand-est", title:"PNR Grand Est", sector:"Des émotions grandeur nature.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -683,7 +665,6 @@
   function attachLightboxListeners(){
     var visualItems = document.querySelectorAll(".visual-grid .visual-item");
     if(visualItems.length === 0) return;
-
     var visuals = Array.prototype.map.call(visualItems, function(item, idx){
       var img = item.querySelector("img");
       return {src: img.src, alt: img.alt, index: idx};
@@ -760,7 +741,6 @@
     var c = CAMPAIGNS[idx];
     var campNum = idx + 1;
     var visualsHtml = "";
-
     // Rendu visuels avec leurs ratios respectifs (ADAPTÉ - NON-TRONQUÉ)
     c.visuels.forEach(function(v){
       visualsHtml += campaignImageTile(campNum, v.num, v.ratio);
@@ -783,12 +763,10 @@
         '<h2>Les autres campagnes du portfolio</h2>' +
         '<div class="rail">' + railHtml + '</div>' +
       '</div>';
-
     // INTERSECTION OBSERVER — Animations au scroll
     setTimeout(function(){
       var items = Array.prototype.slice.call(document.querySelectorAll(".visual-grid .visual-item"));
       if(!items.length) return;
-
       var observer = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if(entry.isIntersecting){
@@ -797,9 +775,7 @@
           }
         });
       }, {threshold:0.1, rootMargin:"0px 0px -50px 0px"});
-
       items.forEach(function(item){ observer.observe(item); });
-
       // Attacher les listeners lightbox
       attachLightboxListeners();
     }, 0);
