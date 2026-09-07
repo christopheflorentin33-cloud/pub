@@ -286,11 +286,13 @@
   }
   .zoom-hint{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    background:#fff;color:#15161b;font-family:var(--font-body);
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    background:rgba(21,22,27,.72);color:#fff;font-family:var(--font-body);
     font-size:.65rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
-    padding:6px 11px;border-radius:3px;box-shadow:0 4px 18px rgba(0,0,0,.25);
+    padding:14px 18px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.25);
     opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:2;white-space:nowrap;
   }
+  .zoom-hint img{width:22px;height:22px;display:block;}
   .visual-item.hint-visible .zoom-hint{opacity:1;}
   /* ---------- Profil ---------- */
   .profile-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
@@ -350,6 +352,7 @@
   "use strict";
   var INK = "#15161b";
   var YELLOW = "#f3cc00";
+  var ZOOM_ICON = "data:image/png;base64,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";
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // ---------- Données des campagnes avec ratios visuels ----------
   var CAMPAIGNS = [
@@ -577,7 +580,7 @@
   function campaignImageTile(campaignNum, visualNum, ratio){
     var imagePath = "images/campagne_" + campaignNum + "/campagne_" + campaignNum + "_visuel_" + visualNum + ".jpg";
     var ratioClass = ratio || "carre";
-    return '<div class="visual-item ' + ratioClass + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"><span class="zoom-hint">Cliquer pour agrandir</span></div>';
+    return '<div class="visual-item ' + ratioClass + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"><span class="zoom-hint"><img src="' + ZOOM_ICON + '" alt=""><span>Cliquer pour agrandir</span></span></div>';
   }
   // Rendu des vignettes campagnes pour la page d'accueil et le rail
   function campaignVignetteTile(campaignNum){
