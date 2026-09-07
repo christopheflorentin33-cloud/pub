@@ -287,8 +287,8 @@
   .zoom-hint{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
     background:#fff;color:#15161b;font-family:var(--font-body);
-    font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
-    padding:9px 16px;border-radius:3px;box-shadow:0 4px 18px rgba(0,0,0,.25);
+    font-size:.65rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+    padding:6px 11px;border-radius:3px;box-shadow:0 4px 18px rgba(0,0,0,.25);
     opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:2;white-space:nowrap;
   }
   .visual-item.hint-visible .zoom-hint{opacity:1;}
@@ -659,10 +659,9 @@
         clearTimeout(holdTimer);
         item.classList.remove("hint-visible");
       }
-      item.addEventListener("mousedown", startHold);
-      item.addEventListener("touchstart", startHold, {passive:true});
-      item.addEventListener("mouseup", cancelHold);
+      item.addEventListener("mouseenter", startHold);
       item.addEventListener("mouseleave", cancelHold);
+      item.addEventListener("touchstart", startHold, {passive:true});
       item.addEventListener("touchend", cancelHold);
       item.addEventListener("touchcancel", cancelHold);
     });
