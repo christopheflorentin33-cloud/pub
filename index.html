@@ -282,7 +282,16 @@
   }
   .visual-item{
     cursor:pointer;
+    -webkit-touch-callout:none;
   }
+  .zoom-hint{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    background:#fff;color:#15161b;font-family:var(--font-body);
+    font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+    padding:9px 16px;border-radius:3px;box-shadow:0 4px 18px rgba(0,0,0,.25);
+    opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:2;white-space:nowrap;
+  }
+  .visual-item.hint-visible .zoom-hint{opacity:1;}
   /* ---------- Profil ---------- */
   .profile-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
   @media(min-width:900px){.profile-wrap{grid-template-columns:380px 1fr;}}
@@ -299,59 +308,6 @@
   .profile-contact{margin-top:32px;}
   .profile-contact h3{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin:0 0 12px;}
   .profile-contact p{margin:0 0 6px;font-size:.95rem;color:var(--ink-soft);}
-  /* ---------- Contact ---------- */
-  .contact-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
-  @media(min-width:900px){.contact-wrap{grid-template-columns:1.1fr .9fr;}}
-  .contact-wrap h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,5vw,3.2rem);margin:0 0 16px;}
-  .contact-wrap p.lead{max-width:520px;line-height:1.6;margin:0 0 28px;color:var(--ink-soft);}
-  .form-field{display:grid;gap:6px;margin-bottom:18px;}
-  .form-field label{font-size:.85rem;font-weight:600;}
-  .form-field input,.form-field textarea{font-family:var(--font-body);font-size:1rem;padding:10px 12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:0;}
-  .form-field textarea{min-height:120px;resize:vertical;}
-  .form-field input:focus,.form-field textarea:focus{outline:2px solid var(--cobalt);outline-offset:1px;border-color:var(--cobalt);}
-  .btn{font-family:var(--font-body);font-weight:600;font-size:.95rem;padding:12px 22px;background:var(--ink);color:var(--paper);border:none;cursor:pointer;}
-  .btn:hover{background:var(--cobalt);}
-  .form-note{font-size:.85rem;color:var(--ink-soft);margin-top:14px;min-height:1.2em;}
-  .contact-direct{border-left:1px solid var(--line);padding-left:32px;}
-  @media(max-width:899px){.contact-direct{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:24px;}}
-  .contact-direct h2{font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin:0 0 16px;}
-  .contact-direct dl{margin:0;}
-  .contact-direct dt{font-size:.8rem;color:var(--ink-soft);margin-top:16px;}
-  .contact-direct dt:first-child{margin-top:0;}
-  .contact-direct dd{margin:2px 0 0;font-size:1rem;}
-  .contact-direct a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
-  .contact-direct a:hover{border-color:var(--ink);}
-  /* ---------- Contact — fond visuel avec transparence (verre dépoli) ---------- */
-  .contact-page{
-    background-color:var(--ink);
-    background-image:linear-gradient(rgba(21,22,27,.15),rgba(21,22,27,.15)), url('images/contact_fond.jpg');
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-  }
-  .contact-page .contact-wrap{padding-top:64px;padding-bottom:80px;}
-  .contact-page .contact-panel,
-  .contact-page .contact-direct{
-    background:rgba(21,22,27,.22);
-    backdrop-filter:blur(16px) saturate(140%);
-    -webkit-backdrop-filter:blur(16px) saturate(140%);
-    border:1px solid rgba(255,255,255,.28);
-    border-radius:20px;
-    padding:36px;
-  }
-  .contact-page .contact-wrap h1,
-  .contact-page .contact-wrap p.lead,
-  .contact-page .form-field label,
-  .contact-page .form-note,
-  .contact-page .contact-direct h2,
-  .contact-page .contact-direct dd{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35);}
-  .contact-page .contact-direct dt{color:rgba(255,255,255,.65);}
-  .contact-page .contact-direct a{color:#fff;border-bottom-color:rgba(255,255,255,.4);}
-  .contact-page .contact-direct a:hover{border-color:#fff;}
-  .contact-page .form-field input,
-  .contact-page .form-field textarea{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff;}
-  .contact-page .form-field input::placeholder,
-  .contact-page .form-field textarea::placeholder{color:rgba(255,255,255,.5);}
   /* ---------- Footer ---------- */
   .site-footer{border-top:1px solid var(--line);padding:28px 24px;max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
   .site-footer p{margin:0;font-size:.85rem;color:var(--ink-soft);}
@@ -369,7 +325,7 @@
       <div class="nav-links">
         <a href="#/" data-route="home">Mes campagnes</a>
         <a href="#/profil" data-route="profil">Mon profil</a>
-        <a href="#/contact" data-route="contact">Me contacter</a>
+        <a href="mailto:christopheflorentin33@gmail.com">Me contacter</a>
       </div>
       <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     </nav>
@@ -377,7 +333,7 @@
   <main id="app"></main>
   <footer class="site-footer">
     <p>Christophe Florentin — conception publicitaire &amp; direction créative.</p>
-    <a href="#/contact">Me contacter</a>
+    <a href="mailto:christopheflorentin33@gmail.com">Me contacter</a>
   </footer>
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox-overlay">
@@ -621,7 +577,7 @@
   function campaignImageTile(campaignNum, visualNum, ratio){
     var imagePath = "images/campagne_" + campaignNum + "/campagne_" + campaignNum + "_visuel_" + visualNum + ".jpg";
     var ratioClass = ratio || "carre";
-    return '<div class="visual-item ' + ratioClass + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"></div>';
+    return '<div class="visual-item ' + ratioClass + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"><span class="zoom-hint">Cliquer pour agrandir</span></div>';
   }
   // Rendu des vignettes campagnes pour la page d'accueil et le rail
   function campaignVignetteTile(campaignNum){
@@ -695,6 +651,20 @@
       item.addEventListener("click", function(){
         openLightbox(idx, visuals);
       });
+      var holdTimer = null;
+      function startHold(){
+        holdTimer = setTimeout(function(){ item.classList.add("hint-visible"); }, 2000);
+      }
+      function cancelHold(){
+        clearTimeout(holdTimer);
+        item.classList.remove("hint-visible");
+      }
+      item.addEventListener("mousedown", startHold);
+      item.addEventListener("touchstart", startHold, {passive:true});
+      item.addEventListener("mouseup", cancelHold);
+      item.addEventListener("mouseleave", cancelHold);
+      item.addEventListener("touchend", cancelHold);
+      item.addEventListener("touchcancel", cancelHold);
     });
   }
   // ---------- Accueil ----------
@@ -842,49 +812,6 @@
         '</div>' +
       '</div>';
   }
-  // ---------- Contact ----------
-  function renderContact(){
-    app.innerHTML =
-      '<div class="contact-page">' +
-      '<div class="contact-wrap">' +
-        '<div class="contact-panel">' +
-          '<h1>Me contacter</h1>' +
-          '<p class="lead">Un projet de campagne, une identité à construire, une simple question : écrivez-moi, je réponds sous 48h</p>' +
-          '<form id="contact-form" novalidate>' +
-            '<div class="form-field"><label for="cf-name">Nom</label><input id="cf-name" name="name" type="text" required></div>' +
-            '<div class="form-field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" required></div>' +
-            '<div class="form-field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" required></textarea></div>' +
-            '<button type="submit" class="btn">Envoyer le message</button>' +
-            '<p class="form-note" id="cf-note"></p>' +
-          '</form>' +
-        '</div>' +
-        '<div class="contact-direct">' +
-          '<h2>Coordonnées</h2>' +
-          '<dl>' +
-            '<dt>Adresse</dt><dd>45 rue des bois, 02190 Villeneuve-sur-Aisne</dd>' +
-            '<dt>Téléphone</dt><dd><a href="tel:+33638582552">06 38 58 25 52</a></dd>' +
-            '<dt>Email</dt><dd><a href="mailto:christopheflorentin33@gmail.com">christopheflorentin33@gmail.com</a></dd>' +
-          '</dl>' +
-        '</div>' +
-      '</div>' +
-      '</div>';
-    var form = document.getElementById("contact-form");
-    form.addEventListener("submit", function(e){
-      e.preventDefault();
-      var name = form.name.value.trim();
-      var email = form.email.value.trim();
-      var message = form.message.value.trim();
-      var note = document.getElementById("cf-note");
-      if(!name || !email || !message){
-        note.textContent = "Merci de compléter les trois champs avant l’envoi.";
-        return;
-      }
-      var subject = encodeURIComponent("Contact portfolio — " + name);
-      var body = encodeURIComponent(message + "\n\n— " + name + " (" + email + ")");
-      window.location.href = "mailto:christopheflorentin33@gmail.com?subject=" + subject + "&body=" + body;
-      note.textContent = "Votre messagerie va s’ouvrir pour finaliser l’envoi.";
-    });
-  }
   // ---------- Routeur ----------
   function route(){
     var hash = window.location.hash || "#/";
@@ -895,9 +822,6 @@
     } else if(parts[0] === "profil"){
       renderProfil();
       setActiveNav("profil");
-    } else if(parts[0] === "contact"){
-      renderContact();
-      setActiveNav("contact");
     } else {
       renderHome();
       setActiveNav("home");
