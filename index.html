@@ -707,7 +707,7 @@
   }
   // ---------- Accueil ----------
   function renderHome(){
-    var featured = CAMPAIGNS.slice(0, 8);
+    var featured = CAMPAIGNS.slice(0, 7);
     var slides = featured.map(function(c, i){
       return '<div class="hero-slide' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '">' +
         slideShowImageTile(i + 1) +
