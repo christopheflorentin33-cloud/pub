@@ -582,6 +582,33 @@
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
+      ]},
+    { id:19, slug:"roche-bobois", title:"Roche Bobois", sector:"Conçu pour le confort, pensé pour l'émotion.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
+      ]},
+    { id:20, slug:"roland-garros", title:"Roland Garros", sector:"Terre de Légende.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
+      ]},
+    { id:21, slug:"dalton-smokehouse", title:"Dalton Smokehouse", sector:"Le Goût de l'authentique.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
       ]}
   ];
   function plainTitle(t){ return t.replace(/&amp;/g,"&").replace(/&times;/g,"×"); }
@@ -680,7 +707,7 @@
   }
   // ---------- Accueil ----------
   function renderHome(){
-    var featured = CAMPAIGNS.slice(0, 6);
+    var featured = CAMPAIGNS.slice(0, 8);
     var slides = featured.map(function(c, i){
       return '<div class="hero-slide' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '">' +
         slideShowImageTile(i + 1) +
