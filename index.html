@@ -482,11 +482,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:10, slug:"sony-xperia", title:"Sony Xperia", sector:"De vraies photos, sans artifices.",
-      contexte:`L'agence de voyage Rive nous confie sa campagne d'affichage pour promouvoir ses itinéraires hors-saison.`,
-      approche:`Chaque affiche associe une carte dessinée à la main et un fragment de récit de voyageur.`,
-      resultat:`Les réservations hors-saison progressent de 28 % par rapport à l'année précédente.`,
-      palette:["#2b2e4a","#e4b363"],
+    { id:25, slug:"spritz", title:"Spritz", sector:"Un été aux couleurs Spritz.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -745,7 +741,7 @@
     }).join("");
     var cards = CAMPAIGNS.map(function(c, i){
       var num = String(i + 1).padStart(2, "0");
-      var campNum = i + 1;
+      var campNum = c.id;
       return '<a class="campaign-card" href="#/campagne/' + c.slug + '">' +
         campaignVignetteTile(campNum) +
         '<div class="card-meta"><span class="num">' + num + ' / ' + CAMPAIGNS.length + '</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
@@ -800,7 +796,7 @@
       return;
     }
     var c = CAMPAIGNS[idx];
-    var campNum = idx + 1;
+    var campNum = c.id;
     var visualsHtml = "";
     // Rendu visuels avec leurs ratios respectifs (ADAPTÉ - NON-TRONQUÉ)
     c.visuels.forEach(function(v){
@@ -808,7 +804,7 @@
     });
     var others = CAMPAIGNS.filter(function(x){ return x.slug !== c.slug; });
     var railHtml = others.map(function(o, oIdx){
-      var oCampNum = CAMPAIGNS.findIndex(function(c2){ return c2.slug === o.slug; }) + 1;
+      var oCampNum = o.id;
       return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignVignetteTile(oCampNum) +
         '<p>' + o.title + '</p><span>' + o.sector + '</span></a>';
     }).join("");
