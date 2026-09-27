@@ -411,12 +411,12 @@
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
       ]},
-    { id:26, slug:"gaci", title:"GACI", sector:"L'infiniment petit au cœur des grandes innovations.",
+    { id:26, slug:"skechers", title:"Skechers", sector:"Un confort qui ne vous quitte jamais.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
         {num:3,ratio:"portrait"},
-        {num:4,ratio:"paysage"},
+        {num:4,ratio:"portrait"},
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
       ]},
@@ -558,6 +558,42 @@
         {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
       ]},
+    { id:33, slug:"fossier", title:"Fossier", sector:"L'esprit Fossier.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
+      ]},
+    { id:34, slug:"lustral", title:"Lustral", sector:"Le reflet de notre exigence.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
+      ]},
+    { id:36, slug:"fnsea", title:"FNSEA", sector:"On a beau être des agriculteurs.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"paysage"},
+        {num:5,ratio:"paysage"},
+        {num:6,ratio:"portrait"}
+      ]},
+    { id:38, slug:"ucpa", title:"UCPA", sector:"Plongez dans l'aventure à votre rythme.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"paysage"}
+      ]},
     { id:9, slug:"trenitalia", title:"Trenitalia", sector:"Ici commence l'Italie, andiamo.",
       contexte:`La marque de matériel de ski Piste Noire nous confie sa campagne de rentrée pour la saison hivernale.`,
       approche:`Des visuels tournés à l'aube, avant l'ouverture des pistes, pour capter un silence rare associé à la marque.`,
@@ -674,43 +710,8 @@
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:33, slug:"fossier", title:"Fossier", sector:"L'esprit Fossier.",
-      visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
-      ]},
-    { id:34, slug:"lustral", title:"Lustral", sector:"Le reflet de notre exigence.",
-      visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
-      ]},
-    { id:36, slug:"fnsea", title:"FNSEA", sector:"On a beau être des agriculteurs.",
-      visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"paysage"},
-        {num:5,ratio:"paysage"},
-        {num:6,ratio:"portrait"}
-      ]},
-    { id:38, slug:"ucpa", title:"UCPA", sector:"Plongez dans l'aventure à votre rythme.",
-      visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"paysage"}
-      ]}];
+      ]}
+  ];
   function plainTitle(t){ return t.replace(/&amp;/g,"&").replace(/&times;/g,"×"); }
   // Rendu des images campagnes avec ratio adapté
   function campaignImageTile(campaignNum, visualNum, ratio){
