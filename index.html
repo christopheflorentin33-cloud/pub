@@ -402,15 +402,6 @@
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
       ]},
-    { id:24, slug:"fete-du-cinema", title:"Fête du Cinéma", sector:"Toutes les places à 5 euros.",
-      visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
-      ]},
     { id:23, slug:"ikea", title:"IKEA", sector:"Depuis 20 ans, nos millions d'ambassadeurs c'est vous.",
       visuels:[
         {num:1,ratio:"portrait"},
@@ -426,8 +417,8 @@
         {num:2,ratio:"portrait"},
         {num:3,ratio:"portrait"},
         {num:4,ratio:"portrait"},
-        {num:5,ratio:"paysage"},
-        {num:6,ratio:"portrait"}
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"paysage"}
       ]},
     { id:21, slug:"dalton-smokehouse", title:"Dalton Smokehouse", sector:"Le Goût de l'authentique.",
       visuels:[
@@ -466,19 +457,6 @@
         {num:6,ratio:"portrait"}
       ]},
     { id:16, slug:"canal-plus", title:"Canal+", sector:"Toujours plus tôt.",
-      visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"portrait"}
-      ]},
-    { id:15, slug:"unicef", title:"Unicef", sector:"Agir pour laisser une trace et un avenir durable.",
-      contexte:`La plateforme d'apprentissage en ligne Selene nous confie sa campagne digitale pour la rentrée universitaire.`,
-      approche:`Des formats courts et pédagogiques, pensés pour être compris sans le son sur les réseaux sociaux.`,
-      resultat:`Les inscriptions progressent de 37 % par rapport à la rentrée précédente.`,
-      palette:["#2e9e52","#efefea"],
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -535,15 +513,6 @@
         {num:4,ratio:"paysage"},
         {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:38, slug:"ucpa", title:"UCPA", sector:"Plongez dans l'aventure à votre rythme.",
-      visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:3,ratio:"portrait"},
-        {num:4,ratio:"portrait"},
-        {num:5,ratio:"portrait"},
-        {num:6,ratio:"paysage"}
       ]},
     { id:8, slug:"champion", title:"Champion", sector:"Intemporel.",
       contexte:`Voltec, fournisseur d'électricité verte, nous confie sa campagne d'affichage pour accompagner son changement de nom.`,
@@ -746,7 +715,7 @@
   }
   // ---------- Accueil ----------
   function renderHome(){
-    var featured = CAMPAIGNS.slice(0, 7);
+    var featured = CAMPAIGNS.slice(0, 6);
     var slides = featured.map(function(c, i){
       return '<div class="hero-slide' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '">' +
         slideShowImageTile(i + 1) +
