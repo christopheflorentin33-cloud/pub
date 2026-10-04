@@ -327,7 +327,7 @@
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
   }
-  /* ---------- Filtres communs : accueil et Plus de pub ---------- */
+  /* ---------- Filtres des campagnes sur l’accueil ---------- */
   .filter-bar{margin:0 0 24px;}
   .filter-label{margin:0 0 10px;font-size:.85rem;color:var(--ink-soft);}
   .filter-buttons{display:flex;flex-wrap:wrap;gap:8px;}
@@ -336,7 +336,6 @@
   .filter-button[aria-pressed="true"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff;}
   .filter-status{margin:12px 0 0;font-size:.85rem;color:var(--ink-soft);}
   .campaign-card[hidden],.visual-item[hidden]{display:none !important;}
-  .filter-empty{max-width:var(--maxw);margin:24px auto;padding:0 24px;color:var(--ink-soft);}
   @media(max-width:720px){.filter-buttons{gap:6px;}.filter-button{padding:9px 12px;}}
 </style>
 </head>
@@ -622,30 +621,29 @@
       ]},
     { id:"fin", slug:"fin", title:"Plus de pub", sector:"Le reste de l'exploration créative.",
       visuels:[
-        {num:1,ratio:"portrait",tags:[]},
-        {num:2,ratio:"portrait",tags:[]},
-        {num:15,ratio:"portrait",tags:[]},
-        {num:7,ratio:"portrait",tags:[]},
-        {num:8,ratio:"portrait",tags:[]},
-        {num:14,ratio:"portrait",tags:[]},
-        {num:13,ratio:"paysage",tags:[]},
-        {num:19,ratio:"paysage",tags:[]},
-        {num:17,ratio:"paysage",tags:[]},
-        {num:18,ratio:"portrait",tags:[]},
-        {num:16,ratio:"portrait",tags:[]},
-        {num:20,ratio:"portrait",tags:[]},
-        {num:21,ratio:"paysage",tags:[]},
-        {num:22,ratio:"paysage",tags:[]},
-        {num:23,ratio:"paysage",tags:[]},
-        {num:24,ratio:"portrait",tags:[]},
-        {num:25,ratio:"portrait",tags:[]},
-        {num:26,ratio:"portrait",tags:[]},
-        {num:27,ratio:"portrait",tags:[]}
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:15,ratio:"portrait"},
+        {num:7,ratio:"portrait"},
+        {num:8,ratio:"portrait"},
+        {num:14,ratio:"portrait"},
+        {num:13,ratio:"paysage"},
+        {num:19,ratio:"paysage"},
+        {num:17,ratio:"paysage"},
+        {num:18,ratio:"portrait"},
+        {num:16,ratio:"portrait"},
+        {num:20,ratio:"portrait"},
+        {num:21,ratio:"paysage"},
+        {num:22,ratio:"paysage"},
+        {num:23,ratio:"paysage"},
+        {num:24,ratio:"portrait"},
+        {num:25,ratio:"portrait"},
+        {num:26,ratio:"portrait"},
+        {num:27,ratio:"portrait"}
       ]}
   ];
   // Catégories modifiables dans category:[...] de chaque campagne.
-  // Pour Plus de pub, renseigner tags:["luxe", "marques", ...] sur chaque visuel.
-  // Les tags vides sont volontairement « À classer » : images non fournies.
+  // Plus de pub reste toujours visible ; ses visuels ne sont pas filtrés.
   var FILTERS = [
     {id:"all",label:"Toutes"}, {id:"marques",label:"Marques"},
     {id:"alimentation",label:"Alimentation"}, {id:"luxe",label:"Luxe"},
@@ -654,43 +652,38 @@
     {id:"services",label:"Services"}, {id:"loisirs",label:"Loisirs / Tourisme"},
     {id:"prevention",label:"Prévention"}
   ];
-  var homeFilter = "all", finFilter = "all";
+  var homeFilter = "all";
   function isFin(c){ return c.id === "fin" || c.slug === "fin"; }
   function filterBar(scope){
-    var selected = scope === "home" ? homeFilter : finFilter;
+    var selected = homeFilter;
     var options = FILTERS.slice();
-    if(scope === "fin") options.push({id:"a-classer",label:"À classer"});
     return '<div class="filter-bar" data-filter-scope="' + scope + '">' +
       '<p class="filter-label">Filtrer par thème</p>' +
       '<div class="filter-buttons" role="group" aria-label="Filtrer ' +
-      (scope === "home" ? 'les campagnes' : 'les visuels de Plus de pub') + '">' +
+      'les campagnes' + '">' +
       options.map(function(f){
         return '<button type="button" class="filter-button" data-filter="' + f.id +
           '" aria-pressed="' + (selected === f.id) + '" aria-controls="' +
-          (scope === "home" ? 'campaign-grid' : 'visual-grid') + '">' + f.label + '</button>';
+          'campaign-grid' + '">' + f.label + '</button>';
       }).join("") + '</div><p class="filter-status" role="status" aria-live="polite"></p></div>';
   }
   function applyFilter(scope, selected){
     var bar = app.querySelector('[data-filter-scope="' + scope + '"]');
     if(!bar) return;
     var count = 0;
-    var items = app.querySelectorAll(scope === "home" ? ".campaign-grid .campaign-card" : ".visual-grid .visual-item");
+    var items = app.querySelectorAll(".campaign-grid .campaign-card");
     items.forEach(function(item){
       var tags = (item.dataset.tags || "").split(" ").filter(Boolean);
-      var always = scope === "home" && item.dataset.alwaysVisible === "true";
-      var matches = selected === "all" || tags.indexOf(selected) !== -1 ||
-        (selected === "a-classer" && tags.length === 0);
+      var always = item.dataset.alwaysVisible === "true";
+      var matches = selected === "all" || tags.indexOf(selected) !== -1;
       item.hidden = !(always || matches);
       if(matches && !always) count++;
     });
     bar.querySelectorAll("[data-filter]").forEach(function(button){
       button.setAttribute("aria-pressed", String(button.dataset.filter === selected));
     });
-    bar.querySelector(".filter-status").textContent = scope === "home" ?
-      count + (count === 1 ? " campagne affichée" : " campagnes affichées") + " · Plus de pub reste accessible." :
-      count + (count === 1 ? " visuel affiché" : " visuels affichés");
-    var empty = app.querySelector(".filter-empty");
-    if(empty) empty.hidden = count !== 0;
+    bar.querySelector(".filter-status").textContent =
+      count + (count === 1 ? " campagne affichée" : " campagnes affichées") + " · Plus de pub reste accessible.";
   }
   function initFilters(scope){
     var bar = app.querySelector('[data-filter-scope="' + scope + '"]');
@@ -699,10 +692,10 @@
       var button = event.target.closest("[data-filter]");
       if(!button || !bar.contains(button)) return;
       var selected = button.dataset.filter;
-      if(scope === "home") homeFilter = selected; else finFilter = selected;
+      homeFilter = selected;
       applyFilter(scope, selected);
     });
-    applyFilter(scope, scope === "home" ? homeFilter : finFilter);
+    applyFilter(scope, homeFilter);
   }
   function plainTitle(t){ return t.replace(/&amp;/g,"&").replace(/&times;/g,"×"); }
   // Rendu des images campagnes avec ratio adapté
@@ -890,15 +883,12 @@
         '<div class="idx">' + String(idx + 1).padStart(2, "0") + ' / ' + CAMPAIGNS.length + '</div>' +
         '<h1>' + c.title + '</h1>' +
         '<p class="sector">' + c.sector + '</p>' +
-        (isFin(c) ? filterBar("fin") : "") +
       '</div>' +
       '<div id="visual-grid" class="visual-grid">' + visualsHtml + '</div>' +
-      (isFin(c) ? '<p class="filter-empty" hidden>Aucun visuel pour ce thème. Choisissez un autre filtre ou « Toutes ».</p>' : "") +
       '<div class="rail-section">' +
         '<h2>Les autres campagnes du portfolio</h2>' +
         '<div class="rail">' + railHtml + '</div>' +
       '</div>';
-    if(isFin(c)) initFilters("fin");
     // INTERSECTION OBSERVER — Animations au scroll
     setTimeout(function(){
       var items = Array.prototype.slice.call(document.querySelectorAll(".visual-grid .visual-item"));
