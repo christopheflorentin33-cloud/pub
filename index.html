@@ -327,6 +327,17 @@
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
   }
+  /* ---------- Filtres communs : accueil et Plus de pub ---------- */
+  .filter-bar{margin:0 0 24px;}
+  .filter-label{margin:0 0 10px;font-size:.85rem;color:var(--ink-soft);}
+  .filter-buttons{display:flex;flex-wrap:wrap;gap:8px;}
+  .filter-button{border:1px solid var(--line);border-radius:999px;padding:9px 15px;background:transparent;color:var(--ink-soft);font-size:.85rem;cursor:pointer;min-height:44px;transition:background .2s,color .2s,border-color .2s;}
+  .filter-button:hover{border-color:var(--cobalt);color:var(--cobalt);}
+  .filter-button[aria-pressed="true"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff;}
+  .filter-status{margin:12px 0 0;font-size:.85rem;color:var(--ink-soft);}
+  .campaign-card[hidden],.visual-item[hidden]{display:none !important;}
+  .filter-empty{max-width:var(--maxw);margin:24px auto;padding:0 24px;color:var(--ink-soft);}
+  @media(max-width:720px){.filter-buttons{gap:6px;}.filter-button{padding:9px 12px;}}
 </style>
 </head>
 <body>
@@ -365,7 +376,7 @@
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // ---------- Données des campagnes avec ratios visuels ----------
   var CAMPAIGNS = [
-    { id:32, slug:"la-compagnie-du-lit", title:"La Compagnie du Lit", sector:"Une douceur que l'on aimerait emporter avec soi.",
+    { id:32, slug:"la-compagnie-du-lit", category:["marques", "services"], title:"La Compagnie du Lit", sector:"Une douceur que l'on aimerait emporter avec soi.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -375,7 +386,7 @@
         {num:6,ratio:"paysage"}
       ]}
   ,
-    { id:30, slug:"clovis", title:"Clovis", sector:"Invitez l'élégance à votre table.",
+    { id:30, slug:"clovis", category:["marques", "alimentation"], title:"Clovis", sector:"Invitez l'élégance à votre table.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -384,7 +395,7 @@
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
       ]},
-    { id:29, slug:"banque-sg", title:"Banque SG", sector:"La banque qui redessine l'avenir.",
+    { id:29, slug:"banque-sg", category:["services"], title:"Banque SG", sector:"La banque qui redessine l'avenir.",
       visuels:[
         {num:1,ratio:"paysage"},
         {num:2,ratio:"paysage"},
@@ -393,7 +404,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"paysage"}
       ]},
-    { id:26, slug:"gaci", title:"GACI", sector:"L'infiniment petit au cœur des grandes innovations.",
+    { id:26, slug:"gaci", category:["industrie"], title:"GACI", sector:"L'infiniment petit au cœur des grandes innovations.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -402,7 +413,7 @@
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
       ]},
-    { id:23, slug:"ikea", title:"IKEA", sector:"Depuis 20 ans, nos millions d'ambassadeurs c'est vous.",
+    { id:23, slug:"ikea", category:["marques"], title:"IKEA", sector:"Depuis 20 ans, nos millions d'ambassadeurs c'est vous.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -411,7 +422,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:22, slug:"krug", title:"Krug", sector:"Un écrin de saveurs.",
+    { id:22, slug:"krug", category:["marques", "luxe", "alimentation"], title:"Krug", sector:"Un écrin de saveurs.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -420,7 +431,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"paysage"}
       ]},
-    { id:21, slug:"dalton-smokehouse", title:"Dalton Smokehouse", sector:"Le Goût de l'authentique.",
+    { id:21, slug:"dalton-smokehouse", category:["marques", "alimentation"], title:"Dalton Smokehouse", sector:"Le Goût de l'authentique.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -429,7 +440,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:19, slug:"roche-bobois", title:"Roche Bobois", sector:"Conçu pour le confort, pensé pour l'émotion.",
+    { id:19, slug:"roche-bobois", category:["marques", "luxe"], title:"Roche Bobois", sector:"Conçu pour le confort, pensé pour l'émotion.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -438,7 +449,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:18, slug:"horace", title:"Horace", sector:"Vivez la vie en bleu.",
+    { id:18, slug:"horace", category:["marques"], title:"Horace", sector:"Vivez la vie en bleu.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -447,7 +458,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:16, slug:"canal-plus", title:"Canal+", sector:"Toujours plus tôt.",
+    { id:16, slug:"canal-plus", category:["marques", "loisirs"], title:"Canal+", sector:"Toujours plus tôt.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -456,7 +467,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:13, slug:"dji-osmo", title:"DJI Osmo", sector:"Votre smartphone mérite le meilleur stabilisateur.",
+    { id:13, slug:"dji-osmo", category:["marques", "loisirs"], title:"DJI Osmo", sector:"Votre smartphone mérite le meilleur stabilisateur.",
       contexte:`L'éditeur de mobilier Trame nous confie sa campagne de lancement pour une collection de pièces modulables.`,
       approche:`Les objets sont photographiés en cours de montage, pièce par pièce, pour révéler leur logique de construction.`,
       resultat:`La collection s'écoule en showroom en moins de trois mois.`,
@@ -469,7 +480,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:12, slug:"royal-champagne", title:"Royal Champagne", sector:"Le bonheur à perte de vigne.",
+    { id:12, slug:"royal-champagne", category:["luxe", "loisirs"], title:"Royal Champagne", sector:"Le bonheur à perte de vigne.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -478,7 +489,7 @@
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
       ]},
-    { id:25, slug:"spritz", title:"Spritz", sector:"Un été aux couleurs Spritz.",
+    { id:25, slug:"spritz", category:["marques", "alimentation"], title:"Spritz", sector:"Un été aux couleurs Spritz.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -487,7 +498,7 @@
         {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:33, slug:"fossier", title:"Fossier", sector:"L'esprit Fossier.",
+    { id:33, slug:"fossier", category:["marques", "alimentation"], title:"Fossier", sector:"L'esprit Fossier.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -496,7 +507,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:36, slug:"fnsea", title:"FNSEA", sector:"On a beau être des agriculteurs.",
+    { id:36, slug:"fnsea", category:["institutionnel", "industrie"], title:"FNSEA", sector:"On a beau être des agriculteurs.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -505,7 +516,7 @@
         {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:8, slug:"champion", title:"Champion", sector:"Intemporel.",
+    { id:8, slug:"champion", category:["marques", "sport"], title:"Champion", sector:"Intemporel.",
       contexte:`Voltec, fournisseur d'électricité verte, nous confie sa campagne d'affichage pour accompagner son changement de nom.`,
       approche:`Une signalétique inspirée des schémas électriques traduit la promesse d'un réseau plus lisible et plus sobre.`,
       resultat:`La marque atteint 52 % de notoriété spontanée un an après le lancement.`,
@@ -518,7 +529,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:7, slug:"club-med", title:"Club Med", sector:"Des vacances sur mesure.",
+    { id:7, slug:"club-med", category:["loisirs"], title:"Club Med", sector:"Des vacances sur mesure.",
       contexte:`La néobanque Mercato nous demande une campagne digitale pour accompagner le lancement de son compte professionnel.`,
       approche:`Le ton se veut direct et sans jargon, porté par des formats courts pensés pour les réseaux professionnels.`,
       resultat:`Les ouvertures de compte progressent de 45 % le mois suivant le lancement.`,
@@ -531,7 +542,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:6, slug:"vans", title:"Vans", sector:"Le reflet de votre personnalité.",
+    { id:6, slug:"vans", category:["marques", "sport"], title:"Vans", sector:"Le reflet de votre personnalité.",
       contexte:`Le musée Kaïros nous confie la campagne d'affichage de son exposition consacrée au temps et à la mémoire.`,
       approche:`La typographie se déforme et se répare d'une affiche à l'autre, comme une pellicule qui rejoue le temps de l'exposition.`,
       resultat:`La fréquentation de l'exposition dépasse de 40 % les objectifs fixés par le musée.`,
@@ -544,7 +555,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:5, slug:"gironde-tourisme", title:"Gironde Tourisme", sector:"REnouveau en Gironde.",
+    { id:5, slug:"gironde-tourisme", category:["institutionnel", "loisirs"], title:"Gironde Tourisme", sector:"REnouveau en Gironde.",
       contexte:`Fjord &amp; Sel, conserverie artisanale, nous confie sa première campagne de packaging pour sa gamme de poissons fumés.`,
       approche:`Chaque boîte raconte le lieu de pêche à travers une illustration gravée, dans un esprit d'atlas maritime.`,
       resultat:`Les ventes en épicerie fine progressent de 31 % l'année du lancement.`,
@@ -557,7 +568,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:4, slug:"lu", title:"LU", sector:"Le biscuit indispensable de la récré !",
+    { id:4, slug:"lu", category:["marques", "alimentation"], title:"LU", sector:"Le biscuit indispensable de la récré !",
       contexte:`La marque de cosmétiques Belline lance une gamme de soins solides et nous confie son identité de marque complète.`,
       approche:`Un système typographique arrondi et une palette poudrée accompagnent chaque produit, du packaging au site.`,
       resultat:`Le taux de reconnaissance de la nouvelle identité atteint 61 % six mois après le lancement.`,
@@ -570,7 +581,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:3, slug:"pommery", title:"Pommery", sector:"La signature d'un moment d'exception.",
+    { id:3, slug:"pommery", category:["marques", "luxe", "alimentation"], title:"Pommery", sector:"La signature d'un moment d'exception.",
       contexte:`Cavallo souhaite repositionner son modèle citadin auprès d'un public plus jeune à travers une campagne 360°.`,
       approche:`La voiture disparaît des visuels au profit des trajets qu'elle rend possibles, racontés à hauteur de passager.`,
       resultat:`Les essais en concession augmentent de 18 % sur le trimestre du lancement.`,
@@ -583,7 +594,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:2, slug:"aquarelle", title:"Aquarelle", sector:"L'art d'offrir des fleurs.",
+    { id:2, slug:"aquarelle", category:["marques", "services"], title:"Aquarelle", sector:"L'art d'offrir des fleurs.",
       contexte:`Pour le lancement de sa veste Nordr Pro, la marque nous confie un film de 30 secondes tourné dans les fjords norvégiens.`,
       approche:`Le montage suit un seul mouvement continu, du sommet jusqu'au fjord, pour restituer la promesse d'une protection sans coupure.`,
       resultat:`Le film dépasse deux millions de vues organiques dans les six semaines suivant sa diffusion.`,
@@ -596,7 +607,7 @@
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
       ]},
-    { id:1, slug:"securite-routiere", title:"Sécurité Routière", sector:"Les Césars de la route.",
+    { id:1, slug:"securite-routiere", category:["institutionnel", "prevention"], title:"Sécurité Routière", sector:"Les Césars de la route.",
       contexte:`Aurèle relance sa ligne de bijoux fins avec une campagne d'affichage 4x3 déployée à Paris et Lyon à l'automne 2023.`,
       approche:`Un système graphique construit autour de la lumière réfléchie, pensé pour capter l'œil en quelques secondes depuis la rue.`,
       resultat:`La notoriété assistée de la marque progresse de 24 % sur la période de campagne.`,
@@ -611,33 +622,94 @@
       ]},
     { id:"fin", slug:"fin", title:"Plus de pub", sector:"Le reste de l'exploration créative.",
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
-        {num:15,ratio:"portrait"},
-        {num:7,ratio:"portrait"},
-        {num:8,ratio:"portrait"},
-        {num:14,ratio:"portrait"},
-        {num:13,ratio:"paysage"},
-        {num:19,ratio:"paysage"},
-        {num:17,ratio:"paysage"},
-        {num:18,ratio:"portrait"},
-        {num:16,ratio:"portrait"},
-        {num:20,ratio:"portrait"},
-        {num:21,ratio:"paysage"},
-        {num:22,ratio:"paysage"},
-        {num:23,ratio:"paysage"},
-        {num:24,ratio:"portrait"},
-        {num:25,ratio:"portrait"},
-        {num:26,ratio:"portrait"},
-        {num:27,ratio:"portrait"}
+        {num:1,ratio:"portrait",tags:[]},
+        {num:2,ratio:"portrait",tags:[]},
+        {num:15,ratio:"portrait",tags:[]},
+        {num:7,ratio:"portrait",tags:[]},
+        {num:8,ratio:"portrait",tags:[]},
+        {num:14,ratio:"portrait",tags:[]},
+        {num:13,ratio:"paysage",tags:[]},
+        {num:19,ratio:"paysage",tags:[]},
+        {num:17,ratio:"paysage",tags:[]},
+        {num:18,ratio:"portrait",tags:[]},
+        {num:16,ratio:"portrait",tags:[]},
+        {num:20,ratio:"portrait",tags:[]},
+        {num:21,ratio:"paysage",tags:[]},
+        {num:22,ratio:"paysage",tags:[]},
+        {num:23,ratio:"paysage",tags:[]},
+        {num:24,ratio:"portrait",tags:[]},
+        {num:25,ratio:"portrait",tags:[]},
+        {num:26,ratio:"portrait",tags:[]},
+        {num:27,ratio:"portrait",tags:[]}
       ]}
   ];
+  // Catégories modifiables dans category:[...] de chaque campagne.
+  // Pour Plus de pub, renseigner tags:["luxe", "marques", ...] sur chaque visuel.
+  // Les tags vides sont volontairement « À classer » : images non fournies.
+  var FILTERS = [
+    {id:"all",label:"Toutes"}, {id:"marques",label:"Marques"},
+    {id:"alimentation",label:"Alimentation"}, {id:"luxe",label:"Luxe"},
+    {id:"institutionnel",label:"Institutionnel"}, {id:"sport",label:"Sport"},
+    {id:"industrie",label:"Industrie / B2B"}, {id:"environnement",label:"Environnement"},
+    {id:"services",label:"Services"}, {id:"loisirs",label:"Loisirs / Tourisme"},
+    {id:"prevention",label:"Prévention"}
+  ];
+  var homeFilter = "all", finFilter = "all";
+  function isFin(c){ return c.id === "fin" || c.slug === "fin"; }
+  function filterBar(scope){
+    var selected = scope === "home" ? homeFilter : finFilter;
+    var options = FILTERS.slice();
+    if(scope === "fin") options.push({id:"a-classer",label:"À classer"});
+    return '<div class="filter-bar" data-filter-scope="' + scope + '">' +
+      '<p class="filter-label">Filtrer par thème</p>' +
+      '<div class="filter-buttons" role="group" aria-label="Filtrer ' +
+      (scope === "home" ? 'les campagnes' : 'les visuels de Plus de pub') + '">' +
+      options.map(function(f){
+        return '<button type="button" class="filter-button" data-filter="' + f.id +
+          '" aria-pressed="' + (selected === f.id) + '" aria-controls="' +
+          (scope === "home" ? 'campaign-grid' : 'visual-grid') + '">' + f.label + '</button>';
+      }).join("") + '</div><p class="filter-status" role="status" aria-live="polite"></p></div>';
+  }
+  function applyFilter(scope, selected){
+    var bar = app.querySelector('[data-filter-scope="' + scope + '"]');
+    if(!bar) return;
+    var count = 0;
+    var items = app.querySelectorAll(scope === "home" ? ".campaign-grid .campaign-card" : ".visual-grid .visual-item");
+    items.forEach(function(item){
+      var tags = (item.dataset.tags || "").split(" ").filter(Boolean);
+      var always = scope === "home" && item.dataset.alwaysVisible === "true";
+      var matches = selected === "all" || tags.indexOf(selected) !== -1 ||
+        (selected === "a-classer" && tags.length === 0);
+      item.hidden = !(always || matches);
+      if(matches && !always) count++;
+    });
+    bar.querySelectorAll("[data-filter]").forEach(function(button){
+      button.setAttribute("aria-pressed", String(button.dataset.filter === selected));
+    });
+    bar.querySelector(".filter-status").textContent = scope === "home" ?
+      count + (count === 1 ? " campagne affichée" : " campagnes affichées") + " · Plus de pub reste accessible." :
+      count + (count === 1 ? " visuel affiché" : " visuels affichés");
+    var empty = app.querySelector(".filter-empty");
+    if(empty) empty.hidden = count !== 0;
+  }
+  function initFilters(scope){
+    var bar = app.querySelector('[data-filter-scope="' + scope + '"]');
+    if(!bar) return;
+    bar.addEventListener("click", function(event){
+      var button = event.target.closest("[data-filter]");
+      if(!button || !bar.contains(button)) return;
+      var selected = button.dataset.filter;
+      if(scope === "home") homeFilter = selected; else finFilter = selected;
+      applyFilter(scope, selected);
+    });
+    applyFilter(scope, scope === "home" ? homeFilter : finFilter);
+  }
   function plainTitle(t){ return t.replace(/&amp;/g,"&").replace(/&times;/g,"×"); }
   // Rendu des images campagnes avec ratio adapté
-  function campaignImageTile(campaignNum, visualNum, ratio){
+  function campaignImageTile(campaignNum, visualNum, ratio, tags){
     var imagePath = "images/campagne_" + campaignNum + "/campagne_" + campaignNum + "_visuel_" + visualNum + ".jpg";
     var ratioClass = ratio || "carre";
-    return '<div class="visual-item ' + ratioClass + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"><span class="zoom-hint"><img src="' + ZOOM_ICON + '" alt=""><span>Cliquer pour agrandir</span></span></div>';
+    return '<div class="visual-item ' + ratioClass + '" data-tags="' + (tags || []).join(' ') + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"><span class="zoom-hint"><img src="' + ZOOM_ICON + '" alt=""><span>Cliquer pour agrandir</span></span></div>';
   }
   // Rendu des vignettes campagnes pour la page d'accueil et le rail
   function campaignVignetteTile(campaignNum){
@@ -703,13 +775,17 @@
   function attachLightboxListeners(){
     var visualItems = document.querySelectorAll(".visual-grid .visual-item");
     if(visualItems.length === 0) return;
-    var visuals = Array.prototype.map.call(visualItems, function(item, idx){
-      var img = item.querySelector("img");
-      return {src: img.src, alt: img.alt, index: idx};
-    });
     visualItems.forEach(function(item, idx){
+      if(item.dataset.lightboxBound) return;
+      item.dataset.lightboxBound = "true";
       item.addEventListener("click", function(){
-        openLightbox(idx, visuals);
+        var visibleItems = Array.prototype.filter.call(document.querySelectorAll(".visual-grid .visual-item"), function(el){ return !el.hidden; });
+        var visibleVisuals = visibleItems.map(function(el){
+          var img = el.querySelector("img");
+          return {src:img.src, alt:img.alt};
+        });
+        var visibleIndex = visibleItems.indexOf(item);
+        if(visibleIndex !== -1) openLightbox(visibleIndex, visibleVisuals);
       });
       var holdTimer = null;
       function startHold(){
@@ -740,7 +816,7 @@
     var cards = CAMPAIGNS.map(function(c, i){
       var num = String(i + 1).padStart(2, "0");
       var campNum = c.id;
-      return '<a class="campaign-card" href="#/campagne/' + c.slug + '">' +
+      return '<a class="campaign-card" data-tags="' + (c.category || []).join(' ') + '" data-always-visible="' + isFin(c) + '" href="#/campagne/' + c.slug + '">' +
         campaignVignetteTile(campNum) +
         '<div class="card-meta"><span class="num">' + num + ' / ' + CAMPAIGNS.length + '</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
       '</a>';
@@ -758,8 +834,10 @@
         '<div class="section-head">' +
           '<h1>Explorations créatives — imaginaires publicitaires</h1>' +
         '</div>' +
-        '<div class="campaign-grid">' + cards + '</div>' +
+        filterBar("home") +
+        '<div id="campaign-grid" class="campaign-grid">' + cards + '</div>' +
       '</section>';
+    initFilters("home");
     initHero(featured.length);
   }
   function initHero(count){
@@ -798,7 +876,7 @@
     var visualsHtml = "";
     // Rendu visuels avec leurs ratios respectifs (ADAPTÉ - NON-TRONQUÉ)
     c.visuels.forEach(function(v){
-      visualsHtml += campaignImageTile(campNum, v.num, v.ratio);
+      visualsHtml += campaignImageTile(campNum, v.num, v.ratio, v.tags);
     });
     var others = CAMPAIGNS.filter(function(x){ return x.slug !== c.slug; });
     var railHtml = others.map(function(o, oIdx){
@@ -812,12 +890,15 @@
         '<div class="idx">' + String(idx + 1).padStart(2, "0") + ' / ' + CAMPAIGNS.length + '</div>' +
         '<h1>' + c.title + '</h1>' +
         '<p class="sector">' + c.sector + '</p>' +
+        (isFin(c) ? filterBar("fin") : "") +
       '</div>' +
-      '<div class="visual-grid">' + visualsHtml + '</div>' +
+      '<div id="visual-grid" class="visual-grid">' + visualsHtml + '</div>' +
+      (isFin(c) ? '<p class="filter-empty" hidden>Aucun visuel pour ce thème. Choisissez un autre filtre ou « Toutes ».</p>' : "") +
       '<div class="rail-section">' +
         '<h2>Les autres campagnes du portfolio</h2>' +
         '<div class="rail">' + railHtml + '</div>' +
       '</div>';
+    if(isFin(c)) initFilters("fin");
     // INTERSECTION OBSERVER — Animations au scroll
     setTimeout(function(){
       var items = Array.prototype.slice.call(document.querySelectorAll(".visual-grid .visual-item"));
