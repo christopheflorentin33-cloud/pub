@@ -8,13 +8,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NQJGW499');</script>
 <!-- End Google Tag Manager -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0R6TD3ZJ7W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0R6TD3ZJ7W');
-</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --ink:#15161b;
@@ -36,116 +30,399 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --font-body:'Work Sans','Helvetica Neue',Arial,sans-serif;
     --maxw:1240px;
   }
+
   *,*::before,*::after{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;}
-  body{<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQJGW499"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--font-body);font-size:16px;line-height:1.5;
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit;}
   button{font:inherit;}
   img,svg{display:block;max-width:100%;}
   *:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px;}
-  /* ---------- Header / Nav ---------- */
-  .site-header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);}
-  .nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;position:relative;}
-  .nav-logo{font-family:var(--font-display);font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;letter-spacing:-0.01em;}
+
+  /* Header et navigation */
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:var(--maxw);
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    position:relative;
+  }
+  .nav-logo{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:1.05rem;
+    color:var(--ink);
+    text-decoration:none;
+    letter-spacing:-0.01em;
+  }
   .nav-links{display:flex;gap:28px;}
-  .nav-links a{font-family:var(--font-body);font-weight:500;font-size:.95rem;color:var(--ink-soft);text-decoration:none;padding:6px 2px;border-bottom:2px solid transparent;}
-  .nav-links a:hover,.nav-links a.active{color:var(--ink);border-bottom-color:var(--cobalt);}
-  .nav-toggle{display:none;background:none;border:1px solid var(--line);padding:6px 10px;font-size:1.1rem;cursor:pointer;}
+  .nav-links a{
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:.95rem;
+    color:var(--ink-soft);
+    text-decoration:none;
+    padding:6px 2px;
+    border-bottom:2px solid transparent;
+  }
+  .nav-links a:hover,.nav-links a.active{
+    color:var(--ink);
+    border-bottom-color:var(--cobalt);
+  }
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--line);
+    padding:6px 10px;
+    font-size:1.1rem;
+    cursor:pointer;
+  }
   @media(max-width:720px){
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);flex-direction:column;gap:14px;padding:16px 24px;border-bottom:1px solid var(--line);}
+    .nav-links{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      background:var(--paper);
+      flex-direction:column;
+      gap:14px;
+      padding:16px 24px;
+      border-bottom:1px solid var(--line);
+    }
     .nav-links.open{display:flex;}
     .nav-toggle{display:block;}
   }
-  /* ---------- Generative art tiles (fallback) ---------- */
-  .art-tile{position:relative;overflow:hidden;width:100%;background:var(--paper-deep);}
-  .art-tile img{width:100%;height:100%;object-fit:cover;display:block;}
-  .art-tile .art-letter{font-family:var(--font-display);font-weight:900;line-height:1;font-size:clamp(2.5rem,10vw,6rem);}
+
+  /* Vignettes */
+  .art-tile{
+    position:relative;
+    overflow:hidden;
+    width:100%;
+    background:var(--paper-deep);
+  }
+  .art-tile img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .art-tile .art-letter{
+    font-family:var(--font-display);
+    font-weight:900;
+    line-height:1;
+    font-size:clamp(2.5rem,10vw,6rem);
+  }
   .tpl-split{background:linear-gradient(135deg,var(--c1) 50%,var(--c2) 50%);}
   .tpl-circle{background:var(--c2);}
-  .tpl-circle::before{content:"";position:absolute;width:140%;aspect-ratio:1;border-radius:50%;background:var(--c1);top:-35%;right:-35%;}
-  .tpl-quad{background:conic-gradient(from 0deg,var(--c1) 0 25%,var(--c2) 0 50%,var(--c1) 0 75%,var(--c2) 0);}
-  .tpl-stripe{background:repeating-linear-gradient(45deg,var(--c1) 0 18px,var(--c2) 18px 36px);}
+  .tpl-circle::before{
+    content:"";
+    position:absolute;
+    width:140%;
+    aspect-ratio:1;
+    border-radius:50%;
+    background:var(--c1);
+    top:-35%;
+    right:-35%;
+  }
+  .tpl-quad{
+    background:conic-gradient(
+      from 0deg,
+      var(--c1) 0 25%,
+      var(--c2) 0 50%,
+      var(--c1) 0 75%,
+      var(--c2) 0
+    );
+  }
+  .tpl-stripe{
+    background:repeating-linear-gradient(
+      45deg,var(--c1) 0 18px,var(--c2) 18px 36px
+    );
+  }
   .tpl-frame{background:var(--c1);}
-  .tpl-frame::before{content:"";position:absolute;inset:14%;border:6px solid var(--c2);}
-  .tpl-type{background:var(--c1);display:flex;align-items:center;justify-content:center;}
+  .tpl-frame::before{
+    content:"";
+    position:absolute;
+    inset:14%;
+    border:6px solid var(--c2);
+  }
+  .tpl-type{
+    background:var(--c1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
   .tpl-type .art-letter{color:var(--c2);}
-  .tpl-grid{background:var(--c2);background-image:radial-gradient(var(--c1) 2px,transparent 2px);background-size:16px 16px;}
-  .tpl-grid::after{content:"";position:absolute;width:45%;height:45%;background:var(--c1);bottom:0;right:0;}
+  .tpl-grid{
+    background:var(--c2);
+    background-image:radial-gradient(var(--c1) 2px,transparent 2px);
+    background-size:16px 16px;
+  }
+  .tpl-grid::after{
+    content:"";
+    position:absolute;
+    width:45%;
+    height:45%;
+    background:var(--c1);
+    bottom:0;
+    right:0;
+  }
   .tpl-arc{background:var(--c2);}
-  .tpl-arc::before{content:"";position:absolute;width:90%;aspect-ratio:1;border-radius:50%;background:var(--c1);bottom:-45%;left:-20%;}
-  .tpl-arc::after{content:"";position:absolute;width:60%;aspect-ratio:1;border-radius:50%;background:var(--c2);border:6px solid var(--c1);top:10%;right:-10%;}
-  /* ---------- Hero slideshow ---------- */
-  .hero{position:relative;width:100%;aspect-ratio:21/9;min-height:320px;overflow:hidden;background:var(--ink);}
-  @media(max-width:720px){.hero{aspect-ratio:21/9;min-height:140px;}}
-  .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;}
+  .tpl-arc::before{
+    content:"";
+    position:absolute;
+    width:90%;
+    aspect-ratio:1;
+    border-radius:50%;
+    background:var(--c1);
+    bottom:-45%;
+    left:-20%;
+  }
+  .tpl-arc::after{
+    content:"";
+    position:absolute;
+    width:60%;
+    aspect-ratio:1;
+    border-radius:50%;
+    background:var(--c2);
+    border:6px solid var(--c1);
+    top:10%;
+    right:-10%;
+  }
+
+  /* Diaporama */
+  .hero{
+    position:relative;
+    width:100%;
+    aspect-ratio:21/9;
+    min-height:320px;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  @media(max-width:720px){
+    .hero{aspect-ratio:21/9;min-height:140px;}
+  }
+  .hero-slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity .6s ease;
+  }
   .hero-slide.active{opacity:1;}
-  .hero-slide .art-tile{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;}
+  .hero-slide .art-tile{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    aspect-ratio:auto;
+  }
   .hero-slide img{width:100%;height:100%;object-fit:cover;}
-  .hero-caption{position:absolute;left:24px;bottom:24px;color:#fff;z-index:2;text-shadow:0 2px 14px rgba(0,0,0,.4);}
+  .hero-caption{
+    position:absolute;
+    left:24px;
+    bottom:24px;
+    color:#fff;
+    z-index:2;
+    text-shadow:0 2px 14px rgba(0,0,0,.4);
+  }
   .hero-caption p{margin:0 0 4px;font-size:.9rem;}
-  .hero-caption h2{margin:0;font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);}
-  .hero-dots{position:absolute;right:24px;bottom:24px;display:flex;gap:8px;z-index:2;}
-  .hero-dots button{width:9px;height:9px;border-radius:50%;border:1.5px solid #fff;background:transparent;padding:0;cursor:pointer;}
+  .hero-caption h2{
+    margin:0;
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(1.6rem,4vw,2.6rem);
+  }
+  .hero-dots{
+    position:absolute;
+    right:24px;
+    bottom:24px;
+    display:flex;
+    gap:8px;
+    z-index:2;
+  }
+  .hero-dots button{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    border:1.5px solid #fff;
+    background:transparent;
+    padding:0;
+    cursor:pointer;
+  }
   .hero-dots button.active{background:#fff;}
   .scroll-hint{
-    position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
-    z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;
-    background:none;border:none;padding:8px;cursor:pointer;
-    color:#fff;opacity:.9;transition:opacity .3s ease;
+    position:absolute;
+    left:50%;
+    bottom:18px;
+    transform:translateX(-50%);
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    background:none;
+    border:none;
+    padding:8px;
+    cursor:pointer;
+    color:#fff;
+    opacity:.9;
+    transition:opacity .3s ease;
   }
   .scroll-hint:hover{opacity:1;}
   .scroll-hint.is-hidden{opacity:0;pointer-events:none;}
   .scroll-hint-mouse{
-    width:24px;height:38px;border:2px solid rgba(255,255,255,.85);border-radius:14px;position:relative;
+    width:24px;
+    height:38px;
+    border:2px solid rgba(255,255,255,.85);
+    border-radius:14px;
+    position:relative;
   }
   .scroll-hint-wheel{
-    position:absolute;top:6px;left:50%;transform:translateX(-50%);
-    width:4px;height:8px;border-radius:2px;background:#fff;
+    position:absolute;
+    top:6px;
+    left:50%;
+    transform:translateX(-50%);
+    width:4px;
+    height:8px;
+    border-radius:2px;
+    background:#fff;
     animation:scrollHintWheel 1.6s ease-in-out infinite;
   }
-  .scroll-hint-label{font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.4);}
+  .scroll-hint-label{
+    font-size:.7rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    text-shadow:0 1px 6px rgba(0,0,0,.4);
+  }
   @keyframes scrollHintWheel{
     0%{opacity:1;top:6px;}
     70%{opacity:0;top:20px;}
     100%{opacity:0;top:6px;}
   }
-  /* ---------- Sections ---------- */
-  .section{max-width:var(--maxw);margin:0 auto;padding:56px 24px;}
-  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap;}
-  .section-head h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0;}
+
+  /* Sections */
+  .section{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:56px 24px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:24px;
+    flex-wrap:wrap;
+  }
+  .section-head h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(1.6rem,3.2vw,2.2rem);
+    margin:0;
+  }
   .section-head p{margin:0;color:var(--ink-soft);font-size:.95rem;}
-  /* ---------- Campaign grid ---------- */
-  .campaign-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
-  @media(min-width:640px){.campaign-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(min-width:900px){.campaign-grid{grid-template-columns:repeat(3,1fr);}}
-  @media(min-width:1200px){.campaign-grid{grid-template-columns:repeat(3,1fr);}}
-  .campaign-card{background:var(--paper);text-decoration:none;color:inherit;display:block;}
-  .campaign-card .art-tile{transition:transform .35s ease;aspect-ratio:4/3;}
+
+  /* Grille des campagnes */
+  .campaign-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media(min-width:640px){
+    .campaign-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(min-width:900px){
+    .campaign-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  @media(min-width:1200px){
+    .campaign-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  .campaign-card{
+    background:var(--paper);
+    text-decoration:none;
+    color:inherit;
+    display:block;
+  }
+  .campaign-card .art-tile{
+    transition:transform .35s ease;
+    aspect-ratio:4/3;
+  }
   .campaign-card:hover .art-tile{transform:scale(1.03);}
   .campaign-card .card-meta{padding:12px 14px 16px;}
-  .campaign-card .card-meta .num{font-size:.75rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
-  .campaign-card .card-meta h3{margin:4px 0 2px;font-family:var(--font-display);font-weight:700;font-size:1.05rem;}
-  .campaign-card .card-meta p{margin:0;font-size:.85rem;color:var(--ink-soft);}
-  /* ---------- Detail page ---------- */
-  .detail-head{padding:40px 24px 24px;max-width:var(--maxw);margin:0 auto;}
-  .back-link{display:inline-block;margin-bottom:20px;font-size:.9rem;color:var(--ink-soft);text-decoration:none;}
+  .campaign-card .card-meta .num{
+    font-size:.75rem;
+    color:var(--ink-soft);
+    font-variant-numeric:tabular-nums;
+  }
+  .campaign-card .card-meta h3{
+    margin:4px 0 2px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.05rem;
+  }
+  .campaign-card .card-meta p{
+    margin:0;
+    font-size:.85rem;
+    color:var(--ink-soft);
+  }
+
+  /* Détail d'une campagne */
+  .detail-head{
+    padding:40px 24px 24px;
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+  .back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    font-size:.9rem;
+    color:var(--ink-soft);
+    text-decoration:none;
+  }
   .back-link:hover{color:var(--ink);}
-  .detail-head .idx{font-size:.85rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
-  .detail-head h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2.2rem,6vw,4rem);margin:6px 0 4px;letter-spacing:-0.01em;}
-  .detail-head .sector{font-size:1rem;color:var(--ink-soft);margin:0 0 20px;}
+  .detail-head .idx{
+    font-size:.85rem;
+    color:var(--ink-soft);
+    font-variant-numeric:tabular-nums;
+  }
+  .detail-head h1{
+    font-family:var(--font-display);
+    font-weight:900;
+    font-size:clamp(2.2rem,6vw,4rem);
+    margin:6px 0 4px;
+    letter-spacing:-0.01em;
+  }
+  .detail-head .sector{
+    font-size:1rem;
+    color:var(--ink-soft);
+    margin:0 0 20px;
+  }
   .detail-copy{display:grid;gap:16px;max-width:760px;}
   .detail-copy p{margin:0;font-size:1rem;line-height:1.65;}
-  /* ---------- Visual Grid — Grille harmonieuse 2-3 colonnes ---------- */
+
+  /* Grille des visuels */
   .visual-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:20px;
     max-width:var(--maxw);
     margin:32px auto 0;
@@ -155,19 +432,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   @media(min-width:768px){
     .visual-grid{
-      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
       gap:24px;
       padding:0 32px;
     }
   }
   @media(min-width:1200px){
     .visual-grid{
-      grid-template-columns:repeat(3, 1fr);
+      grid-template-columns:repeat(3,1fr);
       gap:28px;
       padding:0 24px;
     }
   }
-  /* Visuels qui remplissent leurs cellules */
   .visual-item{
     position:relative;
     overflow:hidden;
@@ -177,19 +453,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     background:var(--paper);
     opacity:0;
     transform:translateY(24px);
-    transition:opacity .6s ease, transform .6s ease;
+    transition:opacity .6s ease,transform .6s ease;
   }
-  /* Animation au scroll (ajoutée par JS) */
-  .visual-item.visible{
-    opacity:1;
-    transform:translateY(0);
-  }
-  /* Aspect-ratio adaptables — sans padding */
+  .visual-item.visible{opacity:1;transform:translateY(0);}
   .visual-item.portrait{aspect-ratio:2/3;min-height:420px;}
   .visual-item.paysage{aspect-ratio:4/3;min-height:300px;}
   .visual-item.carre{aspect-ratio:1/1;min-height:320px;}
   .visual-item.vedette{aspect-ratio:2/1;min-height:360px;}
-  /* Images qui remplissent complètement la cellule intérieure */
   .visual-item img{
     width:100%;
     height:100%;
@@ -197,20 +467,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     object-position:center;
     display:block;
   }
-  /* Mobile — chaque visuel épouse les proportions réelles de son image,
-     quelle que soit sa classe (portrait/paysage/carré/vedette) : plus de
-     vide dû à un cadre qui ne correspond pas au format réel du fichier */
   @media(max-width:767px){
-    .visual-grid .visual-item{aspect-ratio:auto !important;min-height:0 !important;}
-    .visual-grid .visual-item img{height:auto !important;object-fit:cover;}
+    .visual-grid .visual-item{
+      aspect-ratio:auto !important;
+      min-height:0 !important;
+    }
+    .visual-grid .visual-item img{
+      height:auto !important;
+      object-fit:cover;
+    }
   }
-  .rail-section{max-width:var(--maxw);margin:56px auto 0;padding:0 24px 56px;}
-  .rail-section h2{font-family:var(--font-display);font-weight:800;font-size:1.3rem;margin:0 0 16px;}
-  .rail{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;}
-  .rail-item{flex:0 0 160px;text-decoration:none;color:inherit;scroll-snap-align:start;}
+
+  /* Autres campagnes */
+  .rail-section{
+    max-width:var(--maxw);
+    margin:56px auto 0;
+    padding:0 24px 56px;
+  }
+  .rail-section h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:1.3rem;
+    margin:0 0 16px;
+  }
+  .rail{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding-bottom:8px;
+    scroll-snap-type:x proximity;
+  }
+  .rail-item{
+    flex:0 0 160px;
+    text-decoration:none;
+    color:inherit;
+    scroll-snap-align:start;
+  }
   .rail-item .art-tile{aspect-ratio:4/3;}
   .rail-item p{margin:8px 0 0;font-size:.85rem;font-weight:600;}
-  /* ---------- Lightbox ---------- */
+
+  /* Lightbox */
   .lightbox-overlay{
     display:none;
     position:fixed;
@@ -259,9 +555,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     align-items:center;
     justify-content:center;
   }
-  .lightbox-close:hover{
-    color:var(--yellow);
-  }
+  .lightbox-close:hover{color:var(--yellow);}
   .lightbox-nav{
     position:absolute;
     top:50%;
@@ -278,15 +572,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     justify-content:center;
     transition:background .3s ease;
   }
-  .lightbox-nav:hover{
-    background:rgba(255,255,255,.2);
-  }
-  .lightbox-prev{
-    left:20px;
-  }
-  .lightbox-next{
-    right:20px;
-  }
+  .lightbox-nav:hover{background:rgba(255,255,255,.2);}
+  .lightbox-prev{left:20px;}
+  .lightbox-next{right:20px;}
   .lightbox-counter{
     position:absolute;
     bottom:20px;
@@ -298,93 +586,205 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     padding:8px 16px;
     border-radius:4px;
   }
-  .visual-item{
-    cursor:pointer;
-    -webkit-touch-callout:none;
-  }
+  .visual-item{cursor:pointer;-webkit-touch-callout:none;}
   .zoom-hint{
-    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    display:flex;flex-direction:column;align-items:center;gap:6px;
-    background:rgba(21,22,27,.72);color:#fff;font-family:var(--font-body);
-    font-size:.65rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
-    padding:14px 18px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.25);
-    opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:2;white-space:nowrap;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    background:rgba(21,22,27,.72);
+    color:#fff;
+    font-family:var(--font-body);
+    font-size:.65rem;
+    font-weight:600;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:14px 18px;
+    border-radius:8px;
+    box-shadow:0 4px 18px rgba(0,0,0,.25);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+    z-index:2;
+    white-space:nowrap;
   }
   .zoom-hint img{width:22px;height:22px;display:block;}
   .visual-item.hint-visible .zoom-hint{opacity:1;}
-  /* ---------- Profil ---------- */
-  .profile-wrap{max-width:var(--maxw);margin:0 auto;padding:48px 24px 64px;display:grid;gap:40px;grid-template-columns:1fr;}
-  @media(min-width:900px){.profile-wrap{grid-template-columns:380px 1fr;}}
+
+  /* Profil */
+  .profile-wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:48px 24px 64px;
+    display:grid;
+    gap:40px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:900px){
+    .profile-wrap{grid-template-columns:380px 1fr;}
+  }
   .profile-portrait .art-tile{aspect-ratio:3/2;}
-  .profile-body h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,5vw,3rem);margin:0 0 4px;}
-  .profile-body .role{color:var(--ink-soft);margin:0 0 20px;font-size:1.05rem;}
+  .profile-body h1{
+    font-family:var(--font-display);
+    font-weight:900;
+    font-size:clamp(2rem,5vw,3rem);
+    margin:0 0 4px;
+  }
+  .profile-body .role{
+    color:var(--ink-soft);
+    margin:0 0 20px;
+    font-size:1.05rem;
+  }
   .profile-body p.bio{max-width:640px;margin:0 0 32px;line-height:1.7;}
   .profile-columns{display:grid;gap:32px;grid-template-columns:1fr;}
-  @media(min-width:640px){.profile-columns{grid-template-columns:1fr 1fr;}}
-  .profile-columns h3{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin:0 0 12px;}
-  .profile-columns ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
-  .profile-columns li{border-bottom:1px solid var(--line);padding-bottom:10px;font-size:.95rem;}
-  .profile-columns li .year{color:var(--ink-soft);font-size:.85rem;display:block;margin-bottom:2px;}
+  @media(min-width:640px){
+    .profile-columns{grid-template-columns:1fr 1fr;}
+  }
+  .profile-columns h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.05rem;
+    margin:0 0 12px;
+  }
+  .profile-columns ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:10px;
+  }
+  .profile-columns li{
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;
+    font-size:.95rem;
+  }
+  .profile-columns li .year{
+    color:var(--ink-soft);
+    font-size:.85rem;
+    display:block;
+    margin-bottom:2px;
+  }
   .profile-contact{margin-top:32px;}
-  .profile-contact h3{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin:0 0 12px;}
-  .profile-contact p{margin:0 0 6px;font-size:.95rem;color:var(--ink-soft);}
-  /* ---------- Footer ---------- */
-  .site-footer{border-top:1px solid var(--line);padding:28px 24px;max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .profile-contact h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.05rem;
+    margin:0 0 12px;
+  }
+  .profile-contact p{
+    margin:0 0 6px;
+    font-size:.95rem;
+    color:var(--ink-soft);
+  }
+
+  /* Pied de page */
+  .site-footer{
+    border-top:1px solid var(--line);
+    padding:28px 24px;
+    max-width:var(--maxw);
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
   .site-footer p{margin:0;font-size:.85rem;color:var(--ink-soft);}
-  .site-footer a{color:var(--ink-soft);font-size:.85rem;text-decoration:none;}
+  .site-footer a{
+    color:var(--ink-soft);
+    font-size:.85rem;
+    text-decoration:none;
+  }
   .site-footer a:hover{color:var(--ink);}
-  @media (prefers-reduced-motion: reduce){
+  @media(prefers-reduced-motion:reduce){
     *{animation:none !important;transition:none !important;}
   }
-  /* ---------- Filtres des campagnes sur l’accueil ---------- */
+
+  /* Filtres */
   .filter-bar{margin:0 0 24px;}
   .filter-label{margin:0 0 10px;font-size:.85rem;color:var(--ink-soft);}
   .filter-buttons{display:flex;flex-wrap:wrap;gap:8px;}
-  .filter-button{border:1px solid var(--line);border-radius:999px;padding:9px 15px;background:transparent;color:var(--ink-soft);font-size:.85rem;cursor:pointer;min-height:44px;transition:background .2s,color .2s,border-color .2s;}
+  .filter-button{
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:9px 15px;
+    background:transparent;
+    color:var(--ink-soft);
+    font-size:.85rem;
+    cursor:pointer;
+    min-height:44px;
+    transition:background .2s,color .2s,border-color .2s;
+  }
   .filter-button:hover{border-color:var(--cobalt);color:var(--cobalt);}
-  .filter-button[aria-pressed="true"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff;}
+  .filter-button[aria-pressed="true"]{
+    background:var(--cobalt);
+    border-color:var(--cobalt);
+    color:#fff;
+  }
   .filter-status{margin:12px 0 0;font-size:.85rem;color:var(--ink-soft);}
   .campaign-card[hidden],.visual-item[hidden]{display:none !important;}
-  @media(max-width:720px){.filter-buttons{gap:6px;}.filter-button{padding:9px 12px;}}
+  @media(max-width:720px){
+    .filter-buttons{gap:6px;}
+    .filter-button{padding:9px 12px;}
+  }
 </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="#/" class="nav-logo">Christophe Florentin</a>
-      <div class="nav-links">
-        <a href="#/" data-route="home">Mes campagnes</a>
-        <a href="#/profil" data-route="profil">Mon profil</a>
-        <a href="mailto:christopheflorentin33@gmail.com">Me contacter</a>
-      </div>
-      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
-    </nav>
-  </header>
-  <main id="app"></main>
-  <footer class="site-footer">
-    <p>Christophe Florentin — conception publicitaire &amp; direction créative.</p>
-    <a href="mailto:christopheflorentin33@gmail.com">Me contacter</a>
-  </footer>
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox-overlay">
-    <div class="lightbox-content">
-      <img id="lightbox-image" class="lightbox-image" src="" alt="">
-      <button id="lightbox-close" class="lightbox-close">&times;</button>
-      <button id="lightbox-prev" class="lightbox-nav lightbox-prev">‹</button>
-      <button id="lightbox-next" class="lightbox-nav lightbox-next">›</button>
-      <div id="lightbox-counter" class="lightbox-counter"></div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQJGW499"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="#/" class="nav-logo">Christophe Florentin</a>
+    <div class="nav-links">
+      <a href="#/" data-route="home">Mes campagnes</a>
+      <a href="#/profil" data-route="profil">Mon profil</a>
+      <a href="mailto:christopheflorentin33@gmail.com">Me contacter</a>
     </div>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main id="app"></main>
+
+<footer class="site-footer">
+  <p>Christophe Florentin — conception publicitaire &amp; direction créative.</p>
+  <a href="mailto:christopheflorentin33@gmail.com">Me contacter</a>
+</footer>
+
+<div id="lightbox" class="lightbox-overlay">
+  <div class="lightbox-content">
+    <img id="lightbox-image" class="lightbox-image" src="" alt="">
+    <button id="lightbox-close" class="lightbox-close">&times;</button>
+    <button id="lightbox-prev" class="lightbox-nav lightbox-prev">‹</button>
+    <button id="lightbox-next" class="lightbox-nav lightbox-next">›</button>
+    <div id="lightbox-counter" class="lightbox-counter"></div>
   </div>
+</div>
+
 <script>
 (function(){
   "use strict";
+
   var INK = "#15161b";
   var YELLOW = "#f3cc00";
   var ZOOM_ICON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAH8UlEQVR4nO3dy5KbMBAFUEjl/3+ZLDKuED8BC9TqPmebyoyQDPdKuJJpAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiliWZek9BuLweaCi370HAL2sH/rzPM89x8L1hD7VeehR1rMAUATys+7wlxMAWHEqkJPdPjzygKOsPaGgDIxn6/paW6rywae0vTtDYRHbkZ2+NaUqrwBgB68IYnLED/t5gFFei/BQBq5n3eA7TgCggVsYCZRz2elDOx5WlHdmqCgExy3LsszzPJ+1PtaG6twAMJ2/sxQ2+1yx07cmVOcVAFzAlwe3ccQP1/EggqlP8CgCf5l76MNNAD967j6rBVLvnX61+YZn3ATwo3co3WQOpwhznHl+YQ83AqxECKibLEEVaU6nKc+8wrd8CRCCGvmLg9FCH3j0q/cAgPdGC/9pijvmqOOCHhQAWIkWENHGs8fIY4cKFAAIKkOARrqGSGOBCBQACChTWGW6FshEAYA7vQOr9+8/Q8ZrgtEpABCMb9C3p4DAIwUAnugdGNlKQLbrgQwUAAgqS2hmuQ7IRgGAwEYPzwjj732aA1EpAPCC4AAyUwAguAi76CMijFuJg9cUAAAoSAGAN6LsICPspvcYbbxQkQIApBSlvEFUCgB8IEiAjBQAIB2lDT5TAACgIAUANrCjBLJRAIBUlDXYRgGAAYwWaqONFypSAGAjoRafNYLtFAAIbtRQG3XcUIUCADu8CzWBB4xEAYAGbuHfugSMXirOmI9XP3P0uYKrKQDwpfvgaRVEWQLtjPnIMjfQkwIAO20Jom8DKlvAnTEfCgF8x00DByzLsmwNnT3/M16FIGs9H3vWAvjHTQMXeRd8FQPMfAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxc29BwAjWpZlmed51/2zLMvy6s/2/qwMWs3HkbUAFAA45BZeW4LnXdDdqxBkLedjzzoA/3PTwE73AfYqfPYE3b2MgdZ6PrauA/Dcr94DgNE9C7Zvwq7F34+m9Xxkmx/oQQGABtaB1CqcsoRc6/l49fOyzBdcxZEZ7NAjZEY+2r56vkaeK7iaEwAAKEgBgI16HTGPerTdY9yjzhX0oAAAQEEKAAxgtJ3taOOFihQA2ECgjcNawTYKAAAUpAAA6TgFgM8UAPhAmAAZKQAAUJACAKTk5AbeUwDgjSghMto/cTvaeKEiBQBeiBL+HGcN4TUFAIIbdTc96rihCgUAAApSACCw0XfREcbvNQA8pwDAExFCI0J4tpDlOiAbBQACyhaa2a4HMlAAgNP1PlHp/fshIgUA7kQIiwhjaCXTtUAmCgAElSE4I11DpLFABAoABDZyaI08dqhAAYCViKEVcUyfjDhmqMY3c2ElUnBl+eZ8pDmdpjzzCt9yI8CPKEGVNaDML8TiRoAfPQOqWij1LgPV5hue+d17AFBZ1SC6XXfvIgCVlXz4wL0rg6hq6H9iDeBabgKYrgkfobOd9YDzeQUAJxIyx3hFAOfzcKK8M0JG8LdnnaAtJwDQiDA5l1MBaEsBgC8J/mut51sZgOM8uCjtaIAI/Vi+KQLWkqqcAMAOwiImpwKwn4cZZW0NCqE/ri1rbH2pygefsj6Fg2DIw1rDI68AYEUQ5OQVATzysKOk+xAQ/PX4DAAUZBfIms8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFPUHu+Ag6ZUKcekAAAAASUVORK5CYII=";
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // ---------- Données des campagnes avec ratios visuels ----------
+
   var CAMPAIGNS = [
-    { id:32, slug:"la-compagnie-du-lit", category:["marques", "services"], title:"La Compagnie du Lit", sector:"Une douceur que l'on aimerait emporter avec soi.",
+    {
+      id:32,
+      slug:"la-compagnie-du-lit",
+      category:["marques","services"],
+      title:"La Compagnie du Lit",
+      sector:"Une douceur que l'on aimerait emporter avec soi.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -392,9 +792,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"paysage"}
-      ]}
-  ,
-    { id:30, slug:"clovis", category:["marques", "alimentation"], title:"Clovis", sector:"Invitez l'élégance à votre table.",
+      ]
+    },
+    {
+      id:30,
+      slug:"clovis",
+      category:["marques","alimentation"],
+      title:"Clovis",
+      sector:"Invitez l'élégance à votre table.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -402,8 +807,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
-      ]},
-    { id:29, slug:"banque-sg", category:["services"], title:"Banque SG", sector:"La banque qui redessine l'avenir.",
+      ]
+    },
+    {
+      id:29,
+      slug:"banque-sg",
+      category:["services"],
+      title:"Banque SG",
+      sector:"La banque qui redessine l'avenir.",
       visuels:[
         {num:1,ratio:"paysage"},
         {num:2,ratio:"paysage"},
@@ -411,8 +822,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"paysage"}
-      ]},
-    { id:26, slug:"gaci", category:["industrie"], title:"GACI", sector:"L'infiniment petit au cœur des grandes innovations.",
+      ]
+    },
+    {
+      id:26,
+      slug:"gaci",
+      category:["industrie"],
+      title:"GACI",
+      sector:"L'infiniment petit au cœur des grandes innovations.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -420,17 +837,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
-      ]},
-    { id:23, slug:"ikea", category:["marques"], title:"IKEA", sector:"Depuis 20 ans, nos millions d'ambassadeurs c'est vous.",
+      ]
+    },
+    {
+      id:23,
+      slug:"apple-inter-actif",
+      category:["marques"],
+      title:"Apple / Inter-Actif",
+      sector:"Pour vous, nous voyons toujours plus grand.",
       visuels:[
-        {num:1,ratio:"portrait"},
-        {num:2,ratio:"portrait"},
+        {num:1,ratio:"paysage"},
+        {num:2,ratio:"paysage"},
         {num:3,ratio:"portrait"},
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:22, slug:"krug", category:["marques", "luxe", "alimentation"], title:"Krug", sector:"Un écrin de saveurs.",
+      ]
+    },
+    {
+      id:22,
+      slug:"krug",
+      category:["marques","luxe","alimentation"],
+      title:"Krug",
+      sector:"Un écrin de saveurs.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -438,8 +867,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"paysage"}
-      ]},
-    { id:21, slug:"dalton-smokehouse", category:["marques", "alimentation"], title:"Dalton Smokehouse", sector:"Le Goût de l'authentique.",
+      ]
+    },
+    {
+      id:21,
+      slug:"dalton-smokehouse",
+      category:["marques","alimentation"],
+      title:"Dalton Smokehouse",
+      sector:"Le Goût de l'authentique.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -447,8 +882,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:19, slug:"roche-bobois", category:["marques", "luxe"], title:"Roche Bobois", sector:"Conçu pour le confort, pensé pour l'émotion.",
+      ]
+    },
+    {
+      id:19,
+      slug:"roche-bobois",
+      category:["marques","luxe"],
+      title:"Roche Bobois",
+      sector:"Conçu pour le confort, pensé pour l'émotion.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -456,8 +897,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:18, slug:"horace", category:["marques"], title:"Horace", sector:"Vivez la vie en bleu.",
+      ]
+    },
+    {
+      id:18,
+      slug:"horace",
+      category:["marques"],
+      title:"Horace",
+      sector:"Vivez la vie en bleu.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -465,8 +912,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:16, slug:"canal-plus", category:["marques", "loisirs"], title:"Canal+", sector:"Toujours plus tôt.",
+      ]
+    },
+    {
+      id:16,
+      slug:"canal-plus",
+      category:["marques","loisirs"],
+      title:"Canal+",
+      sector:"Toujours plus tôt.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -474,8 +927,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:13, slug:"dji-osmo", category:["marques", "loisirs"], title:"DJI Osmo", sector:"Votre smartphone mérite le meilleur stabilisateur.",
+      ]
+    },
+    {
+      id:13,
+      slug:"dji-osmo",
+      category:["marques","loisirs"],
+      title:"DJI Osmo",
+      sector:"Votre smartphone mérite le meilleur stabilisateur.",
       contexte:`L'éditeur de mobilier Trame nous confie sa campagne de lancement pour une collection de pièces modulables.`,
       approche:`Les objets sont photographiés en cours de montage, pièce par pièce, pour révéler leur logique de construction.`,
       resultat:`La collection s'écoule en showroom en moins de trois mois.`,
@@ -487,8 +946,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:12, slug:"royal-champagne", category:["luxe", "loisirs"], title:"Royal Champagne", sector:"Le bonheur à perte de vigne.",
+      ]
+    },
+    {
+      id:12,
+      slug:"royal-champagne",
+      category:["luxe","loisirs"],
+      title:"Royal Champagne",
+      sector:"Le bonheur à perte de vigne.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -496,8 +961,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
-      ]},
-    { id:25, slug:"spritz", category:["marques", "alimentation"], title:"Spritz", sector:"Un été aux couleurs Spritz.",
+      ]
+    },
+    {
+      id:25,
+      slug:"spritz",
+      category:["marques","alimentation"],
+      title:"Spritz",
+      sector:"Un été aux couleurs Spritz.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -505,8 +976,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:33, slug:"fossier", category:["marques", "alimentation"], title:"Fossier", sector:"L'esprit Fossier.",
+      ]
+    },
+    {
+      id:33,
+      slug:"fossier",
+      category:["marques","alimentation"],
+      title:"Fossier",
+      sector:"L'esprit Fossier.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -514,8 +991,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:36, slug:"fnsea", category:["institutionnel", "industrie"], title:"FNSEA", sector:"On a beau être des agriculteurs.",
+      ]
+    },
+    {
+      id:36,
+      slug:"fnsea",
+      category:["institutionnel","industrie"],
+      title:"FNSEA",
+      sector:"On a beau être des agriculteurs.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -523,8 +1006,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"paysage"},
         {num:5,ratio:"paysage"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:8, slug:"champion", category:["marques", "sport"], title:"Champion", sector:"Intemporel.",
+      ]
+    },
+    {
+      id:8,
+      slug:"champion",
+      category:["marques","sport"],
+      title:"Champion",
+      sector:"Intemporel.",
       contexte:`Voltec, fournisseur d'électricité verte, nous confie sa campagne d'affichage pour accompagner son changement de nom.`,
       approche:`Une signalétique inspirée des schémas électriques traduit la promesse d'un réseau plus lisible et plus sobre.`,
       resultat:`La marque atteint 52 % de notoriété spontanée un an après le lancement.`,
@@ -536,8 +1025,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:7, slug:"club-med", category:["loisirs"], title:"Club Med", sector:"Des vacances sur mesure.",
+      ]
+    },
+    {
+      id:7,
+      slug:"club-med",
+      category:["loisirs"],
+      title:"Club Med",
+      sector:"Des vacances sur mesure.",
       contexte:`La néobanque Mercato nous demande une campagne digitale pour accompagner le lancement de son compte professionnel.`,
       approche:`Le ton se veut direct et sans jargon, porté par des formats courts pensés pour les réseaux professionnels.`,
       resultat:`Les ouvertures de compte progressent de 45 % le mois suivant le lancement.`,
@@ -549,8 +1044,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:6, slug:"vans", category:["marques", "sport"], title:"Vans", sector:"Le reflet de votre personnalité.",
+      ]
+    },
+    {
+      id:6,
+      slug:"vans",
+      category:["marques","sport"],
+      title:"Vans",
+      sector:"Le reflet de votre personnalité.",
       contexte:`Le musée Kaïros nous confie la campagne d'affichage de son exposition consacrée au temps et à la mémoire.`,
       approche:`La typographie se déforme et se répare d'une affiche à l'autre, comme une pellicule qui rejoue le temps de l'exposition.`,
       resultat:`La fréquentation de l'exposition dépasse de 40 % les objectifs fixés par le musée.`,
@@ -562,8 +1063,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:5, slug:"gironde-tourisme", category:["institutionnel", "loisirs"], title:"Gironde Tourisme", sector:"REnouveau en Gironde.",
+      ]
+    },
+    {
+      id:5,
+      slug:"gironde-tourisme",
+      category:["institutionnel","loisirs"],
+      title:"Gironde Tourisme",
+      sector:"REnouveau en Gironde.",
       contexte:`Fjord &amp; Sel, conserverie artisanale, nous confie sa première campagne de packaging pour sa gamme de poissons fumés.`,
       approche:`Chaque boîte raconte le lieu de pêche à travers une illustration gravée, dans un esprit d'atlas maritime.`,
       resultat:`Les ventes en épicerie fine progressent de 31 % l'année du lancement.`,
@@ -575,8 +1082,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:4, slug:"lu", category:["marques", "alimentation"], title:"LU", sector:"Le biscuit indispensable de la récré !",
+      ]
+    },
+    {
+      id:4,
+      slug:"lu",
+      category:["marques","alimentation"],
+      title:"LU",
+      sector:"Le biscuit indispensable de la récré !",
       contexte:`La marque de cosmétiques Belline lance une gamme de soins solides et nous confie son identité de marque complète.`,
       approche:`Un système typographique arrondi et une palette poudrée accompagnent chaque produit, du packaging au site.`,
       resultat:`Le taux de reconnaissance de la nouvelle identité atteint 61 % six mois après le lancement.`,
@@ -588,8 +1101,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:3, slug:"pommery", category:["marques", "luxe", "alimentation"], title:"Pommery", sector:"La signature d'un moment d'exception.",
+      ]
+    },
+    {
+      id:3,
+      slug:"pommery",
+      category:["marques","luxe","alimentation"],
+      title:"Pommery",
+      sector:"La signature d'un moment d'exception.",
       contexte:`Cavallo souhaite repositionner son modèle citadin auprès d'un public plus jeune à travers une campagne 360°.`,
       approche:`La voiture disparaît des visuels au profit des trajets qu'elle rend possibles, racontés à hauteur de passager.`,
       resultat:`Les essais en concession augmentent de 18 % sur le trimestre du lancement.`,
@@ -601,8 +1120,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:2, slug:"aquarelle", category:["marques", "services"], title:"Aquarelle", sector:"L'art d'offrir des fleurs.",
+      ]
+    },
+    {
+      id:2,
+      slug:"aquarelle",
+      category:["marques","services"],
+      title:"Aquarelle",
+      sector:"L'art d'offrir des fleurs.",
       contexte:`Pour le lancement de sa veste Nordr Pro, la marque nous confie un film de 30 secondes tourné dans les fjords norvégiens.`,
       approche:`Le montage suit un seul mouvement continu, du sommet jusqu'au fjord, pour restituer la promesse d'une protection sans coupure.`,
       resultat:`Le film dépasse deux millions de vues organiques dans les six semaines suivant sa diffusion.`,
@@ -614,8 +1139,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:1, slug:"securite-routiere", category:["institutionnel", "prevention"], title:"Sécurité Routière", sector:"Les Césars de la route.",
+      ]
+    },
+    {
+      id:1,
+      slug:"securite-routiere",
+      category:["institutionnel","prevention"],
+      title:"Sécurité Routière",
+      sector:"Les Césars de la route.",
       contexte:`Aurèle relance sa ligne de bijoux fins avec une campagne d'affichage 4x3 déployée à Paris et Lyon à l'automne 2023.`,
       approche:`Un système graphique construit autour de la lumière réfléchie, pensé pour capter l'œil en quelques secondes depuis la rue.`,
       resultat:`La notoriété assistée de la marque progresse de 24 % sur la période de campagne.`,
@@ -627,8 +1158,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:4,ratio:"portrait"},
         {num:5,ratio:"portrait"},
         {num:6,ratio:"portrait"}
-      ]},
-    { id:"fin", slug:"fin", title:"Plus de pub", sector:"Le reste de l'exploration créative.",
+      ]
+    },
+    {
+      id:"fin",
+      slug:"fin",
+      title:"Plus de pub",
+      sector:"Le reste de l'exploration créative.",
       visuels:[
         {num:1,ratio:"portrait"},
         {num:2,ratio:"portrait"},
@@ -649,86 +1185,130 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:25,ratio:"portrait"},
         {num:26,ratio:"portrait"},
         {num:27,ratio:"portrait"}
-      ]}
+      ]
+    }
   ];
-  // Catégories modifiables dans category:[...] de chaque campagne.
-  // Plus de pub reste toujours visible ; ses visuels ne sont pas filtrés.
+
   var FILTERS = [
-    {id:"all",label:"Toutes"}, {id:"marques",label:"Marques"},
-    {id:"alimentation",label:"Alimentation"}, {id:"luxe",label:"Luxe"},
-    {id:"institutionnel",label:"Institutionnel"}, {id:"sport",label:"Sport"},
-    {id:"industrie",label:"Industrie / B2B"}, {id:"environnement",label:"Environnement"},
-    {id:"services",label:"Services"}, {id:"loisirs",label:"Loisirs / Tourisme"},
+    {id:"all",label:"Toutes"},
+    {id:"marques",label:"Marques"},
+    {id:"alimentation",label:"Alimentation"},
+    {id:"luxe",label:"Luxe"},
+    {id:"institutionnel",label:"Institutionnel"},
+    {id:"sport",label:"Sport"},
+    {id:"industrie",label:"Industrie / B2B"},
+    {id:"environnement",label:"Environnement"},
+    {id:"services",label:"Services"},
+    {id:"loisirs",label:"Loisirs / Tourisme"},
     {id:"prevention",label:"Prévention"}
   ];
+
   var homeFilter = "all";
-  function isFin(c){ return c.id === "fin" || c.slug === "fin"; }
+
+  function isFin(c){
+    return c.id === "fin" || c.slug === "fin";
+  }
+
   function filterBar(scope){
     var selected = homeFilter;
     var options = FILTERS.slice();
+
     return '<div class="filter-bar" data-filter-scope="' + scope + '">' +
       '<p class="filter-label">Filtrer par thème</p>' +
-      '<div class="filter-buttons" role="group" aria-label="Filtrer ' +
-      'les campagnes' + '">' +
+      '<div class="filter-buttons" role="group" aria-label="Filtrer les campagnes">' +
       options.map(function(f){
         return '<button type="button" class="filter-button" data-filter="' + f.id +
-          '" aria-pressed="' + (selected === f.id) + '" aria-controls="' +
-          'campaign-grid' + '">' + f.label + '</button>';
-      }).join("") + '</div><p class="filter-status" role="status" aria-live="polite"></p></div>';
+          '" aria-pressed="' + (selected === f.id) +
+          '" aria-controls="campaign-grid">' + f.label + '</button>';
+      }).join("") +
+      '</div><p class="filter-status" role="status" aria-live="polite"></p></div>';
   }
-  function applyFilter(scope, selected){
+
+  function applyFilter(scope,selected){
     var bar = app.querySelector('[data-filter-scope="' + scope + '"]');
     if(!bar) return;
+
     var count = 0;
     var items = app.querySelectorAll(".campaign-grid .campaign-card");
+
     items.forEach(function(item){
       var tags = (item.dataset.tags || "").split(" ").filter(Boolean);
       var always = item.dataset.alwaysVisible === "true";
       var matches = selected === "all" || tags.indexOf(selected) !== -1;
+
       item.hidden = !(always || matches);
       if(matches && !always) count++;
     });
+
     bar.querySelectorAll("[data-filter]").forEach(function(button){
-      button.setAttribute("aria-pressed", String(button.dataset.filter === selected));
+      button.setAttribute("aria-pressed",String(button.dataset.filter === selected));
     });
+
     bar.querySelector(".filter-status").textContent =
-      count + (count === 1 ? " campagne affichée" : " campagnes affichées") + " · Plus de pub reste accessible.";
+      count +
+      (count === 1 ? " campagne affichée" : " campagnes affichées") +
+      " · Plus de pub reste accessible.";
   }
+
   function initFilters(scope){
     var bar = app.querySelector('[data-filter-scope="' + scope + '"]');
     if(!bar) return;
-    bar.addEventListener("click", function(event){
+
+    bar.addEventListener("click",function(event){
       var button = event.target.closest("[data-filter]");
       if(!button || !bar.contains(button)) return;
+
       var selected = button.dataset.filter;
       homeFilter = selected;
-      applyFilter(scope, selected);
+      applyFilter(scope,selected);
     });
-    applyFilter(scope, homeFilter);
+
+    applyFilter(scope,homeFilter);
   }
-  function plainTitle(t){ return t.replace(/&amp;/g,"&").replace(/&times;/g,"×"); }
-  // Rendu des images campagnes avec ratio adapté
-  function campaignImageTile(campaignNum, visualNum, ratio, tags){
-    var imagePath = "images/campagne_" + campaignNum + "/campagne_" + campaignNum + "_visuel_" + visualNum + ".jpg";
+
+  function plainTitle(t){
+    return t.replace(/&amp;/g,"&").replace(/&times;/g,"×");
+  }
+
+  function campaignImageTile(campaignNum,visualNum,ratio,tags){
+    var imagePath = "images/campagne_" + campaignNum +
+      "/campagne_" + campaignNum + "_visuel_" + visualNum + ".jpg";
     var ratioClass = ratio || "carre";
-    return '<div class="visual-item ' + ratioClass + '" data-tags="' + (tags || []).join(' ') + '"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum + '"><span class="zoom-hint"><img src="' + ZOOM_ICON + '" alt=""><span>Cliquer pour agrandir</span></span></div>';
+
+    return '<div class="visual-item ' + ratioClass +
+      '" data-tags="' + (tags || []).join(" ") +
+      '"><img src="' + imagePath +
+      '" alt="Campagne ' + campaignNum + ' Visuel ' + visualNum +
+      '"><span class="zoom-hint"><img src="' + ZOOM_ICON +
+      '" alt=""><span>Cliquer pour agrandir</span></span></div>';
   }
-  // Rendu des vignettes campagnes pour la page d'accueil et le rail
+
   function campaignVignetteTile(campaignNum){
     var imagePath = "images/vignettes/campagne_" + campaignNum + "_vignette.jpg";
-    return '<div class="art-tile"><img src="' + imagePath + '" alt="Campagne ' + campaignNum + ' vignette"></div>';
+
+    return '<div class="art-tile"><img src="' + imagePath +
+      '" alt="Campagne ' + campaignNum + ' vignette"></div>';
   }
-  // Rendu slideshow
+
   function slideShowImageTile(slideNum){
     var imagePath = "images/slideshow/slideshow_" + slideNum + ".jpg";
-    return '<div class="art-tile"><img src="' + imagePath + '" alt="Slideshow ' + slideNum + '"></div>';
+
+    return '<div class="art-tile"><img src="' + imagePath +
+      '" alt="Slideshow ' + slideNum + '"></div>';
   }
+
   var app = document.getElementById("app");
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+  var navLinks = Array.prototype.slice.call(
+    document.querySelectorAll(".nav-links a")
+  );
+
   function setActiveNav(route){
-    navLinks.forEach(function(a){ a.classList.toggle("active", a.dataset.route === route); });
+    navLinks.forEach(function(a){
+      a.classList.toggle("active",a.dataset.route === route);
+    });
   }
-  // ---------- Lightbox variables & functions ----------
+
+  /* Lightbox */
   var lightbox = document.getElementById("lightbox");
   var lightboxImage = document.getElementById("lightbox-image");
   var lightboxClose = document.getElementById("lightbox-close");
@@ -737,92 +1317,133 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var lightboxCounter = document.getElementById("lightbox-counter");
   var currentVisualIndex = 0;
   var allVisuals = [];
-  function openLightbox(index, visuals){
+
+  function openLightbox(index,visuals){
     allVisuals = visuals;
     currentVisualIndex = index;
     showLightboxImage();
     lightbox.classList.add("active");
   }
+
   function closeLightbox(){
     lightbox.classList.remove("active");
   }
+
   function showLightboxImage(){
     if(allVisuals.length === 0) return;
+
     var visual = allVisuals[currentVisualIndex];
     lightboxImage.src = visual.src;
     lightboxImage.alt = visual.alt;
-    lightboxCounter.textContent = (currentVisualIndex + 1) + " / " + allVisuals.length;
+    lightboxCounter.textContent =
+      (currentVisualIndex + 1) + " / " + allVisuals.length;
   }
+
   function nextVisual(){
     currentVisualIndex = (currentVisualIndex + 1) % allVisuals.length;
     showLightboxImage();
   }
+
   function prevVisual(){
-    currentVisualIndex = (currentVisualIndex - 1 + allVisuals.length) % allVisuals.length;
+    currentVisualIndex =
+      (currentVisualIndex - 1 + allVisuals.length) % allVisuals.length;
     showLightboxImage();
   }
-  lightboxClose.addEventListener("click", closeLightbox);
-  lightboxNext.addEventListener("click", nextVisual);
-  lightboxPrev.addEventListener("click", prevVisual);
-  lightbox.addEventListener("click", function(e){
+
+  lightboxClose.addEventListener("click",closeLightbox);
+  lightboxNext.addEventListener("click",nextVisual);
+  lightboxPrev.addEventListener("click",prevVisual);
+
+  lightbox.addEventListener("click",function(e){
     if(e.target === lightbox) closeLightbox();
   });
-  document.addEventListener("keydown", function(e){
+
+  document.addEventListener("keydown",function(e){
     if(!lightbox.classList.contains("active")) return;
     if(e.key === "Escape") closeLightbox();
     if(e.key === "ArrowRight") nextVisual();
     if(e.key === "ArrowLeft") prevVisual();
   });
-  // Fonction pour attacher les listeners lightbox
+
   function attachLightboxListeners(){
     var visualItems = document.querySelectorAll(".visual-grid .visual-item");
     if(visualItems.length === 0) return;
-    visualItems.forEach(function(item, idx){
+
+    visualItems.forEach(function(item){
       if(item.dataset.lightboxBound) return;
       item.dataset.lightboxBound = "true";
-      item.addEventListener("click", function(){
-        var visibleItems = Array.prototype.filter.call(document.querySelectorAll(".visual-grid .visual-item"), function(el){ return !el.hidden; });
+
+      item.addEventListener("click",function(){
+        var visibleItems = Array.prototype.filter.call(
+          document.querySelectorAll(".visual-grid .visual-item"),
+          function(el){return !el.hidden;}
+        );
+
         var visibleVisuals = visibleItems.map(function(el){
           var img = el.querySelector("img");
-          return {src:img.src, alt:img.alt};
+          return {src:img.src,alt:img.alt};
         });
+
         var visibleIndex = visibleItems.indexOf(item);
-        if(visibleIndex !== -1) openLightbox(visibleIndex, visibleVisuals);
+        if(visibleIndex !== -1){
+          openLightbox(visibleIndex,visibleVisuals);
+        }
       });
+
       var holdTimer = null;
+
       function startHold(){
-        holdTimer = setTimeout(function(){ item.classList.add("hint-visible"); }, 2000);
+        holdTimer = setTimeout(function(){
+          item.classList.add("hint-visible");
+        },2000);
       }
+
       function cancelHold(){
         clearTimeout(holdTimer);
         item.classList.remove("hint-visible");
       }
-      item.addEventListener("mouseenter", startHold);
-      item.addEventListener("mouseleave", cancelHold);
-      item.addEventListener("touchstart", startHold, {passive:true});
-      item.addEventListener("touchend", cancelHold);
-      item.addEventListener("touchcancel", cancelHold);
+
+      item.addEventListener("mouseenter",startHold);
+      item.addEventListener("mouseleave",cancelHold);
+      item.addEventListener("touchstart",startHold,{passive:true});
+      item.addEventListener("touchend",cancelHold);
+      item.addEventListener("touchcancel",cancelHold);
     });
   }
-  // ---------- Accueil ----------
+
+  /* Accueil */
   function renderHome(){
-    var featured = CAMPAIGNS.slice(0, 6);
-    var slides = featured.map(function(c, i){
-      return '<div class="hero-slide' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '">' +
+    var featured = CAMPAIGNS.slice(0,6);
+
+    var slides = featured.map(function(c,i){
+      return '<div class="hero-slide' +
+        (i === 0 ? ' active' : '') +
+        '" data-slide="' + i + '">' +
         slideShowImageTile(i + 1) +
-      '</div>';
+        '</div>';
     }).join("");
-    var dots = featured.map(function(c, i){
-      return '<button class="' + (i === 0 ? 'active' : '') + '" data-dot="' + i + '" aria-label="Voir ' + plainTitle(c.title) + '"></button>';
+
+    var dots = featured.map(function(c,i){
+      return '<button class="' + (i === 0 ? 'active' : '') +
+        '" data-dot="' + i +
+        '" aria-label="Voir ' + plainTitle(c.title) + '"></button>';
     }).join("");
-    var cards = CAMPAIGNS.map(function(c, i){
-      var num = String(i + 1).padStart(2, "0");
+
+    var cards = CAMPAIGNS.map(function(c,i){
+      var num = String(i + 1).padStart(2,"0");
       var campNum = c.id;
-      return '<a class="campaign-card" data-tags="' + (c.category || []).join(' ') + '" data-always-visible="' + isFin(c) + '" href="#/campagne/' + c.slug + '">' +
+
+      return '<a class="campaign-card" data-tags="' +
+        (c.category || []).join(" ") +
+        '" data-always-visible="' + isFin(c) +
+        '" href="#/campagne/' + c.slug + '">' +
         campaignVignetteTile(campNum) +
-        '<div class="card-meta"><span class="num">' + num + ' / ' + CAMPAIGNS.length + '</span><h3>' + c.title + '</h3><p>' + c.sector + '</p></div>' +
-      '</a>';
+        '<div class="card-meta"><span class="num">' +
+        num + ' / ' + CAMPAIGNS.length +
+        '</span><h3>' + c.title +
+        '</h3><p>' + c.sector + '</p></div></a>';
     }).join("");
+
     app.innerHTML =
       '<section class="hero" aria-roledescription="carrousel" aria-label="Campagnes à la une">' +
         slides +
@@ -839,57 +1460,101 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         filterBar("home") +
         '<div id="campaign-grid" class="campaign-grid">' + cards + '</div>' +
       '</section>';
+
     initFilters("home");
     initHero(featured.length);
   }
+
   function initHero(count){
-    var idx = 0, timer = null;
-    var slides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
-    var dots = Array.prototype.slice.call(document.querySelectorAll(".hero-dots button"));
+    var idx = 0;
+    var timer = null;
+    var slides = Array.prototype.slice.call(
+      document.querySelectorAll(".hero-slide")
+    );
+    var dots = Array.prototype.slice.call(
+      document.querySelectorAll(".hero-dots button")
+    );
     var heroEl = document.querySelector(".hero");
+
     if(!heroEl) return;
+
     function show(n){
       idx = (n + count) % count;
-      slides.forEach(function(s, i){ s.classList.toggle("active", i === idx); });
-      dots.forEach(function(d, i){ d.classList.toggle("active", i === idx); });
+
+      slides.forEach(function(s,i){
+        s.classList.toggle("active",i === idx);
+      });
+
+      dots.forEach(function(d,i){
+        d.classList.toggle("active",i === idx);
+      });
     }
+
     dots.forEach(function(d){
-      d.addEventListener("click", function(){ show(parseInt(d.dataset.dot, 10)); restart(); });
+      d.addEventListener("click",function(){
+        show(parseInt(d.dataset.dot,10));
+        restart();
+      });
     });
-    function tick(){ show(idx + 1); }
-    function start(){ if(reducedMotion || count < 2) return; timer = setInterval(tick, 3000); }
-    function stop(){ if(timer) clearInterval(timer); }
-    function restart(){ stop(); start(); }
-    heroEl.addEventListener("mouseenter", stop);
-    heroEl.addEventListener("mouseleave", start);
-    heroEl.addEventListener("focusin", stop);
-    heroEl.addEventListener("focusout", start);
+
+    function tick(){show(idx + 1);}
+    function start(){
+      if(reducedMotion || count < 2) return;
+      timer = setInterval(tick,3000);
+    }
+    function stop(){
+      if(timer) clearInterval(timer);
+    }
+    function restart(){
+      stop();
+      start();
+    }
+
+    heroEl.addEventListener("mouseenter",stop);
+    heroEl.addEventListener("mouseleave",start);
+    heroEl.addEventListener("focusin",stop);
+    heroEl.addEventListener("focusout",start);
+
     start();
   }
-  // ---------- Détail d'une campagne ----------
+
+  /* Détail d'une campagne */
   function renderCampaign(slug){
-    var idx = CAMPAIGNS.findIndex(function(c){ return c.slug === slug; });
+    var idx = CAMPAIGNS.findIndex(function(c){
+      return c.slug === slug;
+    });
+
     if(idx === -1){
-      app.innerHTML = '<section class="section"><p>Campagne introuvable. <a href="#/">Retour à l’accueil</a>.</p></section>';
+      app.innerHTML =
+        '<section class="section"><p>Campagne introuvable. ' +
+        '<a href="#/">Retour à l’accueil</a>.</p></section>';
       return;
     }
+
     var c = CAMPAIGNS[idx];
     var campNum = c.id;
     var visualsHtml = "";
-    // Rendu visuels avec leurs ratios respectifs (ADAPTÉ - NON-TRONQUÉ)
+
     c.visuels.forEach(function(v){
-      visualsHtml += campaignImageTile(campNum, v.num, v.ratio, v.tags);
+      visualsHtml += campaignImageTile(campNum,v.num,v.ratio,v.tags);
     });
-    var others = CAMPAIGNS.filter(function(x){ return x.slug !== c.slug; });
-    var railHtml = others.map(function(o, oIdx){
-      var oCampNum = o.id;
-      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' + campaignVignetteTile(oCampNum) +
+
+    var others = CAMPAIGNS.filter(function(x){
+      return x.slug !== c.slug;
+    });
+
+    var railHtml = others.map(function(o){
+      return '<a class="rail-item" href="#/campagne/' + o.slug + '">' +
+        campaignVignetteTile(o.id) +
         '<p>' + o.title + '</p><span>' + o.sector + '</span></a>';
     }).join("");
+
     app.innerHTML =
       '<div class="detail-head">' +
         '<a class="back-link" href="#/">‹ Toutes les campagnes</a>' +
-        '<div class="idx">' + String(idx + 1).padStart(2, "0") + ' / ' + CAMPAIGNS.length + '</div>' +
+        '<div class="idx">' +
+          String(idx + 1).padStart(2,"0") + ' / ' + CAMPAIGNS.length +
+        '</div>' +
         '<h1>' + c.title + '</h1>' +
         '<p class="sector">' + c.sector + '</p>' +
       '</div>' +
@@ -898,10 +1563,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         '<h2>Les autres campagnes du portfolio</h2>' +
         '<div class="rail">' + railHtml + '</div>' +
       '</div>';
-    // INTERSECTION OBSERVER — Animations au scroll
+
     setTimeout(function(){
-      var items = Array.prototype.slice.call(document.querySelectorAll(".visual-grid .visual-item"));
+      var items = Array.prototype.slice.call(
+        document.querySelectorAll(".visual-grid .visual-item")
+      );
+
       if(!items.length) return;
+
       var observer = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if(entry.isIntersecting){
@@ -909,13 +1578,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             observer.unobserve(entry.target);
           }
         });
-      }, {threshold:0.1, rootMargin:"0px 0px -50px 0px"});
-      items.forEach(function(item){ observer.observe(item); });
-      // Attacher les listeners lightbox
+      },{
+        threshold:0.1,
+        rootMargin:"0px 0px -50px 0px"
+      });
+
+      items.forEach(function(item){
+        observer.observe(item);
+      });
+
       attachLightboxListeners();
-    }, 0);
+    },0);
   }
-  // ---------- Profil ----------
+
+  /* Profil */
   function renderProfil(){
     app.innerHTML =
       '<div class="profile-wrap">' +
@@ -951,50 +1627,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         '</div>' +
       '</div>';
   }
-  // ---------- Routeur ----------
+
+  /* Routeur */
   function route(){
     var hash = window.location.hash || "#/";
-    var parts = hash.replace(/^#\//, "").split("/").filter(Boolean);
+    var parts = hash.replace(/^#\//,"").split("/").filter(Boolean);
+
     if(parts[0] === "campagne" && parts[1]){
       renderCampaign(parts[1]);
       setActiveNav("home");
-    } else if(parts[0] === "profil"){
+    }else if(parts[0] === "profil"){
       renderProfil();
       setActiveNav("profil");
-    } else {
+    }else{
       renderHome();
       setActiveNav("home");
     }
-    window.scrollTo(0, 0);
+
+    window.scrollTo(0,0);
+
     var links = document.querySelector(".nav-links");
     if(links) links.classList.remove("open");
   }
+
   var toggle = document.querySelector(".nav-toggle");
+
   if(toggle){
-    toggle.addEventListener("click", function(){
+    toggle.addEventListener("click",function(){
       var links = document.querySelector(".nav-links");
       var open = links.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", open);
+      toggle.setAttribute("aria-expanded",open);
     });
   }
-  // Indicateur de scroll sur le hero (icône souris) — écouteurs globaux, attachés une seule fois
-  document.addEventListener("click", function(e){
+
+  document.addEventListener("click",function(e){
     var hint = e.target.closest("[data-scroll-hint]");
     if(!hint) return;
-    var target = document.querySelector(".section") || document.querySelector(".campaign-grid");
-    if(target) target.scrollIntoView({behavior: reducedMotion ? "auto" : "smooth", block:"start"});
+
+    var target = document.querySelector(".section") ||
+      document.querySelector(".campaign-grid");
+
+    if(target){
+      target.scrollIntoView({
+        behavior:reducedMotion ? "auto" : "smooth",
+        block:"start"
+      });
+    }
   });
-  window.addEventListener("scroll", function(){
+
+  window.addEventListener("scroll",function(){
     var hint = document.querySelector(".scroll-hint");
     if(!hint) return;
-    hint.classList.toggle("is-hidden", window.scrollY > 40);
-  }, {passive:true});
-  window.addEventListener("hashchange", route);
+
+    hint.classList.toggle("is-hidden",window.scrollY > 40);
+  },{passive:true});
+
+  window.addEventListener("hashchange",route);
   route();
-  // Attacher lightbox après le premier rendu
-  setTimeout(attachLightboxListeners, 100);
+  setTimeout(attachLightboxListeners,100);
 })();
 </script>
+
 <script data-goatcounter="https://cflorentin.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>
