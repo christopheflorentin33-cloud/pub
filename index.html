@@ -780,6 +780,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   var CAMPAIGNS = [
     {
+      id:37,
+      slug:"nikon",
+      category:["marques","loisirs"],
+      title:"Nikon",
+      sector:"Soyez là au bon moment, on s'occupe du reste.",
+      visuels:[
+        {num:1,ratio:"paysage"},
+        {num:2,ratio:"paysage"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"paysage"}
+      ]
+    },
+    {
+      id:38,
+      slug:"philips",
+      category:["marques"],
+      title:"Philips",
+      sector:"L'innovation au service du bien-être.",
+      visuels:[
+        {num:1,ratio:"paysage"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"paysage"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"paysage"},
+        {num:6,ratio:"paysage"}
+      ]
+    },
+    {
+      id:39,
+      slug:"nespresso",
+      category:["marques","alimentation","luxe"],
+      title:"Nespresso",
+      sector:"Le parfait équilibre entre le goût et le plaisir.",
+      visuels:[
+        {num:1,ratio:"paysage"},
+        {num:2,ratio:"paysage"},
+        {num:3,ratio:"paysage"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"portrait"}
+      ]
+    },
+    {
       id:32,
       slug:"la-compagnie-du-lit",
       category:["marques","services"],
@@ -1455,20 +1500,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   /* Accueil */
   function renderHome(){
-    var featured = CAMPAIGNS.slice(0,6);
+    var heroSlides = [
+      {num:7,label:"Nikon"},
+      {num:8,label:"Nespresso"},
+      {num:1,label:"La Compagnie du Lit"},
+      {num:2,label:"Clovis"},
+      {num:3,label:"Banque SG"},
+      {num:4,label:"GACI"},
+      {num:5,label:"Apple / Inter-Actif"},
+      {num:6,label:"Krug"}
+    ];
 
-    var slides = featured.map(function(c,i){
+    var slides = heroSlides.map(function(slide,i){
       return '<div class="hero-slide' +
         (i === 0 ? ' active' : '') +
         '" data-slide="' + i + '">' +
-        slideShowImageTile(i + 1) +
+        slideShowImageTile(slide.num) +
         '</div>';
     }).join("");
 
-    var dots = featured.map(function(c,i){
+    var dots = heroSlides.map(function(slide,i){
       return '<button class="' + (i === 0 ? 'active' : '') +
         '" data-dot="' + i +
-        '" aria-label="Voir ' + plainTitle(c.title) + '"></button>';
+        '" aria-label="Voir ' + plainTitle(slide.label) + '"></button>';
     }).join("");
 
     var cards = CAMPAIGNS.map(function(c,i){
@@ -1504,7 +1558,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       '</section>';
 
     initFilters("home");
-    initHero(featured.length);
+    initHero(heroSlides.length);
   }
 
   function initHero(count){
