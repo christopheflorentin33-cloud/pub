@@ -1895,5 +1895,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script data-goatcounter="https://cflorentin.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script>
+/* Limiter le clic droit et le déplacement aux images publicitaires. */
+(function(){
+  "use strict";
+  var advertisingImages = [
+    ".hero-slide .art-tile img",
+    ".campaign-card .art-tile img",
+    ".visual-grid .visual-item > img",
+    ".rail-item .art-tile img",
+    "#lightbox-image"
+  ].join(",");
+
+  function preventImageAction(event){
+    if(event.target instanceof Element && event.target.matches(advertisingImages)){
+      event.preventDefault();
+    }
+  }
+
+  document.addEventListener("contextmenu",preventImageAction);
+  document.addEventListener("dragstart",preventImageAction);
+})();
+</script>
+
 </body>
 </html>
