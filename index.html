@@ -825,6 +825,135 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ]
     },
     {
+      "id": 45,
+      "slug": "bose",
+      "category": [
+        "marques",
+        "loisirs"
+      ],
+      "title": "Bose",
+      "sector": "Life, amplified.",
+      "vignette": "images/vignettes/bose-life-amplified_45_vignette.jpg",
+      "visuels": [
+        {
+          "num": 1,
+          "ratio": "carre",
+          "src": "images/campagne_45/bose-life-amplified_45_01-coffret.jpg"
+        },
+        {
+          "num": 2,
+          "ratio": "paysage",
+          "src": "images/campagne_45/bose-life-amplified_45_02-boutique.jpg"
+        },
+        {
+          "num": 3,
+          "ratio": "paysage",
+          "src": "images/campagne_45/bose-life-amplified_45_03-magazine.jpg"
+        },
+        {
+          "num": 4,
+          "ratio": "portrait",
+          "src": "images/campagne_45/bose-life-amplified_45_04-live.jpg"
+        },
+        {
+          "num": 5,
+          "ratio": "portrait",
+          "src": "images/campagne_45/bose-life-amplified_45_05-rue.jpg"
+        },
+        {
+          "num": 6,
+          "ratio": "portrait",
+          "src": "images/campagne_45/bose-life-amplified_45_06-parc.jpg"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "slug": "golf",
+      "category": [
+        "sport",
+        "loisirs"
+      ],
+      "title": "Golf",
+      "sector": "Une infinité de paysages, d’émotions, de rencontres, de coups à jouer.",
+      "vignette": "images/vignettes/golf-une-infinite_46_vignette.jpg",
+      "visuels": [
+        {
+          "num": 1,
+          "ratio": "portrait",
+          "src": "images/campagne_46/golf-une-infinite_46_01-moliets-et-maa.jpg"
+        },
+        {
+          "num": 2,
+          "ratio": "paysage",
+          "src": "images/campagne_46/golf-une-infinite_46_02-magazine-annecy.jpg"
+        },
+        {
+          "num": 3,
+          "ratio": "portrait",
+          "src": "images/campagne_46/golf-une-infinite_46_03-martinique.jpg"
+        },
+        {
+          "num": 4,
+          "ratio": "portrait",
+          "src": "images/campagne_46/golf-une-infinite_46_04-affichage-chamonix.jpg"
+        },
+        {
+          "num": 5,
+          "ratio": "paysage",
+          "src": "images/campagne_46/golf-une-infinite_46_05-affichage-martinique.jpg"
+        },
+        {
+          "num": 6,
+          "ratio": "portrait",
+          "src": "images/campagne_46/golf-une-infinite_46_06-chamonix.jpg"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "slug": "miko",
+      "category": [
+        "marques",
+        "alimentation"
+      ],
+      "title": "Miko",
+      "sector": "Le goût d’être ensemble.",
+      "vignette": "images/vignettes/miko-le-gout-d-etre-ensemble_47_vignette.jpg",
+      "visuels": [
+        {
+          "num": 1,
+          "ratio": "paysage",
+          "src": "images/campagne_47/miko-le-gout-d-etre-ensemble_47_01-congelateur-twister.jpg"
+        },
+        {
+          "num": 2,
+          "ratio": "portrait",
+          "src": "images/campagne_47/miko-le-gout-d-etre-ensemble_47_02-cornetto.jpg"
+        },
+        {
+          "num": 3,
+          "ratio": "portrait",
+          "src": "images/campagne_47/miko-le-gout-d-etre-ensemble_47_03-donut.jpg"
+        },
+        {
+          "num": 4,
+          "ratio": "paysage",
+          "src": "images/campagne_47/miko-le-gout-d-etre-ensemble_47_04-abribus-donut.jpg"
+        },
+        {
+          "num": 5,
+          "ratio": "portrait",
+          "src": "images/campagne_47/miko-le-gout-d-etre-ensemble_47_05-twister.jpg"
+        },
+        {
+          "num": 6,
+          "ratio": "paysage",
+          "src": "images/campagne_47/miko-le-gout-d-etre-ensemble_47_06-magazine-cornetto.jpg"
+        }
+      ]
+    },
+    {
       id:32,
       slug:"la-compagnie-du-lit",
       category:["marques","services"],
@@ -1357,8 +1486,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return t.replace(/&amp;/g,"&").replace(/&times;/g,"×");
   }
 
-  function campaignImageTile(campaignNum,visualNum,ratio,tags){
-    var imagePath = "images/campagne_" + campaignNum +
+  function campaignImageTile(campaignNum,visualNum,ratio,tags,src){
+    var imagePath = src || "images/campagne_" + campaignNum +
       "/campagne_" + campaignNum + "_visuel_" + visualNum + ".jpg";
     var ratioClass = ratio || "carre";
 
@@ -1371,7 +1500,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function campaignVignetteTile(campaignNum){
-    var imagePath = "images/vignettes/campagne_" + campaignNum + "_vignette.jpg";
+    var campaign = CAMPAIGNS.find(function(c){return c.id === campaignNum;});
+    var imagePath = (campaign && campaign.vignette) ||
+      "images/vignettes/campagne_" + campaignNum + "_vignette.jpg";
 
     return '<div class="art-tile"><img src="' + imagePath +
       '" alt="Campagne ' + campaignNum + ' vignette"></div>';
@@ -1632,7 +1763,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var visualsHtml = "";
 
     c.visuels.forEach(function(v){
-      visualsHtml += campaignImageTile(campNum,v.num,v.ratio,v.tags);
+      visualsHtml += campaignImageTile(campNum,v.num,v.ratio,v.tags,v.src);
     });
 
     var others = CAMPAIGNS.filter(function(x){
