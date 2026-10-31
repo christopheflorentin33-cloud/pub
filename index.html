@@ -489,7 +489,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .creative-brief dl div{margin:0;}
   .creative-brief dt{font-weight:800;font-size:.92rem;margin:0 0 1px;}
   .creative-brief dd{margin:0;line-height:1.45;font-size:.95rem;color:var(--ink-soft);}
-  @media(max-width:720px){.creative-brief-inner{padding:12px 0 14px;}}
+  /* Fiche campagne : identité à gauche, brief à droite sur grand écran */
+  .campaign-intro{max-width:var(--maxw);margin:0 auto;padding:32px 24px 18px;}
+  .campaign-intro .back-link{margin-bottom:18px;}
+  .campaign-intro-grid{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.4fr);gap:clamp(24px,4vw,64px);align-items:start;}
+  .campaign-intro .detail-head{padding:0;margin:0;max-width:none;}
+  .campaign-intro .detail-head h1{margin:8px 0 10px;font-size:clamp(2.5rem,4.5vw,4.3rem);line-height:1.08;overflow-wrap:break-word;}
+  .campaign-intro .detail-head .sector{font-family:var(--font-display);font-weight:700;font-size:clamp(1.35rem,2.2vw,2.05rem);line-height:1.25;margin:0;max-width:20ch;color:var(--ink-soft);}
+  .campaign-intro .creative-brief{max-width:none;margin:0;padding:0;min-width:0;}
+  .campaign-intro .creative-brief-inner{max-width:none;padding:11px 0 12px;}
+  .campaign-intro .creative-brief h2{font-size:1.2rem;}
+  .campaign-intro .creative-brief dl{gap:6px;}
+  .campaign-intro .creative-brief dd{line-height:1.4;}
+  @media(max-width:900px){
+    .campaign-intro{padding:26px 24px 16px;}
+    .campaign-intro-grid{grid-template-columns:1fr;gap:20px;}
+    .campaign-intro .detail-head .sector{font-size:clamp(1.3rem,4vw,1.85rem);max-width:none;}
+    .campaign-intro .creative-brief-inner{padding:12px 0 14px;}
+  }
+  @media(max-width:480px){.campaign-intro{padding:22px 20px 12px;}.campaign-intro-grid{gap:16px;}}
 
   /* Autres campagnes */
   .rail-section{
@@ -2076,15 +2094,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }).join("");
 
     app.innerHTML =
-      '<div class="detail-head">' +
+      '<div class="campaign-intro">' +
         '<a class="back-link" href="#/">‹ Toutes les campagnes</a>' +
-        '<div class="idx">' +
-          String(idx + 1).padStart(2,"0") + ' / ' + CAMPAIGNS.length +
+        '<div class="campaign-intro-grid">' +
+          '<div class="detail-head">' +
+            '<div class="idx">' +
+              String(idx + 1).padStart(2,"0") + ' / ' + CAMPAIGNS.length +
+            '</div>' +
+            '<h1>' + c.title + '</h1>' +
+            '<p class="sector">' + c.sector + '</p>' +
+          '</div>' +
+          briefHtml +
         '</div>' +
-        '<h1>' + c.title + '</h1>' +
-        '<p class="sector">' + c.sector + '</p>' +
       '</div>' +
-      briefHtml +
       '<div id="visual-grid" class="visual-grid">' + visualsHtml + '</div>' +
       '<div class="rail-section">' +
         '<h2>Les autres campagnes du portfolio</h2>' +
