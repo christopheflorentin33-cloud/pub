@@ -12,7 +12,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Christophe Florentin — Portfolio créatif</title>
-<meta name="description" content="Portfolio de Christophe Florentin, communicant créatif : campagnes d'affichage, films, digital et identités de marque.">
+<meta name="description" content="Portfolio de projets personnels non commandés : concepts publicitaires, visuels de campagnes et déclinaisons en affichage, presse et digital.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -479,15 +479,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   /* Brief créatif autonome — présentation homogène */
-  .creative-brief{max-width:var(--maxw);margin:0 auto 18px;padding:0 24px;}
-  .creative-brief-inner{max-width:900px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0 26px;}
-  .creative-brief h2{font-family:var(--font-display);font-size:1.35rem;font-weight:800;margin:0 0 5px;}
-  .creative-brief .brief-disclaimer{font-size:.8rem;color:var(--ink-soft);margin:0 0 20px;}
-  .creative-brief dl{margin:0;display:grid;gap:14px;}
+  .creative-brief{max-width:var(--maxw);margin:0 auto 10px;padding:0 24px;}
+  .creative-brief-inner{max-width:900px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0 16px;}
+  .creative-brief h2{font-family:var(--font-display);font-size:1.3rem;font-weight:800;margin:0 0 3px;}
+  .portfolio-disclaimer{width:100%;margin:12px 0 0;font-size:.98rem;line-height:1.55;color:var(--ink-soft);}
+  .portfolio-disclaimer strong{color:var(--ink);font-weight:700;}
+  .creative-brief .brief-disclaimer{font-size:.8rem;color:var(--ink-soft);margin:0 0 10px;}
+  .creative-brief dl{margin:0;display:grid;gap:8px;}
   .creative-brief dl div{margin:0;}
-  .creative-brief dt{font-weight:800;font-size:.92rem;margin:0 0 4px;}
-  .creative-brief dd{margin:0;line-height:1.6;font-size:.95rem;color:var(--ink-soft);}
-  @media(max-width:720px){.creative-brief-inner{padding:18px 0 20px;}}
+  .creative-brief dt{font-weight:800;font-size:.92rem;margin:0 0 1px;}
+  .creative-brief dd{margin:0;line-height:1.45;font-size:.95rem;color:var(--ink-soft);}
+  @media(max-width:720px){.creative-brief-inner{padding:12px 0 14px;}}
 
   /* Autres campagnes */
   .rail-section{
@@ -766,7 +768,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main id="app"></main>
 
 <footer class="site-footer">
-  <p>Christophe Florentin — conception publicitaire &amp; direction créative.</p>
+  <p>Christophe Florentin — conception publicitaire et conception-rédaction. Projets personnels, non commandés.</p>
   <a href="mailto:christopheflorentin33@gmail.com">Me contacter</a>
 </footer>
 
@@ -1958,6 +1960,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       '<section class="section">' +
         '<div class="section-head">' +
           '<h1>Explorations créatives — imaginaires publicitaires</h1>' +
+          '<p class="portfolio-disclaimer"><strong>Projets personnels, non commandés.</strong> Concepts et propositions publicitaires indépendants, sans collaboration ni validation des marques présentées.</p>' +
         '</div>' +
         filterBar("home") +
         '<div id="campaign-grid" class="campaign-grid">' + cards + '</div>' +
@@ -2054,7 +2057,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       '<section class="creative-brief" aria-label="Brief créatif autonome">' +
         '<div class="creative-brief-inner">' +
           '<h2>Brief créatif autonome</h2>' +
-          '<p class="brief-disclaimer">Projet personnel non commandité — proposition créative indépendante, sans validation de la marque.</p>' +
+          '<p class="brief-disclaimer">Projet personnel, non commandé — proposition créative indépendante, sans collaboration ni validation de la marque.</p>' +
           '<dl>' + briefLabels.map(function(label){
             return '<div><dt>' + escapeBrief(label) + '</dt><dd>' +
               escapeBrief(briefData[label] || "") + '</dd></div>';
