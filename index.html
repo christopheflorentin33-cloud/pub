@@ -478,6 +478,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
   }
 
+  /* Brief créatif autonome — présentation homogène */
+  .creative-brief{max-width:var(--maxw);margin:0 auto 18px;padding:0 24px;}
+  .creative-brief-inner{max-width:900px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0 26px;}
+  .creative-brief h2{font-family:var(--font-display);font-size:1.35rem;font-weight:800;margin:0 0 5px;}
+  .creative-brief .brief-disclaimer{font-size:.8rem;color:var(--ink-soft);margin:0 0 20px;}
+  .creative-brief dl{margin:0;display:grid;gap:14px;}
+  .creative-brief dl div{margin:0;}
+  .creative-brief dt{font-weight:800;font-size:.92rem;margin:0 0 4px;}
+  .creative-brief dd{margin:0;line-height:1.6;font-size:.95rem;color:var(--ink-soft);}
+  @media(max-width:720px){.creative-brief-inner{padding:18px 0 20px;}}
+
   /* Autres campagnes */
   .rail-section{
     max-width:var(--maxw);
@@ -1190,9 +1201,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["marques","loisirs"],
       title:"DJI Osmo",
       sector:"Votre smartphone mérite le meilleur stabilisateur.",
-      contexte:`L'éditeur de mobilier Trame nous confie sa campagne de lancement pour une collection de pièces modulables.`,
-      approche:`Les objets sont photographiés en cours de montage, pièce par pièce, pour révéler leur logique de construction.`,
-      resultat:`La collection s'écoule en showroom en moins de trois mois.`,
       palette:["#f4a300","#1b1b1f"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1269,9 +1277,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["marques","sport"],
       title:"Champion",
       sector:"Intemporel.",
-      contexte:`Voltec, fournisseur d'électricité verte, nous confie sa campagne d'affichage pour accompagner son changement de nom.`,
-      approche:`Une signalétique inspirée des schémas électriques traduit la promesse d'un réseau plus lisible et plus sobre.`,
-      resultat:`La marque atteint 52 % de notoriété spontanée un an après le lancement.`,
       palette:["#1f6feb","#ffffff"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1288,9 +1293,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["loisirs"],
       title:"Club Med",
       sector:"Des vacances sur mesure.",
-      contexte:`La néobanque Mercato nous demande une campagne digitale pour accompagner le lancement de son compte professionnel.`,
-      approche:`Le ton se veut direct et sans jargon, porté par des formats courts pensés pour les réseaux professionnels.`,
-      resultat:`Les ouvertures de compte progressent de 45 % le mois suivant le lancement.`,
       palette:["#c08a2e","#17161b"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1307,9 +1309,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["marques","sport"],
       title:"Vans",
       sector:"Le reflet de votre personnalité.",
-      contexte:`Le musée Kaïros nous confie la campagne d'affichage de son exposition consacrée au temps et à la mémoire.`,
-      approche:`La typographie se déforme et se répare d'une affiche à l'autre, comme une pellicule qui rejoue le temps de l'exposition.`,
-      resultat:`La fréquentation de l'exposition dépasse de 40 % les objectifs fixés par le musée.`,
       palette:["#7a3ff2","#ede7fb"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1326,9 +1325,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["institutionnel","loisirs"],
       title:"Gironde Tourisme",
       sector:"REnouveau en Gironde.",
-      contexte:`Fjord &amp; Sel, conserverie artisanale, nous confie sa première campagne de packaging pour sa gamme de poissons fumés.`,
-      approche:`Chaque boîte raconte le lieu de pêche à travers une illustration gravée, dans un esprit d'atlas maritime.`,
-      resultat:`Les ventes en épicerie fine progressent de 31 % l'année du lancement.`,
       palette:["#0a9396","#fdebd3"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1345,9 +1341,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["marques","alimentation"],
       title:"LU",
       sector:"Le biscuit indispensable de la récré !",
-      contexte:`La marque de cosmétiques Belline lance une gamme de soins solides et nous confie son identité de marque complète.`,
-      approche:`Un système typographique arrondi et une palette poudrée accompagnent chaque produit, du packaging au site.`,
-      resultat:`Le taux de reconnaissance de la nouvelle identité atteint 61 % six mois après le lancement.`,
       palette:["#b23a6d","#f6e9ef"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1364,9 +1357,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["marques","luxe","alimentation"],
       title:"Pommery",
       sector:"La signature d'un moment d'exception.",
-      contexte:`Cavallo souhaite repositionner son modèle citadin auprès d'un public plus jeune à travers une campagne 360°.`,
-      approche:`La voiture disparaît des visuels au profit des trajets qu'elle rend possibles, racontés à hauteur de passager.`,
-      resultat:`Les essais en concession augmentent de 18 % sur le trimestre du lancement.`,
       palette:["#e8492b","#14151a"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1383,9 +1373,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["marques","services"],
       title:"Aquarelle",
       sector:"L'art d'offrir des fleurs.",
-      contexte:`Pour le lancement de sa veste Nordr Pro, la marque nous confie un film de 30 secondes tourné dans les fjords norvégiens.`,
-      approche:`Le montage suit un seul mouvement continu, du sommet jusqu'au fjord, pour restituer la promesse d'une protection sans coupure.`,
-      resultat:`Le film dépasse deux millions de vues organiques dans les six semaines suivant sa diffusion.`,
       palette:["#0e7c4a","#eaf2e4"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1402,9 +1389,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       category:["institutionnel","prevention"],
       title:"Sécurité Routière",
       sector:"Les Césars de la route.",
-      contexte:`Aurèle relance sa ligne de bijoux fins avec une campagne d'affichage 4x3 déployée à Paris et Lyon à l'automne 2023.`,
-      approche:`Un système graphique construit autour de la lumière réfléchie, pensé pour capter l'œil en quelques secondes depuis la rue.`,
-      resultat:`La notoriété assistée de la marque progresse de 24 % sur la période de campagne.`,
       palette:["#263aff","#f3cc00"],
       visuels:[
         {num:1,ratio:"portrait"},
@@ -1455,6 +1439,248 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ]
     }
   ];
+  // Briefs de création autonome : intentions personnelles, non commanditées.
+  var CREATIVE_BRIEFS = {
+  "40": {
+    "Contexte": "Dans un marché où les images se multiplient, la photographie doit retrouver une valeur d'attention et de mémoire.",
+    "Problématique de communication": "Comment faire préférer un appareil photo à la prise de vue immédiate et interchangeable ?",
+    "Objectif créatif": "Associer Nikon à la capacité de saisir l'instant décisif, sans transformer le discours en démonstration technique.",
+    "Parti pris créatif": "Mettre en scène la fraction de seconde où un événement prend toute sa valeur ; la promesse évoque à la fois anticipation, confiance et présence.",
+    "Déclinaisons envisagées": "Déployer cette idée selon les cadrages, moments et supports représentés dans la série."
+  },
+  "38": {
+    "Contexte": "Les innovations du quotidien sont souvent présentées comme des listes de caractéristiques.",
+    "Problématique de communication": "Comment rendre les bénéfices d'une technologie immédiatement sensibles et humains ?",
+    "Objectif créatif": "Faire percevoir Philips comme une marque dont l'innovation améliore concrètement la vie.",
+    "Parti pris créatif": "Partir du bien-être ressenti plutôt que de la fiche produit ; donner à l'usage et aux sensations la première place.",
+    "Déclinaisons envisagées": "Adapter le concept aux situations et formats proposés dans les six créations."
+  },
+  "39": {
+    "Contexte": "Le café premium conjugue rituel, goût et moment à soi dans un univers fortement codifié.",
+    "Problématique de communication": "Comment exprimer la singularité du plaisir sans se limiter aux codes classiques du luxe ?",
+    "Objectif créatif": "Installer la notion d'équilibre comme signature d'une expérience complète.",
+    "Parti pris créatif": "Travailler l'harmonie des matières, du café, des gestes et de l'atmosphère : le plaisir devient aussi visuel que gustatif.",
+    "Déclinaisons envisagées": "Maintenir cette cohérence sur les différentes compositions de la campagne."
+  },
+  "45": {
+    "Contexte": "L'audio haut de gamme se choisit autant pour l'expérience ressentie que pour ses performances.",
+    "Problématique de communication": "Comment traduire une intensité sonore dans une image silencieuse ?",
+    "Objectif créatif": "Faire de Bose une promesse d'amplification des émotions et des instants de vie.",
+    "Parti pris créatif": "S'appuyer sur l'énergie, les contrastes et le rapport entre sujet et environnement pour matérialiser une expérience sonore.",
+    "Déclinaisons envisagées": "Décliner un langage graphique cohérent dans les formats carrés, horizontaux et verticaux."
+  },
+  "46": {
+    "Contexte": "Le golf est à la fois une discipline technique et une expérience de plein air, de rencontres et de découverte.",
+    "Problématique de communication": "Comment dépasser une représentation exclusivement sportive ou élitiste ?",
+    "Objectif créatif": "Faire découvrir la richesse des émotions et des paysages associés à la pratique.",
+    "Parti pris créatif": "Multiplier les points de vue sur le parcours et ses moments pour suggérer qu'aucune partie ne ressemble à la précédente.",
+    "Déclinaisons envisagées": "Composer une série de scènes complémentaires adaptées aux supports de campagne."
+  },
+  "47": {
+    "Contexte": "Les glaces occupent une place familière dans les plaisirs simples et les souvenirs collectifs.",
+    "Problématique de communication": "Comment raviver l'attachement à une marque populaire sans adopter un discours trop nostalgique ?",
+    "Objectif créatif": "Faire de Miko un symbole de moments partagés entre générations.",
+    "Parti pris créatif": "Montrer la relation entre les personnes avant de mettre le produit au premier plan : c'est le lien social qui donne du goût à l'instant.",
+    "Déclinaisons envisagées": "Décliner des scènes de convivialité et des cadrages variés dans les visuels."
+  },
+  "49": {
+    "Contexte": "L'aménagement de la cuisine engage les habitudes, la circulation et l'identité de toute la maison.",
+    "Problématique de communication": "Comment différencier une offre de cuisine au-delà du choix des façades et équipements ?",
+    "Objectif créatif": "Présenter Noblessa comme le partenaire d'un espace qui correspond véritablement à ses occupants.",
+    "Parti pris créatif": "Faire de « Vous êtes au bon endroit » une double promesse : qualité de l'espace conçu et pertinence du choix de la marque.",
+    "Déclinaisons envisagées": "Articuler les compositions d'intérieur et les mises en situation publicitaires de la série."
+  },
+  "50": {
+    "Contexte": "Les métiers de l'immobilier et de l'accompagnement résidentiel sont liés à des décisions personnelles majeures.",
+    "Problématique de communication": "Comment rendre la marque rassurante tout en ouvrant une perspective désirable ?",
+    "Objectif créatif": "Associer Victoria Keys à la projection, à la confiance et aux nouveaux départs.",
+    "Parti pris créatif": "Utiliser l'horizon comme métaphore d'un projet de vie : le service ne se réduit pas à une transaction.",
+    "Déclinaisons envisagées": "Déployer cette promesse dans les scènes, supports et cadrages présentés."
+  },
+  "51": {
+    "Contexte": "Dans l'univers du vin, le contenant participe à l'expression de la dégustation et à la perception du produit.",
+    "Problématique de communication": "Comment valoriser le verre sans qu'il efface le vin qu'il sert ?",
+    "Objectif créatif": "Faire de Lehmann le révélateur discret des nuances et des émotions de la dégustation.",
+    "Parti pris créatif": "Travailler transparence, reflets, lumière et précision des silhouettes pour faire du verre le médiateur entre vin et sensation.",
+    "Déclinaisons envisagées": "Associer visuels produits, compositions plus éditoriales et mise en situation professionnelle."
+  },
+  "52": {
+    "Contexte": "L’alimentation végétale peut encore être perçue comme un compromis. Pourtant, la gourmandise et le plaisir de partager un repas sont universels.",
+    "Problématique de communication": "Comment faire découvrir des produits 100 % végétaux sans centrer le discours sur la privation ni opposer les modes d’alimentation ?",
+    "Objectif créatif": "Faire du plaisir gustatif le premier moteur de découverte, grâce à l’humour, à la surprise et à la complicité entre convives.",
+    "Parti pris créatif": "« Malin plaisir » joue sur deux lectures : la malice de servir un repas végétal sans l’annoncer d’emblée, puis de savourer la surprise des convives qui se régalent ; et le plaisir malin de choisir soi-même le 100 % végétal sans renoncer à la gourmandise. La révélation est complice, jamais une tromperie.",
+    "Déclinaisons envisagées": "Trois scènes de convivialité — repas en famille, apéritif entre amis, pizza devant un match — déclinées en visuels publicitaires, affichage urbain, presse et formats digitaux."
+  },
+  "32": {
+    "Contexte": "Le marché de la literie promet souvent des performances proches : confort, maintien, récupération.",
+    "Problématique de communication": "Comment donner au confort une expression plus personnelle et mémorable ?",
+    "Objectif créatif": "Associer La Compagnie du Lit à une sensation de douceur qui accompagne l'imaginaire.",
+    "Parti pris créatif": "Traiter le sommeil comme une expérience émotionnelle et sensorielle plutôt que comme une simple caractéristique matérielle.",
+    "Déclinaisons envisagées": "Assurer une continuité de ton et de composition entre les visuels de la série."
+  },
+  "30": {
+    "Contexte": "Les condiments et ingrédients de table peuvent être perçus comme des produits ordinaires.",
+    "Problématique de communication": "Comment leur redonner une place dans l'art de recevoir et de cuisiner ?",
+    "Objectif créatif": "Valoriser Clovis comme un geste de goût et d'élégance accessible.",
+    "Parti pris créatif": "Faire du produit un détail qui transforme une table : précision, raffinement, plaisir d'offrir et de partager.",
+    "Déclinaisons envisagées": "Passer du produit aux scènes de table sur plusieurs formats publicitaires."
+  },
+  "29": {
+    "Contexte": "Dans la banque, les messages de confiance et de proximité sont devenus attendus.",
+    "Problématique de communication": "Comment rendre crédible une promesse d'accompagnement vers l'avenir ?",
+    "Objectif créatif": "Présenter Banque SG comme un acteur qui aide à construire des projets et à envisager des possibles.",
+    "Parti pris créatif": "Utiliser le vocabulaire visuel du dessin, de la transformation et de la projection plutôt que des seuls codes financiers.",
+    "Déclinaisons envisagées": "Décliner le principe autour de situations de projets personnels et professionnels."
+  },
+  "26": {
+    "Contexte": "L'industrie de précision travaille sur des éléments parfois invisibles pour le grand public.",
+    "Problématique de communication": "Comment rendre attrayante et compréhensible une expertise technique très spécialisée ?",
+    "Objectif créatif": "Valoriser GACI à travers l'impact réel de son savoir-faire sur l'innovation.",
+    "Parti pris créatif": "Jouer sur le changement d'échelle : révéler comment un détail minuscule peut conditionner une avancée majeure.",
+    "Déclinaisons envisagées": "Faire dialoguer gros plans techniques et perspectives d'applications dans les créations."
+  },
+  "23": {
+    "Contexte": "Les produits numériques sont souvent montrés pour eux-mêmes, au détriment de l'accompagnement utilisateur.",
+    "Problématique de communication": "Comment rendre visible la valeur ajoutée d'un distributeur ou expert de proximité ?",
+    "Objectif créatif": "Présenter Inter-Actif comme un partenaire qui anticipe les attentes et élargit les possibilités offertes par Apple.",
+    "Parti pris créatif": "Transformer la promesse « voir plus grand » en images de projection, d'usage et de perspectives renouvelées.",
+    "Déclinaisons envisagées": "Appliquer cette idée aux six situations de la série."
+  },
+  "22": {
+    "Contexte": "Le champagne de prestige évolue dans un registre d'exception où chaque détail de présentation compte.",
+    "Problématique de communication": "Comment raconter la singularité de Krug sans multiplier les signes de luxe convenus ?",
+    "Objectif créatif": "Mettre l'accent sur la richesse des sensations et l'attention portée à l'expérience.",
+    "Parti pris créatif": "Traiter la dégustation comme une découverte précieuse, à la fois intime et gastronomique ; le mot « écrin » guide les compositions.",
+    "Déclinaisons envisagées": "Privilégier une cohérence de matières, de lumière et de cadrage dans la série."
+  },
+  "21": {
+    "Contexte": "La restauration de caractère doit donner envie avant même la première bouchée.",
+    "Problématique de communication": "Comment distinguer un smokehouse d'un discours alimentaire générique ?",
+    "Objectif créatif": "Affirmer Dalton Smokehouse par l'authenticité du produit, des gestes et de l'ambiance.",
+    "Parti pris créatif": "Valoriser matière, fumée, cuisson et convivialité pour évoquer un goût construit avec patience et savoir-faire.",
+    "Déclinaisons envisagées": "Maintenir un univers chaleureux et identifiable sur les six visuels."
+  },
+  "19": {
+    "Contexte": "Le mobilier haut de gamme relève à la fois du design fonctionnel et de l'expression personnelle.",
+    "Problématique de communication": "Comment donner à voir davantage qu'un bel objet dans un intérieur ?",
+    "Objectif créatif": "Associer Roche Bobois à une émotion durable née de la rencontre entre forme et usage.",
+    "Parti pris créatif": "Construire des images où le mobilier dialogue avec les volumes, la lumière et la manière d'habiter.",
+    "Déclinaisons envisagées": "Décliner des univers de confort sans perdre l'identité visuelle de l'ensemble."
+  },
+  "18": {
+    "Contexte": "Dans l’univers des soins masculins, Horace peut affirmer sa personnalité grâce à un territoire visuel sensoriel et reconnaissable.",
+    "Problématique de communication": "Comment donner une expression visuelle à la fraîcheur et aux senteurs tout en renforçant l’identification à la marque ?",
+    "Objectif créatif": "Associer Horace à la fraîcheur et aux senteurs, traduites par des compositions colorées et immédiatement identifiables, qui accompagnent son utilisateur à chaque moment de la journée.",
+    "Parti pris créatif": "Faire du bleu une signature visuelle : variations de teintes, ambiances et cadrages évoquent fraîcheur, senteurs et bien-être dans les gestes du quotidien, du matin au soir.",
+    "Déclinaisons envisagées": "Déployer une identité chromatique cohérente sur les différents visuels, en affichage, presse et formats digitaux."
+  },
+  "16": {
+    "Contexte": "Les programmes et contenus audiovisuels suscitent le désir de découvrir une histoire avant les autres.",
+    "Problématique de communication": "Comment exprimer l'avantage d'accès à un contenu sans lister les fonctionnalités d'une offre ?",
+    "Objectif créatif": "Faire de Canal+ la promesse d'une expérience disponible au moment où l'envie apparaît.",
+    "Parti pris créatif": "Jouer avec l'attente, l'anticipation et le plaisir d'être en avance sur l'événement.",
+    "Déclinaisons envisagées": "Articuler cette idée à travers des situations et prises de vue complémentaires."
+  },
+  "13": {
+    "Contexte": "La création vidéo sur smartphone est devenue accessible, mais la qualité du mouvement reste un critère distinctif.",
+    "Problématique de communication": "Comment rendre immédiatement perceptible l'intérêt d'un stabilisateur ?",
+    "Objectif créatif": "Faire de DJI Osmo un outil au service de la fluidité et de l'ambition créative.",
+    "Parti pris créatif": "Mettre en opposition le potentiel narratif du smartphone et les contraintes d'une prise de vue non maîtrisée, sans technicisme excessif.",
+    "Déclinaisons envisagées": "Imaginer plusieurs contextes de captation au sein d'une série cohérente."
+  },
+  "12": {
+    "Contexte": "L'hôtellerie de destination repose sur un équilibre entre lieu, prestation et imaginaire du séjour.",
+    "Problématique de communication": "Comment donner envie de vivre l'expérience avant de comparer les équipements ?",
+    "Objectif créatif": "Ancrer Royal Champagne dans une émotion de paysage, de détente et de privilège.",
+    "Parti pris créatif": "Exploiter la perspective des vignes, l'horizon et la lumière comme signes d'évasion et de respiration.",
+    "Déclinaisons envisagées": "Décliner différents points de vue de l'expérience, du cadre au moment vécu."
+  },
+  "25": {
+    "Contexte": "Les boissons d'été occupent un territoire publicitaire très coloré et festif.",
+    "Problématique de communication": "Comment conserver l'esprit estival tout en installant une signature graphique identifiable ?",
+    "Objectif créatif": "Associer Spritz à une saison faite de lumière, de fraîcheur et de rencontres.",
+    "Parti pris créatif": "Construire une palette solaire et des compositions rythmées autour des couleurs évocatrices de l'apéritif.",
+    "Déclinaisons envisagées": "Adapter les jeux chromatiques aux différents visuels et formats."
+  },
+  "33": {
+    "Contexte": "Les biscuits régionaux associent savoir-faire et attachement à un territoire.",
+    "Problématique de communication": "Comment moderniser l'expression d'une maison patrimoniale sans effacer son identité ?",
+    "Objectif créatif": "Faire émerger un univers Fossier immédiatement identifiable et désirable.",
+    "Parti pris créatif": "Partir des détails de la marque, de ses produits et de ses codes pour imaginer un langage visuel contemporain.",
+    "Déclinaisons envisagées": "Décliner la signature sur une série de compositions cohérentes."
+  },
+  "36": {
+    "Contexte": "L'agriculture est fréquemment évoquée à travers les chiffres, les crises et les oppositions.",
+    "Problématique de communication": "Comment rendre les agriculteurs visibles dans leur diversité et leur réalité quotidienne ?",
+    "Objectif créatif": "Faire entendre une parole plus directe et humaine portée par la FNSEA.",
+    "Parti pris créatif": "Utiliser « On a beau être des agriculteurs » comme ouverture d'un contre-pied : dépasser les étiquettes et montrer des individus, des choix et des vies.",
+    "Déclinaisons envisagées": "Construire une série de prises de parole illustrées par différents portraits et situations."
+  },
+  "8": {
+    "Contexte": "La mode sportive valorise les tendances rapides, alors que certaines pièces traversent les générations.",
+    "Problématique de communication": "Comment inscrire Champion dans la durée sans donner à la marque une image figée ?",
+    "Objectif créatif": "Faire du caractère intemporel une preuve de style, d'usage et d'authenticité.",
+    "Parti pris créatif": "Mettre en regard silhouettes, attitudes et époques pour suggérer une identité qui ne dépend pas des modes.",
+    "Déclinaisons envisagées": "Développer une galerie de portraits et de compositions à signature constante."
+  },
+  "7": {
+    "Contexte": "Les vacances sont recherchées pour leur dépaysement, mais aussi pour l'adéquation aux envies de chacun.",
+    "Problématique de communication": "Comment montrer la diversité des expériences sans perdre l'unité de marque ?",
+    "Objectif créatif": "Faire de Club Med une promesse de séjour choisi selon ses propres rythmes et aspirations.",
+    "Parti pris créatif": "Mettre en scène des instants différents qui répondent chacun à une manière singulière de profiter des vacances.",
+    "Déclinaisons envisagées": "Décliner paysages, activités et moments sur les créations."
+  },
+  "6": {
+    "Contexte": "Les marques de chaussures sont souvent présentées comme des accessoires de tendance.",
+    "Problématique de communication": "Comment ancrer Vans dans l'affirmation personnelle plutôt que dans un simple effet de mode ?",
+    "Objectif créatif": "Associer la marque à une manière libre d'exprimer sa personnalité.",
+    "Parti pris créatif": "Faire du style individuel le sujet principal : le produit accompagne le caractère au lieu de le définir.",
+    "Déclinaisons envisagées": "Exploiter les attitudes, cadres et détails de la série pour multiplier les expressions de soi."
+  },
+  "5": {
+    "Contexte": "L'attractivité touristique doit renouveler les regards, y compris sur des destinations déjà connues.",
+    "Problématique de communication": "Comment susciter l'envie de redécouvrir la Gironde au-delà de ses images attendues ?",
+    "Objectif créatif": "Inviter habitants et visiteurs à porter un regard neuf sur la diversité du territoire.",
+    "Parti pris créatif": "Jouer avec l'idée de renouveau : saison, lumière, usages et rencontres deviennent des occasions de réexploration.",
+    "Déclinaisons envisagées": "Déployer cette proposition sur différents paysages et situations touristiques."
+  },
+  "4": {
+    "Contexte": "Le goûter scolaire est un moment quotidien auquel les familles associent praticité et plaisir.",
+    "Problématique de communication": "Comment donner à LU une présence évidente dans cet instant sans exagérer les bénéfices du produit ?",
+    "Objectif créatif": "Mettre en avant la simplicité d'un biscuit apprécié au moment de la récréation.",
+    "Parti pris créatif": "Travailler un ton complice et familier, porté par des gestes, des souvenirs et une scène de vie facilement reconnaissable.",
+    "Déclinaisons envisagées": "Décliner plusieurs moments et compositions autour de la même idée."
+  },
+  "3": {
+    "Contexte": "Dans le champagne, chaque maison recherche une expression singulière de l'exception.",
+    "Problématique de communication": "Comment transmettre le raffinement de Pommery sans s'en tenir aux symboles traditionnels de prestige ?",
+    "Objectif créatif": "Faire de la marque une signature de moments qui comptent.",
+    "Parti pris créatif": "Suggérer l'émotion avant la célébration : lumière, mise en scène et gestuelle dessinent une expérience mémorable.",
+    "Déclinaisons envisagées": "Maintenir une exigence visuelle commune sur l'ensemble de la série."
+  },
+  "2": {
+    "Contexte": "L'achat de fleurs est un acte de relation autant qu'un choix de produit.",
+    "Problématique de communication": "Comment faire émerger la portée émotionnelle du geste dans un univers très visuel ?",
+    "Objectif créatif": "Positionner Aquarelle comme le facilitateur d'une attention personnelle et sincère.",
+    "Parti pris créatif": "Mettre en avant la personne à qui l'on pense, l'intention du cadeau et la beauté du geste plutôt que le seul bouquet.",
+    "Déclinaisons envisagées": "Imaginer diverses occasions d'offrir dans les visuels."
+  },
+  "1": {
+    "Contexte": "Les messages de prévention routière doivent marquer les esprits sans banaliser les risques.",
+    "Problématique de communication": "Comment capter l'attention d'un public exposé à de nombreuses campagnes de sécurité ?",
+    "Objectif créatif": "Renouveler l'impact d'un message de prévention en empruntant un code culturel familier.",
+    "Parti pris créatif": "Le principe des « Césars de la route » utilise le langage de la récompense et son décalage possible pour interroger les comportements routiers.",
+    "Déclinaisons envisagées": "Construire une série qui articule force d'accroche, lisibilité et responsabilité du message."
+  },
+  "24": {
+    "Contexte": "Le cinéma réunit des publics variés autour d'une expérience collective qui ne se résume pas au film projeté.",
+    "Problématique de communication": "Comment valoriser l'envie de retourner en salle lors d'un rendez-vous événementiel ?",
+    "Objectif créatif": "Rappeler que la séance est aussi un moment de partage et de proximité.",
+    "Parti pris créatif": "Mettre l'accent sur les émotions communes, les regards et la salle comme lieu de rencontre autour des histoires.",
+    "Déclinaisons envisagées": "Décliner cette idée en formats de promotion de l'événement et en scènes de spectateurs."
+  }
+};
+
   var FILTERS = [
     {id:"all",label:"Toutes"},
     {id:"marques",label:"Marques"},
@@ -1815,6 +2041,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       visualsHtml += campaignImageTile(campNum,v.num,v.ratio,v.tags,v.src);
     });
 
+    var briefData = CREATIVE_BRIEFS[campNum];
+    var briefLabels = [
+      "Contexte", "Problématique de communication", "Objectif créatif",
+      "Parti pris créatif", "Déclinaisons envisagées"
+    ];
+    function escapeBrief(value){
+      return String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+    }
+    var briefHtml = briefData && !isFin(c) ?
+      '<section class="creative-brief" aria-label="Brief créatif autonome">' +
+        '<div class="creative-brief-inner">' +
+          '<h2>Brief créatif autonome</h2>' +
+          '<p class="brief-disclaimer">Projet personnel non commandité — proposition créative indépendante, sans validation de la marque.</p>' +
+          '<dl>' + briefLabels.map(function(label){
+            return '<div><dt>' + escapeBrief(label) + '</dt><dd>' +
+              escapeBrief(briefData[label] || "") + '</dd></div>';
+          }).join("") + '</dl>' +
+        '</div>' +
+      '</section>' : "";
+
     var others = CAMPAIGNS.filter(function(x){
       return x.slug !== c.slug;
     });
@@ -1834,6 +2081,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         '<h1>' + c.title + '</h1>' +
         '<p class="sector">' + c.sector + '</p>' +
       '</div>' +
+      briefHtml +
       '<div id="visual-grid" class="visual-grid">' + visualsHtml + '</div>' +
       '<div class="rail-section">' +
         '<h2>Les autres campagnes du portfolio</h2>' +
