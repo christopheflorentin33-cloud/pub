@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <!-- Google Tag Manager -->
@@ -764,7 +763,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .filter-button{padding:9px 12px;}
   }
 </style>
-
 </head>
 
 <body>
@@ -824,6 +822,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {num:3,ratio:"portrait"},
         {num:4,ratio:"paysage"},
         {num:5,ratio:"portrait"},
+        {num:6,ratio:"paysage"}
+      ]
+    },
+    {
+      id:57,
+      slug:"seeph-2026",
+      category:["institutionnel","prevention"],
+      title:"SEEPH 2026",
+      sector:"Aucune. La seule différence, c’est notre regard.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"portrait"},
+        {num:3,ratio:"paysage"},
+        {num:4,ratio:"portrait"},
+        {num:5,ratio:"paysage"},
         {num:6,ratio:"paysage"}
       ]
     },
@@ -1485,6 +1498,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     "Parti pris créatif": "Le S de Samsic sert de découpe photographique. À l’intérieur, on découvre la tenue de terrain et les outils du métier. Autour, la même personne apparaît dans une fonction d’encadrement, dans le même environnement.",
     "Déclinaisons envisagées": "Trois affiches et trois mises en situation : abribus pour l’aéroport, magazine pour la logistique et vitrine d’agence pour la propreté."
   },
+  "57": {
+    "Contexte": "À l’occasion de la Semaine européenne pour l’emploi des personnes handicapées (SEEPH), du 16 au 22 novembre 2026, cette campagne personnelle et non commandée imagine une prise de parole de sensibilisation aux représentations du handicap dans le recrutement.",
+    "Problématique de communication": "Comment provoquer une réaction immédiate, voire un léger malaise, pour mettre au jour nos réflexes de comparaison et les préjugés qui peuvent freiner l’accès des personnes handicapées à l’emploi ?",
+    "Objectif créatif": "Interpeller le public et les recruteurs sur leurs propres attentes, déplacer l’attention de la nature du handicap vers les compétences des candidats, et encourager un changement de regard favorable à l’égalité des chances dans l’emploi.",
+    "Parti pris créatif": "« Quelle est la différence entre… ? » emprunte volontairement les codes de la devinette. En rapprochant deux candidats vivant des handicaps différents, l’accroche crée l’attente d’une chute, éventuellement d’une mauvaise plaisanterie. Ce trouble est recherché, mais la réponse déjoue le piège : « Aucune. La seule différence, c’est notre regard. » Le décalage révèle que le plus dérangeant est notre réflexe de chercher une différence disqualifiante. Il ne s’agit ni de nier les singularités des personnes ni d’effacer les aménagements nécessaires, mais de questionner les jugements qui précèdent l’évaluation de leurs aptitudes.",
+    "Déclinaisons envisagées": "Une série de six réalisations : deux affiches originales et quatre mises en situation — affichage dans une salle d’attente France Travail, abribus, stand de salon de l’emploi et insertion en magazine. Les portraits confrontent plusieurs situations de handicap et prolongent une même interpellation sur des supports différents. Projet fictif sans mandat, collaboration ni validation des organismes ou associations dont les identités apparaissent dans les maquettes."
+  },
   "40": {
     "Contexte": "Dans un marché où les images se multiplient, la photographie doit retrouver une valeur d'attention et de mémoire.",
     "Problématique de communication": "Comment faire préférer un appareil photo à la prise de vue immédiate et interchangeable ?",
@@ -2094,11 +2114,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;")
         .replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
     }
+    var briefDisclaimer = c.id === 57 ?
+      'Projet personnel, non commandé — campagne fictive, sans mandat, collaboration ni validation des organismes ou associations représentés.' :
+      'Projet personnel, non commandé — proposition créative indépendante, sans collaboration ni validation de la marque.';
     var briefHtml = briefData && !isFin(c) ?
       '<section class="creative-brief" aria-label="Brief créatif autonome">' +
         '<div class="creative-brief-inner">' +
           '<h2>Brief créatif autonome</h2>' +
-          '<p class="brief-disclaimer">Projet personnel, non commandé — proposition créative indépendante, sans collaboration ni validation de la marque.</p>' +
+          '<p class="brief-disclaimer">' + escapeBrief(briefDisclaimer) + '</p>' +
           '<dl>' + briefLabels.map(function(label){
             return '<div><dt>' + escapeBrief(label) + '</dt><dd>' +
               escapeBrief(briefData[label] || "") + '</dd></div>';
@@ -2262,7 +2285,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script data-goatcounter="https://cflorentin.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-
 <script>
 /* Limiter le clic droit et le déplacement aux images publicitaires. */
 (function(){
