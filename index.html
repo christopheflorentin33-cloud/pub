@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <!-- Google Tag Manager -->
@@ -763,6 +764,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .filter-button{padding:9px 12px;}
   }
 </style>
+
 </head>
 
 <body>
@@ -810,6 +812,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var CAMPAIGNS = [
+    {
+      id:58,
+      slug:"samsic",
+      category:["marques"],
+      title:"Samsic",
+      sector:"Des missions, un avenir.",
+      visuels:[
+        {num:1,ratio:"portrait"},
+        {num:2,ratio:"paysage"},
+        {num:3,ratio:"portrait"},
+        {num:4,ratio:"paysage"},
+        {num:5,ratio:"portrait"},
+        {num:6,ratio:"paysage"}
+      ]
+    },
     {
       id:40,
       slug:"nikon",
@@ -1461,6 +1478,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   ];
   // Briefs de création autonome : intentions personnelles, non commanditées.
   var CREATIVE_BRIEFS = {
+  "58": {
+    "Contexte": "Trois univers de recrutement se côtoient dans cette campagne : le fret aéroportuaire, la logistique et la propreté.",
+    "Problématique de communication": "Comment montrer, en une seule image, le lien entre une première mission et une prise de responsabilités dans le même secteur ?",
+    "Objectif créatif": "Permettre au candidat de se projeter dans un parcours professionnel à partir d’un métier identifiable.",
+    "Parti pris créatif": "Le S de Samsic sert de découpe photographique. À l’intérieur, on découvre la tenue de terrain et les outils du métier. Autour, la même personne apparaît dans une fonction d’encadrement, dans le même environnement.",
+    "Déclinaisons envisagées": "Trois affiches et trois mises en situation : abribus pour l’aéroport, magazine pour la logistique et vitrine d’agence pour la propreté."
+  },
   "40": {
     "Contexte": "Dans un marché où les images se multiplient, la photographie doit retrouver une valeur d'attention et de mémoire.",
     "Problématique de communication": "Comment faire préférer un appareil photo à la prise de vue immédiate et interchangeable ?",
@@ -2238,6 +2262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script data-goatcounter="https://cflorentin.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+
 <script>
 /* Limiter le clic droit et le déplacement aux images publicitaires. */
 (function(){
